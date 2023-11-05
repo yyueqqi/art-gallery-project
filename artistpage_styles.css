@@ -1,0 +1,97 @@
+/* styles.css */
+
+body {
+    background-color: #FAF8F4;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+header {
+    background-color: #433E36;
+    color: #D7CA96;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5px 10px;
+}
+
+.left-header {
+    font-size: 20px;
+    color: #D7CA96;
+    margin: 0;
+}
+
+.right-header {
+    display: flex;
+    font-size: 16px;
+
+}
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #D7CA96;
+}
+
+
+main {
+    padding: 80px;
+}
+
+main h2{
+    font-size: 35px;
+    font-weight: 100;
+    color: #433E36;
+    margin: 0;
+}
+
+/* artistpage_styles.css */
+
+/* Add this section for artist profiles */
+.artists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Align the artists to the left and right */
+    padding: 50px; /* Add space around the artists section */
+}
+
+.artist {
+    flex-basis: calc(15%-10px); /* Four artists in a row with some spacing */
+    padding: 10px;
+    margin: 0; /* Remove the previous margin */
+    text-align: center;
+    background-color: #FAF8F4;
+    box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.5);
+    border: 0px solid #887e6d; /* Add a border around each artist profile */
+}
+
+.artist img {
+
+    width: 200px;
+    height: 200px;
+}
+
+.artist p {
+    margin: 20px 0;
+    font-weight: bold;
+    color: #433E36;
+    text-align: left;
+    font-family: 'Monaco';
+}
