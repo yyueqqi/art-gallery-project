@@ -1,46 +1,51 @@
 <?php
 
-include 'connect.php';
- if(isset($_POST['user_register'])) {
-  $user_id = md5(time() . mt_rand(1,1000000));  
-  $fname = $_POST['fname'];
-  $lname = $_POST['lname'];
-  $email = $_POST['email'];
-  $user_address = $_POST['address'];
-  $password = $_POST['password'];
- 
-if($fname == '' or  $lname == '' or $email == '' or  $user_address == '' or  $password == '') {
-    echo "<script> alert('Please inserted')</script>";
-}
-else {
-  $select = "SELECT * FROM `user` WHERE email = '$email'";
-  $result_select = mysqli_query($con,$select);
-  $number = mysqli_num_rows($result_select);
-  if($number > 0) {
-    echo "<script> alert('This email have alreday been used')</script>";
-  }
-  else {
-  $encpassword = password_hash($password,PASSWORD_DEFAULT);
-  $insert = "INSERT INTO `user` (user_id,fname,lname,email,user_address,user_password) VALUES ('$user_id','$fname','$lname','$email','$user_address','$encpassword')"; 
-  $result=mysqli_query($con,$insert);
-      if($result) {
-        session_start();
-        $_SESSION['email'] = $email;
-        $_SESSION['user_id'] = $user_id;
-        $_SESSION['fname'] = $fname;
-        echo "<script> alert('register')</script>";
-        header('Location: ../index.php');
-        exit;
-        // header( "refresh: 2; url=index.php");
-       }
-       else {
-        echo "<script> alert('error')</script>";
-       }
-}
-  
+include 'config.php';
+
+if (isset($_POST['signup'])) {
+    $signup_fname = $_POST['fname'];
+    $signup_lname = $_POST['lname'];
+    $signup_email = $_POST['email'];
+    $signup_phonenumber = $_POST['phone_number'];
+    $signup_dob = $_POST['dob'];
+    $signup_username = $_POST['username'];
+    $signup_password = $_POST['password'];
+    $signup_confpass = $_POST['confirm_password'];
+
+    if ($signup_fname == '' || $signup_lname == '' || $signup_email == '' || $signup_phonenumber == '' || $signup_dob == '' || $signup_username == '' || $signup_password == '' || $signup_confpass == '') {
+        echo "<script> alert('Please fill in all fields')</script>";
+    } 
+    
+    else {
+        $select = "SELECT * FROM `account` WHERE username = '$signup_username'";
+        $result_select = mysqli_query($conn, $select);
+        $number = mysqli_num_rows($result_select);
+
+        if ($number > 0) {
+            echo "<script> alert('This username is already in use')</script>";
+      
+        } 
+        else {
+            //$encpassword = password_hash($signup_password, PASSWORD_DEFAULT);
+            if ('$signup_password' == '$signup_confpass'){
+              $insert = "INSERT INTO `account` (username, user_password, fName, lName, email, dob, phone_number) 
+              VALUES ('$signup_username', '$signup_password','$signup_fname','$signup_lname','$signup_email','$signup_dob','$signup_phonenumber')";
+              $result = mysqli_query($conn, $insert);
+
+              if ($result) {
+                session_start();
+                echo "<script> alert('Registration successful')</script>";
+              } 
+              else {
+                echo "<script> alert('Error')</script>";
+            }
+            }
+            else{
+              echo "<script> alert('Wrong password confirmation')</script>";
+            }
+        }
+    }
+    $conn->close();
 }
 
-
-}
-   
 ?>
