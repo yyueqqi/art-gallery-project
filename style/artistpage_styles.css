@@ -50,6 +50,10 @@ nav a {
     color: #D7CA96;
 }
 
+nav a:hover {
+    color: #555;
+}
+
 
 main {
     padding: 80px;
