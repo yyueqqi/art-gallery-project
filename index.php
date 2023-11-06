@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Gallery</title>
-    <link rel="stylesheet" href="../style/mainpage_styles.css?v=3">
+    <link rel="stylesheet" href="style/index_styles.css?v=5">
 </head>
+<html>
+    <body>
+        
+    
 
-<header>
+    <header>
     <div class="left-header">
         <p>The Art Gallery</p>
     </div>
     <div class="right-header">
         <nav>
             <ul>
-                <li><a href="mainpage.html">Home</a></li>
-                <li><a href="artistpage.html">Artists</a></li>
-                <li><a href="artworkpage.html">Artwork</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="website/artistpage.html">Artists</a></li>
+                <li><a href="website/artworkpage.html">Artwork</a></li>
                 <li><a href="#">Exhibition</a></li>
-                <li><a href="loginpage.html">Log in</a></li>
-                <li><a href="#"><img src="../image/search.png" alt="search.png"></a>
+                <li><a href="website/loginpage.html">Log in</a></li>
+                <li><a href="#"><img src="image/search.png" alt="search.png"></a>
             </ul>
         </nav>
     </header>
@@ -35,11 +39,11 @@
             journey with you, and we hope you'll find inspiration in the vibrant art scene of <br/>
             Bangkok through our website."</p>
 
-            <button id="about-us"><a href="#">About us</a></button>
+            <button id="about-us" onclick="scrollabout()"><a >About us</a></button>
 
     </main>
 
-    <section id="about-us-section">
+    <section id="about_us_section">
         <div class="about-us-content">
             <h2>About Us</h2>
             <p>
@@ -50,8 +54,6 @@
             </p>
         </div>
     </section>
+    <script src="script/script.js"></script>
     </body>
-    </html>    
-
-</body>
 </html>
