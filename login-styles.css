@@ -97,3 +97,8 @@ nav a {
 .login-container button:hover {
     background-color: #555;
 }
+
+.login-container a {
+    text-decoration: none;
+    color:white ;
+}
