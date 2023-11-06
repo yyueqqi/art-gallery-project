@@ -1,27 +1,23 @@
 <?php 
-
-include 'config.php';
-
+    include 'config.php';
   if(isset($_POST['login'])) {
     $login_username = $_POST['username'];
     $login_password = $_POST['password'];
+    $sql = "SELECT * FROM account WHERE username = '$login_username'";
+    $result = $conn->query($sql);
 
-    $select = "SELECT * FROM `account` WHERE username = '$login_username'";
-    
-    $result_select = mysqli_query($conn,$select);
-    $number = mysqli_num_rows($result_select);
-    $row_data = mysqli_fetch_assoc($result_select);
-    
-       if($number > 0) {
-          if(password_verify($login_password,$row_data['user_password'])) {
-            echo "<script> alert('login successfully')</script>";
-          }
-          else {
-            echo "<script> alert('fuck')</script>";
-          }
-      }
-      else {
-        echo "<script> alert('error')</script>";
-      }
+if ($result->num_rows > 0) {
+  // output data of each row
+    $row = mysqli_fetch_assoc($result);
+    if($login_password === row['password']) {
+        echo "loginnnn!!!";
+    }
+    else {
+        echo "wrong password";
+    }
+} else {
+  echo "0 results";
+}
+$conn->close();
   }
 ?>
