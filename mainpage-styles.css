@@ -51,8 +51,12 @@ nav ul li {
 nav a {
     text-decoration: none;
     color: #D7CA96;
+    cursor: pointer;
 }
 
+nav a:hover {
+    color: #555;
+}
 main {
     padding: 100px;
 }
