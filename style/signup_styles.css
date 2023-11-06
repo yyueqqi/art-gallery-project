@@ -63,11 +63,12 @@ nav a:hover {
 
 .signup-container {
     background-color: #fff;
+    margin-top: 120px;
     margin-bottom: 60px;
     padding:60px;
     border-radius: 60px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: left;
 }
 
 .signup-container h1 {
@@ -83,10 +84,11 @@ nav a:hover {
 }
 
 .signup-container input {
-    margin: 8px 0;
-    padding: 15px 50px;
+    margin: 4px 0;
+    padding: 12px 50px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    
     
 }
 
