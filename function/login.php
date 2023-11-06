@@ -9,11 +9,11 @@
 
         if ($result->num_rows > 0) {
             $row = mysqli_fetch_assoc($result);
-            if ($login_password === $row['user_password']) { // Corrected the variable name
+            if ($login_password == $row['user_password']) { // Corrected the variable name
               header('Location: ../index.php');
               exit;
             } else {
-                echo "wrong password";
+              echo "<script> alert('Wrong password!');</script>";
             }
         } else {
             echo "0 results";

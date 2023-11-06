@@ -26,10 +26,12 @@ if (isset($_POST['signup'])) {
       
         } 
         else {
-            //$encpassword = password_hash($signup_password, PASSWORD_DEFAULT);
-            if ('$signup_password' == '$signup_confpass'){
+            $encpassword = password_hash($signup_password, PASSWORD_DEFAULT);
+            echo $encpassword;
+
+            if ($signup_password == $signup_confpass){
               $insert = "INSERT INTO `account` (username, user_password, fName, lName, email, dob, phone_number) 
-              VALUES ('$signup_username', '$signup_password','$signup_fname','$signup_lname','$signup_email','$signup_dob','$signup_phonenumber')";
+              VALUES ('$signup_username', '$encpassword', '$signup_fname', '$signup_lname', '$signup_email', '$signup_dob', '$signup_phonenumber')";
               $result = mysqli_query($conn, $insert);
 
               if ($result) {
@@ -38,7 +40,7 @@ if (isset($_POST['signup'])) {
               } 
               else {
                 echo "<script> alert('Error')</script>";
-            }
+              }
             }
             else{
               echo "<script> alert('Wrong password confirmation')</script>";

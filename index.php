@@ -22,7 +22,7 @@
                 <li><a href="website/artistpage.html">Artists</a></li>
                 <li><a href="website/artworkpage.html">Artwork</a></li>
                 <li><a href="#">Exhibition</a></li>
-                <li><a href="website/loginpage.html">Log in</a></li>
+                <li><a href="website/loginpage.php">Log in</a></li>
                 <li><a href="#"><img src="image/search.png" alt="search.png"></a>
             </ul>
         </nav>

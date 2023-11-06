@@ -1,3 +1,7 @@
+<?php
+include '../function/config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +31,7 @@
 <body>
     <div class="login-container">
         <h1>Login</h1>
-        <form action="../function/login.php" method="post" >
+        <form method = 'POST'>
             <input type="text" name="username" placeholder="Username" />
             <input type="password" name="password" placeholder="Password" />
             <button type="submit" name="login">Log in</button>
@@ -36,6 +40,30 @@
     </div>
 </body>
 </html>
+
+<?php
+    if (isset($_POST['login'])) {
+        $login_username = $_POST['username'];
+        $login_password = $_POST['password'];
+        $sql = "SELECT * FROM account WHERE username = '$login_username'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($result);
+            if(password_verify($login_password,$row['user_password'])) { 
+              header('Location: ../index.php');
+              exit;
+
+            } 
+            else {
+              echo "<script> alert('Wrong password!');</script>";
+            }
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
+    }
+?>
 
 
   
