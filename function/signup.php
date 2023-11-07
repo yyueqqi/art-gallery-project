@@ -27,7 +27,6 @@ if (isset($_POST['signup'])) {
         } 
         else {
             $encpassword = password_hash($signup_password, PASSWORD_DEFAULT);
-            echo $encpassword;
 
             if ($signup_password == $signup_confpass){
               $insert = "INSERT INTO `account` (username, user_password, fName, lName, email, dob, phone_number) 
@@ -36,7 +35,9 @@ if (isset($_POST['signup'])) {
 
               if ($result) {
                 session_start();
-                echo "<script> alert('Registration successful')</script>";
+                $_SESSION['logged_in'] = true;
+                header('Location: ../index.php');
+                exit;
               } 
               else {
                 echo "<script> alert('Error')</script>";
