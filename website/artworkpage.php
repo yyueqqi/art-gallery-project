@@ -1,7 +1,7 @@
 <?php
     include '../function/config.php';
 
-    $sql = "SELECT * FROM `artwork`";
+    $sql = "SELECT artwork.*, artist.fName, artist.lName FROM artwork LEFT JOIN artist ON artwork.artist_id = artist.artist_id";
     $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -55,7 +55,7 @@
                 <div class="art-piece">
                     <img src="<?php echo $artwork['image_path']; ?>" alt="<?php echo $artwork['artwork_title']; ?>">
                     <h3><?php echo $artwork['artwork_title']; ?></h3>
-                    <p>Artist: <?php echo $artwork['artist_name']; ?></p>
+                    <p>Artist: <?php echo $artwork['fName'] . ' ' . $artwork['lName']; ?></p>
                     <p>Description: $<?php echo $artwork['description']; ?></p>
                     <p>Price: $<?php echo $artwork['price']; ?></p>
                     <button class="buy-button">Buy Now</button>
