@@ -1,22 +1,56 @@
+.menu-container {
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 10px;
+}
+
+.menu a:hover {
+    background-color: #444;
+}
+
 .admin-container {
     width: 300px;
     margin: 0 auto;
 }
 
-input[type="text"], textarea, input[type="file"] {
+input[type="text"], textarea, input[type="file"], input[type="date" ]{
     width: 100%;
     margin-bottom: 10px;
 }
 
+
 button {
     width: 100%;
     padding: 10px;
-    background-color: #3498db;
+    background-color: #333;
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #444;
 }
+
+
