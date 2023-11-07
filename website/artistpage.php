@@ -1,3 +1,18 @@
+<?php
+    include '../function/config.php';
+
+    $sql = "SELECT * FROM `artist`";
+    $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $artists = $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            $artists = array();
+        }
+
+    $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,34 +54,18 @@
     <main>
         <h2>Our Artists</h2>
         <section class="artists">
-            <div class="artist">
-                <a href="artist_profile.html">
-                    <img src="../image/artist1.jpeg" alt="Artist 1">
-                    <p>Reyneir Llane</p>
-                </a>
-            </div>
-            
-            <div class="artist">
-                <a href="artist_profile.html">
-                    <img src="artist2.jpg" alt="Artist 2">
-                    <p>Artist Name 2</p>
-                </a>
-            </div>
-            
-            <div class="artist">
-                <a href="artist_profile.html">
-                    <img src="artist3.jpg" alt="Artist 3">
-                    <p>Artist Name 3</p>
-                </a>
-            </div>
-
-            <div class="artist">
-                <a href="artist_profile.html">
-                    <img src="artist4.jpg" alt="Artist 4">
-                    <p>Artist Name 4</p>
-                </a>
-            </div>
-        </section>
+        <?php foreach ($artists as $artist) : ?>
+        <div class="artist">
+            <a href="artist_profile.php?artist_id=<?php echo $artist['artist_id']; ?>">
+                <img src="<?php echo $artist['image_path']; ?>" alt="<?php echo $artist['fName'] . ' ' . $artist['lName']; ?>">
+                <p>Artist Name: <?php echo $artist['fName'] . ' ' . $artist['lName']; ?></p>
+                <p>Date of Birth: <?php echo $artist['dob']; ?></p>
+                <p>Artwork History: <?php echo $artist['artwork_history']; ?></p>
+            </a>
+        </div>
+        <?php endforeach; ?>
+    </section>
     </main>
+
 </body>
 </html>

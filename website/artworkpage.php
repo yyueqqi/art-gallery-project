@@ -1,17 +1,14 @@
 <?php
-
     include '../function/config.php';
 
-    $sql = "SELECT * FROM artwork";
+    $sql = "SELECT * FROM `artwork`";
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        $artworks = $result->fetch_all(MYSQLI_ASSOC);
-    } else {
-        $artworks = array(); 
-    }
-
-    echo json_encode($artworks);
+        if ($result->num_rows > 0) {
+            $artworks = $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            $artworks = array();
+        }
 
     $conn->close();
 ?>
@@ -54,39 +51,18 @@
     <main>
         <h2>Artwork in our gallery</h2>
         <section class="artwork">
-            <div class="art-piece">
-                <img src="artwork1.jpg" alt="Artwork 1">
-                <h3>Artwork Title 1</h3>
-                <p>Artist: Artist Name 1</p>
-                <p>Price: $100</p>
-                <button class="buy-button">Buy Now</button>
-            </div>
-            
-            <div class="art-piece">
-                <img src="artwork2.jpg" alt="Artwork 2">
-                <h3>Artwork Title 2</h3>
-                <p>Artist: Artist Name 2</p>
-                <p>Price: $150</p>
-                <button class="buy-button">Buy Now</button>
-            </div>
-            
-            <div class="art-piece">
-                <img src="artwork3.jpg" alt="Artwork 3">
-                <h3>Artwork Title 3</h3>
-                <p>Artist: Artist Name 3</p>
-                <p>Price: $120</p>
-                <button class="buy-button">Buy Now</button>
-            </div>
-
-            <div class="art-piece">
-                <img src="artwork4.jpg" alt="Artwork 4">
-                <h3>Artwork Title 4</h3>
-                <p>Artist: Artist Name 3</p>
-                <p>Price: $120</p>
-                <button class="buy-button">Buy Now</button>
-            </div>
+            <?php foreach ($artworks as $artwork) : ?>
+                <div class="art-piece">
+                    <img src="<?php echo $artwork['image_path']; ?>" alt="<?php echo $artwork['artwork_title']; ?>">
+                    <h3><?php echo $artwork['artwork_title']; ?></h3>
+                    <p>Artist: <?php echo $artwork['artist_name']; ?></p>
+                    <p>Description: $<?php echo $artwork['description']; ?></p>
+                    <p>Price: $<?php echo $artwork['price']; ?></p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <?php endforeach; ?>
         </section>
     </main>
-    
+
 </body>
 </html>
