@@ -2,17 +2,15 @@
 
 include '../function/config.php';
 
-
 if (isset($_POST['add'])) {
     $title = $_POST['title'];
     $artist = $_POST['artist'];
     $description = $_POST['description'];
-    $image = $_FILES['image']['name'];
-    $target = "images/".basename($image);
 
-    $sql = "INSERT INTO artwork (title, artist, description, image_url) VALUES ('$title', '$artist', '$description', '$image')";
+    $sql = "INSERT INTO artwork (title, artist, description)
+    VALUES ('$title', '$artist', '$description')";
     
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $target) && $conn->query($sql) === TRUE) {
+    if ($conn->query($sql) === TRUE) {
         echo "Artwork added successfully!";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -26,7 +24,7 @@ if (isset($_POST['update'])) {
     $new_artist = $_POST['new_artist'];
     $new_description = $_POST['new_description'];
 
-    $sql = "UPDATE artwork SET title = '$new_title', artist = '$new_artist', description = '$new_description' WHERE id = $id";
+    $sql = "UPDATE artwork SET title = '$new_title', artist = '$new_artist', description = '$new_description' WHERE artwork_id = $id";
 
     if ($conn->query($sql) === TRUE) {
         echo "Artwork updated successfully!";
@@ -39,7 +37,7 @@ if (isset($_POST['update'])) {
 if (isset($_POST['delete'])) {
     $id = $_POST['delete_id'];
 
-    $sql = "DELETE FROM artwork WHERE id = $id";
+    $sql = "DELETE FROM artwork WHERE artwork_id = $id";
 
     if ($conn->query($sql) === TRUE) {
         echo "Artwork deleted successfully!";
