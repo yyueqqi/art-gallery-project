@@ -69,7 +69,7 @@ include '../function/config.php';
             }
         }       
         else {
-            echo "<script> alert('This username doesn't exist!');</script>";
+            echo "<script> alert('This username doesn\'t exist!');</script>";
             }
         $conn->close();
     }
