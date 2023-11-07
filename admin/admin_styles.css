@@ -1,0 +1,22 @@
+.admin-container {
+    width: 300px;
+    margin: 0 auto;
+}
+
+input[type="text"], textarea, input[type="file"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" type="text/css" href="admin_styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h2>Add New Artwork</h2>
+        <form action="admin.php" method="post" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Title" required>
+            <input type="text" name="artist" placeholder="Artist" required>
+            <textarea name="description" placeholder="Description" required></textarea>
+            <input type="file" name="image" required>
+            <button type="submit" name="add">Add Artwork</button>
+        </form>
+
+        <h2>Update Artwork</h2>
+        <form action="admin.php" method="post">
+            <input type="text" name="update_id" placeholder="Artwork ID" required>
+            <input type="text" name="new_title" placeholder="New Title">
+            <input type="text" name="new_artist" placeholder="New Artist">
+            <textarea name="new_description" placeholder="New Description"></textarea>
+            <button type="submit" name="update">Update Artwork</button>
+        </form>
+
+        <h2>Delete Artwork</h2>
+        <form action="admin.php" method="post">
+            <input type="text" name="delete_id" placeholder="Artwork ID" required>
+            <button type="submit" name="delete">Delete Artwork</button>
+        </form>
+    </div>
+</body>
+</html>
