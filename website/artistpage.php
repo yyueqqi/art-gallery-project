@@ -23,7 +23,7 @@
                     session_start();
     
                         if (isset($_SESSION['logged_in'])) {
-                            echo '<a href="../function/logout.php">Log out</a>';
+                            echo '<a href="account.php">Account</a>';
                         }
                         else {
                             echo '<a href="loginpage.php">Log in</a>';
