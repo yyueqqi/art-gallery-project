@@ -39,6 +39,24 @@ input[type="text"], textarea, input[type="file"], input[type="date" ]{
     margin-bottom: 10px;
 }
 
+select {
+    padding: 3px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    width: 310px;
+    margin-bottom: 10px;
+  }
+  
+  select option {
+    background-color: #fff;
+    color: #333;
+    padding: 5px;
+  }
+  
+  select:focus {
+    border-color: #333;
+    box-shadow: 0 0 5px #444;
+  }
 
 button {
     width: 100%;

@@ -30,7 +30,7 @@
             <nav>
                 <ul>
                     <li><a href="../index.php">Home</a></li>
-                    <li><a href="artistpage.html">Artists</a></li>
+                    <li><a href="artistpage.php">Artists</a></li>
                     <li><a href="artworkpage.php">Artwork</a></li>
                     <li><a href="#">Exhibition</a></li>
                     <li>
