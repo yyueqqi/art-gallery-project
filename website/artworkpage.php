@@ -15,10 +15,19 @@
         <nav>
             <ul>
                 <li><a href="../index.php">Home</a></li>
-                <li><a href="artistpage.html">Artists</a></li>
-                <li><a href="artworkpage.html">Artwork</a></li>
+                <li><a href="artistpage.php">Artists</a></li>
+                <li><a href="artworkpage.php">Artwork</a></li>
                 <li><a href="#">Exhibition</a></li>
-                <li><a href="loginpage.html">Log in</a></li>
+                <?php
+                session_start();
+    
+                if (isset($_SESSION['logged_in'])) {
+                    echo '<a href="../function/logout.php">Log out</a>';
+                } else {
+                    echo '<a href="loginpage.php">Log in</a>';
+                }
+                ?>
+                </li>
                 <li><a href="#"><img src="../image/search.png" alt="search.png"></a>
             </ul>
         </nav>

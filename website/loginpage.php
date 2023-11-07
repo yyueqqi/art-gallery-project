@@ -19,10 +19,18 @@ include '../function/config.php';
         <nav>
             <ul>
                 <li><a href="../index.php">Home</a></li>
-                <li><a href="artistpage.html">Artists</a></li>
-                <li><a href="artworkpage.html">Artwork</a></li>
-                <li><a href="#">Exhibition</a></li>
-                <li><a href="loginpage.html">Log in</a></li>
+                <li><a href="artistpage.php">Artists</a></li>
+                <li><a href="artworkpage.php">Artwork</a></li>
+                <li><a href="exhibitionpage.php">Exhibition</a></li>
+                <li>
+                <?php
+                if (isset($_SESSION['logged_in'])) {
+                    echo '<a href="logout.php">Log out</a>';
+                } else {
+                    echo '<a href="loginpage.php">Log in</a>';
+                }
+                ?>
+                </li>
                 <li><a href="#"><img src="../image/search.png" alt="search.png"></a>
             </ul>
         </nav>
@@ -42,25 +50,27 @@ include '../function/config.php';
 </html>
 
 <?php
+    session_start();
+
     if (isset($_POST['login'])) {
         $login_username = $_POST['username'];
         $login_password = $_POST['password'];
         $sql = "SELECT * FROM account WHERE username = '$login_username'";
         $result = $conn->query($sql);
-
         if ($result->num_rows > 0) {
             $row = mysqli_fetch_assoc($result);
             if(password_verify($login_password,$row['user_password'])) { 
-              header('Location: ../index.php');
-              exit;
-
+                $_SESSION['logged_in'] = true;
+                header('Location: ../index.php');
+                exit;
             } 
             else {
-              echo "<script> alert('Wrong password!');</script>";
+                echo "<script> alert('Wrong password!');</script>";
             }
-        } else {
-            echo "0 results";
-        }
+        }       
+        else {
+            echo "<script> alert('This username doesn't exist!');</script>";
+            }
         $conn->close();
     }
 ?>
