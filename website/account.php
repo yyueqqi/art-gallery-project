@@ -47,7 +47,7 @@ include '../function/config.php';
        </nav>
    </header>
 <body>
-    
+<main>
 <section class="profile">
     <div class="profile-links">
         <img src="../image/dummy.png" alt="">
@@ -59,8 +59,8 @@ include '../function/config.php';
         <li><a href="../function/logout.php">Log out</a></li>
     </div>
 
-<main>
-    <section class="user_account">
+
+    <div class="user_account">
         <div class="mt-custom">
             <h2> Personal Information</h2>
             <p>Name: <?php echo $user_account['fName'] . ' ' . $user_account['lName']; ?></p>
@@ -68,9 +68,10 @@ include '../function/config.php';
             <p>Date of Birth: <?php echo $user_account['dob']; ?></p>
             <p>Phone number: <?php echo $user_account['phone_number']; ?></p>
         </div>
-    </section>
-</main>
+    </div>
 </section>
+</main>
+
 
 
 </body>

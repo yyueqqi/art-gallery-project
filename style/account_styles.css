@@ -119,9 +119,14 @@ body {
     display: inline-block;
 }
 
+.user_account{
+    padding:80px;
+    margin: 40px;
+    width: 40%;
+}
 .mt-custum {
-    margin-top: 40px;
-    width: 50%;
+    margin: 40px;
+    width: 70%;
 }
 
 .mt-custum .details {
