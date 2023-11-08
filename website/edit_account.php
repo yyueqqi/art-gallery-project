@@ -5,7 +5,7 @@ include '../function/config.php';
 
     if (isset($_SESSION['logged_in']) && isset($_SESSION['login_username'])) {
         $account_username = $_SESSION['login_username'];
-
+       
         $sql = "SELECT * FROM `account` WHERE username = '$account_username'";
         $result = $conn->query($sql);
 
@@ -103,41 +103,45 @@ session_start();
 
 if (isset($_SESSION['logged_in']) && isset($_SESSION['login_username'])) {
     $account_username = $_SESSION['login_username'];
+    $account_password = $_SESSION['login_password'];
 
     if (isset($_POST['update'])) {
-        $new_fName = !empty($_POST['new_fName']) ? $_POST['new_fName'] : ''; 
-        $new_lName = !empty($_POST['new_lName']) ? $_POST['new_lName'] : ''; 
-        $new_dob = !empty($_POST['new_dob']) ? $_POST['new_dob'] : ''; 
-        $new_email = !empty($_POST['new_email']) ? $_POST['new_email'] : ''; 
-        $new_phone_number = !empty($_POST['new_phone_number']) ? $_POST['new_phone_number'] : ''; 
-
-        $sql = "UPDATE `account` SET ";
-
-        if (!empty($new_fName)) {
-            $sql .= "fName = '$new_fName', ";
+        $updates = array();
+        
+        if (!empty($_POST['fname'])) {
+            $new_fName = $_POST['fname'];
+            $updates[] = "fName = '$new_fName'";
         }
-        if (!empty($new_lName)) {
-            $sql .= "lName = '$new_lName', ";
+        if (!empty($_POST['lname'])) {
+            $new_lName = $_POST['lname'];
+            $updates[] = "lName = '$new_lName'";
         }
-        if (!empty($new_dob)) {
-            $sql .= "dob = '$new_dob', ";
+        if (!empty($_POST['dob'])) {
+            $new_dob = $_POST['dob'];
+            $updates[] = "dob = '$new_dob'";
         }
-        if (!empty($new_email)) {
-            $sql .= "email = '$new_email', ";
+        if (!empty($_POST['email'])) {
+            $new_email = $_POST['email'];
+            $updates[] = "email = '$new_email'";
         }
-        if (!empty($new_phone_number)) {
-            $sql .= "phone_number = '$new_phone_number', ";
+        if (!empty($_POST['phone_number'])) {
+            $new_phone_number = $_POST['phone_number'];
+            $updates[] = "phone_number = '$new_phone_number'";
         }
 
-
-        $sql = rtrim($sql, ', '); 
-        $sql .= " WHERE username = $account_username";
-
-        if ($conn->query($sql) === TRUE) {
-            echo "<script> alert('Account updated successfully!');</script>";
+        if (!empty($updates)) {
+            $update_fields = implode(', ', $updates);
+            $sql = "UPDATE `account` SET $update_fields WHERE username = '$account_username'";
+    
+            if ($conn->query($sql) === TRUE) {
+                echo "<script> alert('Account updated successfully!');</script>";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "<script> alert('No fields to update.');</script>";
         }
     }
 }
+
 ?>
