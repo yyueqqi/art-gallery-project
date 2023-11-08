@@ -2,6 +2,8 @@
 
 include 'config.php';
 
+$signupSuccessMessage = '';
+
 if (isset($_POST['signup'])) {
     $signup_fname = $_POST['fname'];
     $signup_lname = $_POST['lname'];
@@ -35,8 +37,8 @@ if (isset($_POST['signup'])) {
 
               if ($result) {
                 session_start();
-                $_SESSION['logged_in'] = true;
-                header('Location: ../index.php');
+                $signupSuccessMessage = 'Signup successful! Please log in.';
+                header('Location: ../website/loginpage.php');
                 exit;
               } 
               else {

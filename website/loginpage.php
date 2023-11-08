@@ -55,12 +55,13 @@ include '../function/config.php';
     if (isset($_POST['login'])) {
         $login_username = $_POST['username'];
         $login_password = $_POST['password'];
-        $sql = "SELECT * FROM account WHERE username = '$login_username'";
+        $sql = "SELECT * FROM `account` WHERE username = '$login_username'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $row = mysqli_fetch_assoc($result);
             if(password_verify($login_password,$row['user_password'])) { 
                 $_SESSION['logged_in'] = true;
+                $_SESSION['login_username'] = $login_username; 
                 header('Location: ../index.php');
                 exit;
             } 

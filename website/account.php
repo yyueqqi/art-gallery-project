@@ -1,22 +1,25 @@
 <?php
 include '../function/config.php';
 
-if (isset($_SESSION['user_id'])) {
-    $login_userid = $_SESSION['user_id']; // Use the user_id from the session, not from POST
+    session_start();
 
-    $sql = "SELECT fName, lName, email, dob, phone_number FROM account WHERE user_id = $login_userid";
-    $result = $conn->query($sql);
+    if (isset($_SESSION['logged_in']) && isset($_SESSION['login_username'])) {
+        $account_username = $_SESSION['login_username'];
 
-    if ($result->num_rows > 0) {
-        $account = $result->fetch_assoc(); // Fetch a single user's details
-    } else {
-        $account = array();
+        $sql = "SELECT * FROM `account` WHERE username = '$account_username'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $user_account = $result->fetch_assoc();
+        } 
+        else {
+            $user_account = null;
+        }
+    } 
+    else {
+
     }
-}
-
-$conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,25 +51,27 @@ $conn->close();
 <section class="profile">
     <div class="profile-links">
         <img src="../image/dummy.png" alt="">
-        <h2> User Name</h2>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Personal Information</a></li>
+        <h2> Welcome <?php echo $user_account['username']; ?></p></h2>
+        <li><a href="../index.php">Home</a></li>
+        <li><a href="account.php">Personal Information</a></li>
         <li><a href="#">Payment Method</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="edit_account.php">Edit Profile</a></li>
+        <li><a href="../function/logout.php">Log out</a></li>
     </div>
 
-    <div class="mt-custum">
-    
-        <div class="details">
-            
-            <p>Name: <?php echo $account['fName'] . ' ' . $account['lName']; ?></p>
-            <p>Email: <?php echo $account['email']; ?></p>
-            <p>Date of Birth: <?php echo $account['dob']; ?></p>
-            <p>Phone number: <?php echo $account['phone_number']; ?></p>
-            
-        </div> 
-    </div>
+<main>
+    <section class="user_account">
+        <div class="mt-custom">
+            <h2> Personal Information</h2>
+            <p>Name: <?php echo $user_account['fName'] . ' ' . $user_account['lName']; ?></p>
+            <p>Email: <?php echo $user_account['email']; ?></p>
+            <p>Date of Birth: <?php echo $user_account['dob']; ?></p>
+            <p>Phone number: <?php echo $user_account['phone_number']; ?></p>
+        </div>
+    </section>
+</main>
 </section>
+
 
 </body>
 </html>
