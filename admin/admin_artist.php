@@ -17,6 +17,7 @@
     <div class="admin-container">
         <h2>Add New Artist</h2>
         <form method="post" enctype="multipart/form-data">
+            <label for="artist_img">Artist Image:</label>
             <input type="file" name="artist_img" required>
             <input type="text" name="fName" placeholder="Artist Firstname" required>
             <input type="text" name="lName" placeholder="Artist Lastname" required>
@@ -28,6 +29,8 @@
         <h2>Update Artist</h2>
         <form method="post">
             <input type="text" name="update_id" placeholder="Artist ID" required>
+            <label for="new_artist_img">New Artist Image:</label>
+            <input type="file" name="new_artist_img" required>
             <input type="text" name="new_fName" placeholder="New Artist Firstname">
             <input type="text" name="new_lName" placeholder="New Artist Lastname">
             <input type="date" name="new_dob">

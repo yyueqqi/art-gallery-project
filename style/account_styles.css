@@ -122,18 +122,9 @@ body {
 .user_account{
     padding:80px;
     margin: 40px;
-    width: 40%;
-}
-.mt-custum {
-    margin: 40px;
-    width: 70%;
+    width: 30%;
 }
 
-.mt-custum .details {
-    border-bottom: 1px solid #472b01;
-    padding: 20px;
-    font-weight: 500;
-}
 
 .text-justify {
     text-align: justify;
