@@ -53,7 +53,7 @@
         <section class="artwork">
             <?php foreach ($artworks as $artwork) : ?>
                 <div class="art-piece">
-                    <img src="<?php echo $artwork['image_path']; ?>" alt="<?php echo $artwork['artwork_title']; ?>">
+                    <img src="<?php echo $artwork['artwork_img']; ?>" alt="<?php echo $artwork['artwork_id']; ?>">
                     <h3><?php echo $artwork['artwork_title']; ?></h3>
                     <p>Artist: <?php echo $artwork['fName'] . ' ' . $artwork['lName']; ?></p>
                     <p>Description: $<?php echo $artwork['description']; ?></p>

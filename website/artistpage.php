@@ -56,8 +56,7 @@
         <section class="artists">
         <?php foreach ($artists as $artist) : ?>
         <div class="artist">
-            <a href="artist_profile.php?artist_id=<?php echo $artist['artist_id']; ?>">
-                <img src="<?php echo $artist['image_path']; ?>" alt="<?php echo $artist['fName'] . ' ' . $artist['lName']; ?>">
+                <img src="<?php echo $artist['artist_profile']; ?>" alt="<?php echo $artist['artist_id']; ?>">
                 <p>Artist Name: <?php echo $artist['fName'] . ' ' . $artist['lName']; ?></p>
                 <p>Date of Birth: <?php echo $artist['dob']; ?></p>
                 <p>Artwork History: <?php echo $artist['artwork_history']; ?></p>

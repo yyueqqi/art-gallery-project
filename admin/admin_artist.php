@@ -17,6 +17,7 @@
     <div class="admin-container">
         <h2>Add New Artist</h2>
         <form method="post" enctype="multipart/form-data">
+            <input type="file" name="artist_img" required>
             <input type="text" name="fName" placeholder="Artist Firstname" required>
             <input type="text" name="lName" placeholder="Artist Lastname" required>
             <input type="date" name="dob" required>
@@ -54,13 +55,29 @@ if (isset($_POST['add'])) {
     $dob = $_POST['dob'];
     $artwork_history = $_POST['artwork_history'];
 
-    $sql = "INSERT INTO `artist` (fName, lname, dob, artwork_history)
-    VALUES ('$fName', '$lName', '$dob', '$artwork_history')";
-    
-    if ($conn->query($sql) === TRUE) {
-        echo "<script> alert('Artist added successfully!');</script>";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+    // Get the name of the uploaded image file
+    $artist_img = $_FILES['artist_img']['name'];
+
+    // Get the temporary location of the uploaded image file
+    $temp_img = $_FILES['artist_img']['tmp_name'];
+
+    // Define the destination directory where the image will be stored
+    $upload_dir = '../artist_image/';
+
+    // Specify the path for the uploaded image
+    $target_file = $upload_dir . $artist_img;
+
+    // Check if the file was successfully uploaded
+    if (move_uploaded_file($temp_img, $target_file)) {
+
+        $sql = "INSERT INTO `artist` (artist_profile, fName, lname, dob, artwork_history)
+        VALUES ('$target_file', '$fName', '$lName', '$dob', '$artwork_history')";
+        
+        if ($conn->query($sql) === TRUE) {
+            echo "<script> alert('Artist added successfully!');</script>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
 }
 

@@ -38,7 +38,7 @@
             </select>
             <textarea name="description" placeholder="Description" required></textarea>
             <input type="text" name="price" placeholder="Price" required>
-            <input type="file" name="image" required>
+            <input type="file" name="artwork_img" required>
             <button type="submit" name="add">Add Artwork</button>
         </form>
 
@@ -86,13 +86,32 @@ if (isset($_POST['add'])) {
     $description = $_POST['description'];
     $price = $_POST['price'];
 
-    $sql = "INSERT INTO `artwork` (artwork_title, artist_id, description, price)
-    VALUES ('$title', '$artist', '$description', '$price')";
-    
-    if ($conn->query($sql) === TRUE) {
-        echo "<script> alert('Artwork added successfully!');</script>";
+    // Get the name of the uploaded image file
+    $artwork_img = $_FILES['artwork_img']['name'];
+
+    // Get the temporary location of the uploaded image file
+    $temp_img = $_FILES['artwork_img']['tmp_name'];
+
+    // Define the destination directory where the image will be stored
+    $upload_dir = '../artwork_image/';
+
+    // Specify the path for the uploaded image
+    $target_file = $upload_dir . $artwork_img;
+
+    // Check if the file was successfully uploaded
+    if (move_uploaded_file($temp_img, $target_file)) {
+        // File upload was successful
+        $sql = "INSERT INTO `artwork` (artwork_title, artwork_img, artist_id, description, price)
+                VALUES ('$title', '$target_file', '$artist', '$description', '$price')";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "<script> alert('Artwork added successfully!');</script>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        // File upload failed
+        echo "Error: File upload failed.";
     }
 }
 
