@@ -19,7 +19,7 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="website/artistpage.php">Artists</a></li>
                 <li><a href="website/artworkpage.php">Artwork</a></li>
-                <li><a href="#">Exhibition</a></li>
+                <li><a href="website/exhibitionpage.php">Exhibition</a></li>
                 <li>
                 <?php
                 session_start();

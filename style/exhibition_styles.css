@@ -1,0 +1,127 @@
+/* styles.css */
+
+body {
+    background-color: #433E36;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+header {
+    background-color: #433E36;
+    color: #D7CA96;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5px 10px;
+ }
+ 
+ 
+ .left-header {
+    font-size: 20px;
+    color: #D7CA96;
+    margin: 0;
+ }
+ 
+ 
+ .right-header {
+    display: flex;
+    font-size: 16px;
+ 
+ 
+ }
+ 
+ 
+ img {
+    width: 20px;
+    height: 20px;
+ }
+ 
+ 
+ nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+ }
+ 
+ 
+ nav ul li {
+    margin-right: 30px;
+ }
+ 
+ 
+ nav a {
+    text-decoration: none;
+    color: #D7CA96;
+ }
+ 
+ 
+ nav a:hover {
+    color: #555;
+ }
+
+main {
+    padding: 20px;
+}
+
+main h2{
+    font-size: 40px;
+    font-weight: 100;
+    color: #D7CA96;
+    margin: 0;
+}
+
+main h3{
+    font-size: 30px;
+    font-weight: 100;
+    color: #433E36;
+    margin: 0;
+}
+
+.exhibition {
+    text-align: center;
+  }
+  
+  .exhibition2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid ;
+    border-radius: 10px;
+    padding: 10px; 
+    background-color: #D7CA96;
+  }
+  
+  .image-ex {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .image-ex img {
+    max-width: 100%;
+  height: auto;
+  width: 100%;
+  }
+  
+  .text-ex {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px; 
+  }
+  
+  .buy-ticket {
+    background-color: #433E36;
+    color: #D7CA96;
+    padding: 15px 30x;
+    border: 2px solid;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size : 20px;
+  }
