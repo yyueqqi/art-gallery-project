@@ -1,0 +1,142 @@
+/* styles.css */
+
+
+body {
+    background-color: #FAF8F4;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+ }
+ 
+ 
+ header {
+    background-color: #433E36;
+    color: #D7CA96;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5px 10px;
+ }
+ 
+ 
+ .left-header {
+    font-size: 20px;
+    color: #D7CA96;
+    margin: 0;
+ }
+ 
+ 
+ .right-header {
+    display: flex;
+    font-size: 16px;
+ 
+ 
+ }
+ 
+ 
+ img {
+    width: 20px;
+    height: 20px;
+ }
+ 
+ 
+ nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+ }
+ 
+ 
+ nav ul li {
+    margin-right: 30px;
+ }
+ 
+ 
+ nav a {
+    text-decoration: none;
+    color: #D7CA96;
+ }
+ 
+ 
+ nav a:hover {
+    color: #555;
+ }
+ 
+ 
+ 
+ 
+ main {
+    padding: 80px;
+ }
+ 
+ 
+ main h2{
+    font-size: 35px;
+    font-weight: 100;
+    color: #433E36;
+    margin: 0;
+ }
+ /* account_styles.css */
+ .profile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Align the artists to the left and right */
+    padding: 50px; /* Add space around the artists section */
+ }
+ 
+ .profile-links {
+    width:30%;
+    background-color: #46341b;
+    color: #D7CA96;
+    padding: 30px 20px;
+    text-align: center;
+    margin: 50px 70px 50px 70px;
+    border-radius: 10px;
+}
+
+.profile-links img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.profile-links li {
+    display: block;
+    margin: 10px 0;
+}
+.profile-links li a:hover {
+    color: #D7CA96;
+ }
+
+.profile-links li a {
+    color: #fff;
+    text-decoration: none;
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.mt-custum {
+    margin-top: 40px;
+    width: 50%;
+}
+
+.mt-custum .details {
+    border-bottom: 1px solid #472b01;
+    padding: 20px;
+    font-weight: 500;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+
+ /* Add more specific styling for links as needed */
+ 
+ 
+ 
+ 
