@@ -32,7 +32,7 @@
                     <li><a href="../index.php">Home</a></li>
                     <li><a href="artistpage.php">Artists</a></li>
                     <li><a href="artworkpage.php">Artwork</a></li>
-                    <li><a href="#">Exhibition</a></li>
+                    <li><a href="exhibitionpage.php">Exhibition</a></li>
                     <li>
                     <?php
                     session_start();

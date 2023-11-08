@@ -17,6 +17,7 @@
     <div class="admin-container">
         <h2>Add New Exhibition</h2>
         <form method="post" enctype="multipart/form-data">
+            <input type="file" name="exhibition_img" required>
             <input type="text" name="exhibition_title" placeholder="Exhibition Title" required>
             <input type="date" name="exhibition_date" required>
             <input type="text" name="location" placeholder="Exhibition Location" required>
@@ -51,13 +52,29 @@ if (isset($_POST['add'])) {
     $exhibition_date = $_POST['exhibition_date'];
     $location = $_POST['location'];
 
-    $sql = "INSERT INTO `exhibition` (exhibition_title, exhibition_date, location)
-    VALUES ('$exhibition_title', '$exhibition_date', '$location')";
-    
-    if ($conn->query($sql) === TRUE) {
-        echo "<script> alert('Exhibition added successfully!');</script>";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+    // Get the name of the uploaded image file
+    $exhibition_img = $_FILES['exhibition_img']['name'];
+
+    // Get the temporary location of the uploaded image file
+    $temp_img = $_FILES['exhibition_img']['tmp_name'];
+
+    // Define the destination directory where the image will be stored
+    $upload_dir = '../exhibition_image/';
+
+    // Specify the path for the uploaded image
+    $target_file = $upload_dir . $exhibition_img;
+
+    // Check if the file was successfully uploaded
+    if (move_uploaded_file($temp_img, $target_file)) {
+
+        $sql = "INSERT INTO `exhibition` (exhibition_img, exhibition_title, exhibition_date, location)
+        VALUES ('$target_file', '$exhibition_title', '$exhibition_date', '$location')";
+        
+        if ($conn->query($sql) === TRUE) {
+            echo "<script> alert('Exhibition added successfully!');</script>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
 }
 
