@@ -1,3 +1,18 @@
+<?php
+    include '../function/config.php';
+
+    $sql = "SELECT * FROM `exhibition`";
+    $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $exhibitions = $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            $exhibitions = array();
+        }
+
+    $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,48 +51,25 @@
     
     <main>
         <h2>Exhibition</h2>
-        <br>
-        <section class="exhibition">
-             <div class="exhibition2">
-                 <div class="image-ex">
-              <img src="/images/van_gogh.webp" alt="Exhibition 1">
-             </div>
-               <div class="text-ex">
-                <h3>Van Gogh Alive</h3>
-                <p>From 31 March 2023</p>
-                <p>2nd Floor, The Art Gallery</p>
-             </div>
-             <button class="buy-ticket">Buy Ticket</button>
-             </div>
-             <br>
-             <div class="exhibition2">
-                <div class="image-ex">
-             <img src="/images/v" alt="Exhibition 2">
-            </div>
-              <div class="text-ex">
-               <h3>event name</h3>
-               <p>date</p>
-               <p>location</p>
-            </div>
-            <button class="buy-ticket">Buy Ticket</button>
-            </div>
-            <br>
+        <section class="exhibitions">
+        <?php foreach ($exhibitions as $exhibition) : ?>
             <div class="exhibition2">
-                <div class="image-ex">
-             <img src="/images/" alt="Exhibition 3">
+            <div class="image-ex">
+                <img src="<?php echo $exhibition['exhibition_img']; ?>" alt="<?php echo $exhibition['exhibition_id']; ?>">
             </div>
-              <div class="text-ex">
-               <h3>event name</h3>
-               <p>date</p>
-               <p>location</p>
+            <div class="text-ex">
+                <h3>Exhibition Title: <?php echo $exhibition['exhibition_title']; ?></h3>
+                <p>Date: <?php echo $exhibition['exhibition_date']; ?></p>
+                <p>Location: <?php echo $exhibition['location']; ?></p>
             </div>
+            </a>
             <button class="buy-ticket">Buy Ticket</button>
-            </div>
-          
+             </div>
+        </div>
+        <?php endforeach; ?>
+    </section>
+    </main>
 
-
-
-       
             </div>
         </section>
     </main>
