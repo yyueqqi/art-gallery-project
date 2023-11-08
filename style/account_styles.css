@@ -79,6 +79,9 @@ body {
     margin: 20;
  }
  /* account_styles.css */
+ * {
+ box-sizing: border-box;
+}
  .profile {
     display: flex;
     flex-wrap: wrap;
@@ -94,6 +97,10 @@ body {
     text-align: center;
     margin: 50px 70px 50px 70px;
     border-radius: 10px;
+}
+.profile-links h2 {
+    color: #D7CA96;
+
 }
 
 .profile-links img {
@@ -122,12 +129,9 @@ body {
 .user_account{
     padding:80px;
     margin: 40px;
-    width: 40%;
+    width: 30%;
 }
-.mt-custum {
-    margin: 40px;
-    width: 70%;
-}
+
 
 .mt-custum .details {
     border-bottom: 1px solid #472b01;
@@ -158,6 +162,6 @@ body {
 }
 
  
- 
+
  
  

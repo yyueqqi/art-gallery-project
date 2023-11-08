@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
+    
 }
 
 header {
@@ -54,34 +55,45 @@ nav a:hover {
 
 
 main {
-    padding: 80px;
+    padding: 160px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url("../image/artistimg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
-
-main h2{
+.art-text {
+    font-family: 'Times New Roman', Times, serif;
     font-size: 35px;
-    font-weight: 100;
-    color: #433E36;
-    margin: 0;
-}
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #D7CA96;
+  }
 
 /* artistpage_styles.css */
-
+  
 /* Add this section for artist profiles */
 .artists {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Align the artists to the left and right */
-    padding: 50px; /* Add space around the artists section */
+    justify-content: flex-start; /* Align the artists to the left and right */
+    padding: 50px 50px 50px 50px; /* Add space around the artists section */
+    
+
 }
 
 .artist {
-    flex-basis: calc(15%-10px); /* Four artists in a row with some spacing */
-    padding: 10px;
-    margin: 0; /* Remove the previous margin */
+
+    padding: 0px;
+    margin: 60px; /* Remove the previous margin */
     text-align: center;
-    background-color: #FAF8F4;
+    background-color: #ffffff;
     box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.5);
     border: 0px solid #887e6d; /* Add a border around each artist profile */
+    box-sizing: border-box;
 }
 
 .artist img {

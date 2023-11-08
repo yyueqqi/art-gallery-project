@@ -72,7 +72,5 @@ include '../function/config.php';
 </section>
 </main>
 
-
-
 </body>
 </html>

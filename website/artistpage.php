@@ -49,10 +49,15 @@
                 </ul>
             </nav>
         </div>
+        
     </header>
     
     <main>
-        <h2>Our Artists</h2>
+            <div class="art-text">
+                <h1>Our Artists</h1>
+                <p>***</p>
+            </div>  
+    </main>
         <section class="artists">
         <?php foreach ($artists as $artist) : ?>
         <div class="artist">
@@ -64,7 +69,7 @@
         </div>
         <?php endforeach; ?>
     </section>
-    </main>
+    
 
 </body>
 </html>
