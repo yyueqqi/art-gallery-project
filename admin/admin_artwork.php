@@ -38,13 +38,29 @@
             </select>
             <textarea name="description" placeholder="Description" required></textarea>
             <input type="text" name="price" placeholder="Price" required>
+            <label for="artwork_img">Artwork Image:</label>
             <input type="file" name="artwork_img" required>
             <button type="submit" name="add">Add Artwork</button>
         </form>
 
         <h2>Update Artwork</h2>
         <form method="post">
-            <input type="text" name="update_id" placeholder="Artwork ID" required>
+            <select name="update_id" required>
+                <option value="">Select an Artwork</option>
+                    <?php
+                    include '../function/config.php';
+                    $artworkQuery = "SELECT artwork_id, artwork_title FROM artwork";
+                    $artworkResult = $conn->query($artworkQuery);
+
+                    if ($artworkResult->num_rows > 0) {
+                        while ($row = $artworkResult->fetch_assoc()) {
+                            $artworkID = $row['artwork_id'];
+                            $artwork_title = $row['artwork_title'];
+                            echo "<option value='$artworkID'>$artwork_title</option>";
+                        }
+                    }
+                    ?>
+            </select>
             <input type="text" name="new_title" placeholder="New Title">
             <select name="new_artist" >
                 <option value="">Select an Artist</option>
@@ -69,7 +85,22 @@
 
         <h2>Delete Artwork</h2>
         <form method="post">
-            <input type="text" name="delete_id" placeholder="Artwork ID" required>
+            <select name="delete_id" required>
+                <option value="">Select an Artwork</option>
+                    <?php
+                    include '../function/config.php';
+                    $artworkQuery = "SELECT artwork_id, artwork_title FROM artwork";
+                    $artworkResult = $conn->query($artworkQuery);
+
+                    if ($artworkResult->num_rows > 0) {
+                        while ($row = $artworkResult->fetch_assoc()) {
+                            $artworkID = $row['artwork_id'];
+                            $artwork_title = $row['artwork_title'];
+                            echo "<option value='$artworkID'>$artwork_title</option>";
+                        }
+                    }
+                    ?>
+            </select>
             <button type="submit" name="delete">Delete Artwork</button>
         </form>
     </div>

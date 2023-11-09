@@ -28,9 +28,24 @@
 
         <h2>Update Artist</h2>
         <form method="post">
-            <input type="text" name="update_id" placeholder="Artist ID" required>
-            <label for="new_artist_img_text">New Artist Image:</label>
-            <input type="file" name="new_artist_img" >
+            <select name="update_artist_id" required>
+                    <option value="">Select an Artist</option>
+                    <?php
+                    include '../function/config.php';
+                    // Query your database to fetch artist IDs and names
+                    $artistQuery = "SELECT artist_id, fName, lName FROM artist";
+                    $artistResult = $conn->query($artistQuery);
+
+                    // Populate the dropdown with artist IDs and names
+                    if ($artistResult->num_rows > 0) {
+                        while ($row = $artistResult->fetch_assoc()) {
+                            $artistID = $row['artist_id'];
+                            $artistName = $row['fName'] . ' ' . $row['lName'];
+                            echo "<option value='$artistID'>$artistName</option>";
+                        }
+                    }
+                    ?>
+            </select>
             <input type="text" name="new_fName" placeholder="New Artist Firstname">
             <input type="text" name="new_lName" placeholder="New Artist Lastname">
             <input type="date" name="new_dob">
@@ -40,7 +55,24 @@
 
         <h2>Delete Artist</h2>
         <form method="post">
-            <input type="text" name="delete_id" placeholder="Artist ID" required>
+        <select name="delete_artist" required>
+                <option value="">Select an Artist</option>
+                <?php
+                include '../function/config.php';
+                // Query your database to fetch artist IDs and names
+                $artistQuery = "SELECT artist_id, fName, lName FROM artist";
+                $artistResult = $conn->query($artistQuery);
+
+                // Populate the dropdown with artist IDs and names
+                if ($artistResult->num_rows > 0) {
+                    while ($row = $artistResult->fetch_assoc()) {
+                        $artistID = $row['artist_id'];
+                        $artistName = $row['fName'] . ' ' . $row['lName'];
+                        echo "<option value='$artistID'>$artistName</option>";
+                    }
+                }
+                ?>
+                </select>
             <button type="submit" name="delete">Delete Artist</button>
         </form>
     </div>
@@ -48,13 +80,14 @@
     </body>
 </html>
 
+
 <?php
 
 include '../function/config.php';
 
 if (isset($_POST['add'])) {
     $fName = $_POST['fName'];
-    $lName = $_POST['lname'];
+    $lName = $_POST['lName'];
     $dob = $_POST['dob'];
     $artwork_history = $_POST['artwork_history'];
 
@@ -85,87 +118,58 @@ if (isset($_POST['add'])) {
 }
 
 
+
 if (isset($_POST['update'])) {
-    $update_id = $_POST['update_id'];
+    $update_id = $_POST['update_artist_id'];
     $new_fName = !empty($_POST['new_fName']) ? $_POST['new_fName'] : ''; 
     $new_lName = !empty($_POST['new_lName']) ? $_POST['new_lName'] : ''; 
     $new_dob = !empty($_POST['new_dob']) ? $_POST['new_dob'] : ''; 
     $new_artwork_history = !empty($_POST['new_artwork_history']) ? $_POST['new_artwork_history'] : '';
-    $new_artist_img = !empty($_FILES['new_artist_img']['name']) ? $_FILES['new_artist_img']['name'] : '';
 
-    if (!empty($new_artist_img)) {
-        $temp_img = $_FILES['new_artist_img']['tmp_name'];
-        $upload_dir = '../artist_image/';
-        $target_file = $upload_dir . $new_artist_img;
+    $sql = "UPDATE `artist` SET ";
 
-        // Check if the file was successfully uploaded
-        if (move_uploaded_file($temp_img, $target_file)) {
-            $sql = "UPDATE `artist` SET ";
-
-            if (!empty($new_fName)) {
-                $sql .= "fName = '$new_fName', ";
-            }
-            if (!empty($new_lName)) {
-                $sql .= "lName = '$new_lName', ";
-            }
-            if (!empty($new_dob)) {
-                $sql .= "dob = '$new_dob', ";
-            }
-            if (!empty($new_artwork_history)) {
-                $sql .= "artwork_history = '$new_artwork_history', ";
-            }
-            if (!empty($new_artist_img)) {
-                $sql .= "artist_profile = '$target_file', ";
-            }
-
-            $sql = rtrim($sql, ', '); 
-            $sql .= " WHERE artist_id = $update_id";
-
-            if ($conn->query($sql) === TRUE) {
-                echo "<script> alert('Artist updated successfully!');</script>";
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-        }
-    } else {
-        $sql = "UPDATE `artist` SET ";
-
-        if (!empty($new_fName)) {
-            $sql .= "fName = '$new_fName', ";
-        }
-        if (!empty($new_lName)) {
-            $sql .= "lName = '$new_lName', ";
-        }
-        if (!empty($new_dob)) {
-            $sql .= "dob = '$new_dob', ";
-        }
-        if (!empty($new_artwork_history)) {
-            $sql .= "artwork_history = '$new_artwork_history', ";
-        }
-
-        $sql = rtrim($sql, ', '); 
-        $sql .= " WHERE artist_id = $update_id";
-
-        if ($conn->query($sql) === TRUE) {
-            echo "<script> alert('Artist updated successfully!');</script>";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
+     if (!empty($new_fName)) {
+        $sql .= "fName = '$new_fName', ";
     }
+    if (!empty($new_lName)) {
+        $sql .= "lName = '$new_lName', ";
+    }
+    if (!empty($new_dob)) {
+        $sql .= "dob = '$new_dob', ";
+    }
+    if (!empty($new_artwork_history)) {
+        $sql .= "artwork_history = '$new_artwork_history', ";
+    }
+    if (!empty($new_artist_img)) {
+        $sql .= "artist_profile = '$target_file', ";
+    }
+
+    $sql = rtrim($sql, ', '); 
+    $sql .= " WHERE artist_id = $update_id";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "<script> alert('Artist updated successfully!');</script>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+         }
 }
 
 
 
-
 if (isset($_POST['delete'])) {
-    $id = $_POST['delete_id'];
+    $id = $_POST['delete_artist'];
 
-    $sql = "DELETE FROM `artist` WHERE artist_id = $id";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "<script> alert('Artist deleted successfully!');</script>";
+    $delete_artwork_sql = "DELETE FROM `artwork` WHERE artist_id = $id";
+    
+    if ($conn->query($delete_artwork_sql) === TRUE) {
+        $delete_artist_sql = "DELETE FROM `artist` WHERE artist_id = $id";
+        if ($conn->query($delete_artist_sql) === TRUE) {
+            echo "<script> alert('Artist and associated artwork records deleted successfully!');</script>";
+        } else {
+            echo "Error: " . $delete_artist_sql . "<br>" . $conn->error;
+        }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $delete_artwork_sql . "<br>" . $conn->error;
     }
 }
 
