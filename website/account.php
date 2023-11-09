@@ -38,7 +38,7 @@ include '../function/config.php';
        <nav>
            <ul>
                <li><a href="../index.php">Home</a></li>
-               <li><a href="artistpage.php">Artists</a></li>
+               <li><a href="artistpage.php">Artist</a></li>
                <li><a href="artworkpage.php">Artwork</a></li>
                <li><a href="exhibitionpage.php">Exhibition</a></li>
                <li><a href="account.php">Account</a></li>
@@ -61,13 +61,13 @@ include '../function/config.php';
 
 
     <div class="user_account">
-        <div class="mt-custom">
+
             <h2> Personal Information</h2>
             <p>Name: <?php echo $user_account['fName'] . ' ' . $user_account['lName']; ?></p>
             <p>Email: <?php echo $user_account['email']; ?></p>
             <p>Date of Birth: <?php echo $user_account['dob']; ?></p>
             <p>Phone number: <?php echo $user_account['phone_number']; ?></p>
-        </div>
+
     </div>
 </section>
 </main>
