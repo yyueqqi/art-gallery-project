@@ -56,7 +56,7 @@
                 <div class="exhibition2">
                     <div class="container">
                         <div class="image-ex">
-                            <img src="<?php echo $exhibition['exhibition_img']; ?>" alt="<?php echo $exhibition['exhibition_id']; ?>" class="image">
+                              <img src="<?php echo $exhibition['exhibition_img']; ?>" alt="<?php echo $exhibition['exhibition_id']; ?>" class="image">
                             <div class="overlay">
                                 <div class="text">
                                     <h3>Exhibition Title: <?php echo $exhibition['exhibition_title']; ?></h3>
