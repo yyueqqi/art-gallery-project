@@ -46,6 +46,8 @@
                     }
                     ?>
             </select>
+            <label for="new_artist_img">New Artist Image:</label>
+            <input type="file" name="new_artist_img">
             <input type="text" name="new_fName" placeholder="New Artist Firstname">
             <input type="text" name="new_lName" placeholder="New Artist Lastname">
             <input type="date" name="new_dob">
@@ -126,32 +128,68 @@ if (isset($_POST['update'])) {
     $new_dob = !empty($_POST['new_dob']) ? $_POST['new_dob'] : ''; 
     $new_artwork_history = !empty($_POST['new_artwork_history']) ? $_POST['new_artwork_history'] : '';
 
-    $sql = "UPDATE `artist` SET ";
+    // Get the name of the new uploaded image file
+    $new_artist_img = $_FILES['new_artist_img']['name'];
 
-     if (!empty($new_fName)) {
-        $sql .= "fName = '$new_fName', ";
-    }
-    if (!empty($new_lName)) {
-        $sql .= "lName = '$new_lName', ";
-    }
-    if (!empty($new_dob)) {
-        $sql .= "dob = '$new_dob', ";
-    }
-    if (!empty($new_artwork_history)) {
-        $sql .= "artwork_history = '$new_artwork_history', ";
-    }
-    if (!empty($new_artist_img)) {
-        $sql .= "artist_profile = '$target_file', ";
-    }
+    // Get the temporary location of the new uploaded image file
+    $temp_new_img = $_FILES['new_artist_img']['tmp_name'];
 
-    $sql = rtrim($sql, ', '); 
-    $sql .= " WHERE artist_id = $update_id";
+    // Define the destination directory where the new image will be stored
+    $upload_dir = '../artist_image/';
+
+    // Specify the path for the new uploaded image
+    $new_target_file = $upload_dir . $new_artist_img;
+    
+    // Check if a new file was uploaded and move it to the destination directory
+    if (!empty($new_artist_img) && move_uploaded_file($temp_new_img, $new_target_file)) {
+        // Include the new image file in the SQL update statement
+        $sql = "UPDATE `artist` SET ";
+        
+        if (!empty($new_artist_img)) {
+            $sql .= "artist_profile = '$new_target_file', ";
+        }
+        if (!empty($new_fName)) {
+            $sql .= "fName = '$new_fName', ";
+        }
+        if (!empty($new_lName)) {
+            $sql .= "lName = '$new_lName', ";
+        }
+        if (!empty($new_dob)) {
+            $sql .= "dob = '$new_dob', ";
+        }
+        if (!empty($new_artwork_history)) {
+            $sql .= "artwork_history = '$new_artwork_history', ";
+        }
+        
+        $sql = rtrim($sql, ', '); // Remove the trailing comma
+        $sql .= " WHERE artist_id = $update_id";
+    } 
+    else {
+        // If no new image is uploaded, update other fields without changing the image
+        $sql = "UPDATE `artist` SET ";
+        
+        if (!empty($new_fName)) {
+            $sql .= "fName = '$new_fName', ";
+        }
+        if (!empty($new_lName)) {
+            $sql .= "lName = '$new_lName', ";
+        }
+        if (!empty($new_dob)) {
+            $sql .= "dob = '$new_dob', ";
+        }
+        if (!empty($new_artwork_history)) {
+            $sql .= "artwork_history = '$new_artwork_history', ";
+        }
+        
+        $sql = rtrim($sql, ', '); // Remove the trailing comma
+        $sql .= " WHERE artist_id = $update_id";
+    }
 
     if ($conn->query($sql) === TRUE) {
         echo "<script> alert('Artist updated successfully!');</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-         }
+    }
 }
 
 

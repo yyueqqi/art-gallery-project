@@ -52,22 +52,25 @@
     <main>
         <h2>Exhibition</h2>
         <section class="exhibitions">
-        <?php foreach ($exhibitions as $exhibition) : ?>
-            <div class="exhibition2">
-            <div class="image-ex">
-                <img src="<?php echo $exhibition['exhibition_img']; ?>" alt="<?php echo $exhibition['exhibition_id']; ?>">
-            </div>
-            <div class="text-ex">
-                <h3>Exhibition Title: <?php echo $exhibition['exhibition_title']; ?></h3>
-                <p>Date: <?php echo $exhibition['exhibition_date']; ?></p>
-                <p>Location: <?php echo $exhibition['location']; ?></p>
-            </div>
-            </a>
-            <button class="buy-ticket">Buy Ticket</button>
-             </div>
-        </div>
-        <?php endforeach; ?>
-    </section>
+            <?php foreach ($exhibitions as $exhibition) : ?>
+                <div class="exhibition2">
+                    <div class="container">
+                        <div class="image-ex">
+                            <img src="<?php echo $exhibition['exhibition_img']; ?>" alt="<?php echo $exhibition['exhibition_id']; ?>" class="image">
+                            <div class="overlay">
+                                <div class="text">
+                                    <h3>Exhibition Title: <?php echo $exhibition['exhibition_title']; ?></h3>
+                                    <p>Date: <?php echo $exhibition['exhibition_date']; ?></p>
+                                    <p>Location: <?php echo $exhibition['location']; ?></p>
+                                    <button class="buy-ticket">Buy Ticket</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </section>
+
     </main>
 
             </div>

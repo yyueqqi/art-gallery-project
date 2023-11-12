@@ -94,34 +94,44 @@ main h3{
     background-color: #D7CA96;
   }
   
-  .image-ex {
-    flex: 1;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .image-ex img {
-    max-width: 100%;
-  height: auto;
-  width: 100%;
-  }
-  
-  .text-ex {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 10px; 
-  }
-  
-  .buy-ticket {
-    background-color: #433E36;
-    color: #D7CA96;
-    padding: 15px 30x;
-    border: 2px solid;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size : 20px;
-  }
+  .container {
+   position: relative;
+   width: 100%;
+}
+
+.overlay {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background-color: rgba(67, 62, 54, 0.8); /* Adjust the background color and opacity as needed */
+   overflow: hidden;
+   width: 100%;
+   height: 0;
+   transition: .5s ease;
+}
+
+.container:hover .overlay {
+   height: 100%;
+}
+
+.text {
+   color: white;
+   font-size: 20px;
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   transform: translateX(-50%);
+   text-align: center;
+   padding: 20px;
+}
+
+.buy-ticket {
+   background-color: #D7CA96;
+   color: #433E36;
+   padding: 10px 20px;
+   border: 2px solid #433E36;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 16px;
+}
