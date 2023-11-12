@@ -53,12 +53,18 @@
         <section class="artwork">
             <?php foreach ($artworks as $artwork) : ?>
                 <div class="art-piece">
-                    <img src="<?php echo $artwork['artwork_img']; ?>" alt="<?php echo $artwork['artwork_id']; ?>">
-                    <h3><?php echo $artwork['artwork_title']; ?></h3>
-                    <p>Artist: <?php echo $artwork['fName'] . ' ' . $artwork['lName']; ?></p>
-                    <p>Description: $<?php echo $artwork['description']; ?></p>
-                    <p>Price: $<?php echo $artwork['price']; ?></p>
-                    <button class="buy-button">Buy Now</button>
+                    
+                        <div class="image">
+                                <img src="<?php echo $artwork['artwork_img']; ?>" alt="<?php echo $artwork['artwork_id']; ?>">
+                            <div class="text-fade">
+                                <h3><?php echo $artwork['artwork_title']; ?></h3>
+                                <p>Artist: <?php echo $artwork['fName'] . ' ' . $artwork['lName']; ?></p>
+                                <p>Description: $<?php echo $artwork['description']; ?></p>
+                                <p>Price: $<?php echo $artwork['price']; ?></p>
+                                <button class="buy-button">Buy Now</button>
+                            </div>
+                        </div>        
+                    
                 </div>
                 <?php endforeach; ?>
         </section>
