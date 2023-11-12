@@ -17,6 +17,7 @@
     <div class="admin-container">
         <h2>Add New Exhibition</h2>
         <form method="post" enctype="multipart/form-data">
+            <label for="exhibition_img">Exhibition Image:</label>
             <input type="file" name="exhibition_img" required>
             <input type="text" name="exhibition_title" placeholder="Exhibition Title" required>
             <input type="date" name="exhibition_date" required>
@@ -26,7 +27,24 @@
 
         <h2>Update Exhibition</h2>
         <form method="post">
-            <input type="text" name="update_id" placeholder="Exhibition ID" required>
+        <select name="update_exhibition_id" required>
+                    <option value="">Select an Exhibition</option>
+                    <?php
+                    include '../function/config.php';
+                    // Query your database to fetch artist IDs and names
+                    $ExhibitionQuery = "SELECT exhibition_id, exhibition_title FROM exhibition";
+                    $ExhibitionResult = $conn->query($ExhibitionQuery);
+
+                    // Populate the dropdown with artist IDs and names
+                    if ($ExhibitionResult->num_rows > 0) {
+                        while ($row = $ExhibitionResult->fetch_assoc()) {
+                            $exhibition_id = $row['exhibition_id'];
+                            $exhibition_title = $row['exhibition_title'];
+                            echo "<option value='$exhibition_id'>$exhibition_title</option>";
+                        }
+                    }
+                    ?>
+            </select>
             <input type="text" name="new_exhibition_title" placeholder="New Exhibition Title" >
             <input type="date" name="new_exhibition_date" >
             <input type="text" name="new_location" placeholder="New Exhibition Location" >
@@ -35,7 +53,24 @@
 
         <h2>Delete Exhibition</h2>
         <form method="post">
-            <input type="text" name="delete_id" placeholder="Exhibition ID" required>
+        <select name="delete_exhibition_id" required>
+                    <option value="">Select an Exhibition</option>
+                    <?php
+                    include '../function/config.php';
+                    // Query your database to fetch artist IDs and names
+                    $ExhibitionQuery = "SELECT exhibition_id, exhibition_title FROM exhibition";
+                    $ExhibitionResult = $conn->query($ExhibitionQuery);
+
+                    // Populate the dropdown with artist IDs and names
+                    if ($ExhibitionResult->num_rows > 0) {
+                        while ($row = $ExhibitionResult->fetch_assoc()) {
+                            $exhibition_id = $row['exhibition_id'];
+                            $exhibition_title = $row['exhibition_title'];
+                            echo "<option value='$exhibition_id'>$exhibition_title</option>";
+                        }
+                    }
+                    ?>
+            </select>
             <button type="submit" name="delete">Delete Exhibition</button>
         </form>
     </div>
@@ -76,11 +111,14 @@ if (isset($_POST['add'])) {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
+    else{
+        echo "<script> alert('error!');</script>";
+    }
 }
 
 
 if (isset($_POST['update'])) {
-    $update_id = $_POST['update_id'];
+    $update_id = $_POST['update_exhibition_id'];
     $new_exhibition_title = !empty($_POST['new_exhibition_title']) ? $_POST['new_exhibition_title'] : '';
     $new_exhibition_date = !empty($_POST['new_exhibition_date']) ? $_POST['new_exhibition_date'] : '';
     $new_location = !empty($_POST['new_location']) ? $_POST['new_location'] : '';
@@ -109,7 +147,7 @@ if (isset($_POST['update'])) {
 
 
 if (isset($_POST['delete'])) {
-    $id = $_POST['delete_id'];
+    $id = $_POST['delete_exhibition_id'];
 
     $sql = "DELETE FROM `exhibition` WHERE exhibition_id = $id";
 
