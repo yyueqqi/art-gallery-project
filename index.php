@@ -62,6 +62,33 @@
             </p>
         </div>
     </section>
+    <div class="discover-container">            
+        <div class="discover">
+            <h2> Discover </h2>
+            <p> discover our beautiful tons of arts and exhibitions </p>
+        </div>
+        <div class="frame-discover">
+            <div class="fd1">
+                <div class="image1">
+                    <a href="website/exhibitionpage.php"><img src="image/exhibit.jpg" alt="exhibit.jpg"></a>
+                </div>
+                <h2>Exhibiton</h2> 
+            </div>
+            <div class="fd2">
+                <div class="image2">
+                    <a href="artistpage.php"><img src="image/exhibit.jpg" alt="exhibit.jpg"></a>
+                </div>
+                <h2>Artist</h2>
+            </div>
+            <div class="fd3">
+                <div class="image3">
+                    <a href="artworkpage.php"><img src="image/exhibit.jpg" alt="exhibit.jpg"></a>
+                </div>
+                <h2>Artwork</h2>
+            </div>
+            
+        </div>
+    </div>
     <script src="script/script.js"></script>
     </body>
 </html>
