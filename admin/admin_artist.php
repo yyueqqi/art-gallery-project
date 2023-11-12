@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Artist</title>
+    <title>Admin Artists</title>
     <link rel="stylesheet" type="text/css" href="admin_styles.css">
 </head>
 
