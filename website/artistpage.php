@@ -69,7 +69,6 @@
         </div>
         <?php endforeach; ?>
     </section>
-    
 
 </body>
 </html>

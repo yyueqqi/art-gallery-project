@@ -4,53 +4,95 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
-}
-
-header {
+ }
+ 
+ 
+ header {
     background-color: #433E36;
     color: #D7CA96;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5px 10px;
-}
-
-.left-header {
+ }
+ 
+ 
+ .left-header {
     font-size: 20px;
     color: #D7CA96;
     margin: 0;
-}
-
-.right-header {
+ }
+ 
+ 
+ .right-header {
     display: flex;
     font-size: 16px;
-
-}
-
-img {
+ 
+ 
+ }
+ 
+ 
+ img {
     width: 20px;
     height: 20px;
-}
-
-nav ul {
+ }
+ 
+ 
+ nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-}
-
-nav ul li {
+ }
+ 
+ 
+ nav ul li {
     margin-right: 30px;
-}
-
-nav a {
+ }
+ 
+ 
+ nav a {
     text-decoration: none;
     color: #D7CA96;
-    cursor: pointer;
+ }
+ 
+ 
+ nav a:hover {
+    color: #555;
+ }
+ 
+ 
+footer {
+    background-color: #433E36;;
+    color: #D7CA96;
+    text-align: center;
+    padding:20px;
+    position:relative;
+    bottom: 0;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
-nav a:hover {
-    color: #555;
+/* You can add additional styling for links or other elements within the footer */
+footer a {
+    color: #D7CA96;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-info {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: left;
+    margin-top: 20px;
+
+}
+
+.footer-info div {
+    flex: 1;
+    margin: 10px;
 }
 
 main {
