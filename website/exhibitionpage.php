@@ -51,6 +51,10 @@
     
     <main>
         <h2>Exhibition</h2>
+        <h4>Explore boundless creativity at our Bangkok art gallery, a hub of passion for the arts.</h4>
+        <h4>Discover a curated blend of local and global expressions, from traditional to contemporary.  </h4>
+        <h4>Our online platform invites you to delve into the beauty, inspiration, and stories behind each masterpiece. </h4>
+        <h4>Join us in celebrating Bangkok's rich art scene on our website. Welcome to our inspiring journey!</h4>
         <section class="exhibitions">
             <?php foreach ($exhibitions as $exhibition) : ?>
                 <div class="exhibition2">
