@@ -140,9 +140,6 @@ if (isset($_POST['update'])) {
     // Specify the path for the new uploaded image
     $new_target_file = $upload_dir . $new_artist_img;
 
-    move_uploaded_file($temp_new_img, $new_target_file);
-    
-
     // Check if a new file was uploaded and move it to the destination directory
     if (!empty($new_artist_img) && move_uploaded_file($temp_new_img, $new_target_file)) {
         // Include the new image file in the SQL update statement
