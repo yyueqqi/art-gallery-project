@@ -6,8 +6,6 @@ body {
     position: relative;
     overflow-x: hidden;
     overflow-y: auto; 
-    background: linear-gradient(45deg, #FAF8F4 25%, transparent 25%, transparent 75%, #FAF8F4 75%, #FAF8F4);
-    
 }
 
 header {
@@ -61,17 +59,17 @@ main {
 }
 
 main p {
-    margin-top: 30px;
+    margin-top: 10px;
     font-style:oblique;
     font-size: 30px;
 }
 
 main h2 {
-    padding: 30x;
+    padding: 20x;
     font-size: 80px;
     font-weight: 100;
     color: #D7CA96;
-    margin-bottom: 20x;
+    margin-bottom: 50x;
     border-bottom: 2px solid #D7CA96;
 }
 
@@ -143,6 +141,14 @@ main h4{
    
 }
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0; 
+    }
+    100% {
+        opacity: 1; 
+    }
+}
 
 
 
@@ -150,6 +156,7 @@ main h4{
 .container:hover .overlay {
     height: 100%;
     opacity: 1;
+    animation-delay: 0.5s;
 }
 
 .text {
@@ -162,6 +169,8 @@ main h4{
     transform: translateX(-50%);
     text-align: center;
     padding: 20px;
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards;
     
 }
 
@@ -190,4 +199,37 @@ main h4{
     object-fit: cover; 
     border: 0.5px solid #433E36;
     border-radius: 10px;
+}
+
+footer {
+    background-color: #433E36;;
+    color: #D7CA96;
+    text-align: center;
+    padding:20px;
+    position:relative;
+    bottom: 0;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+
+footer a {
+    color: #D7CA96;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-info {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: left;
+    margin-top: 20px;
+
+}
+
+.footer-info div {
+    flex: 1;
+    margin: 10px;
 }
