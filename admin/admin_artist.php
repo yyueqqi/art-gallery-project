@@ -1,7 +1,11 @@
+<?php 
+     include '../function/config.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Artist</title>
+    <title>Admin Artists</title>
     <link rel="stylesheet" type="text/css" href="admin_styles.css">
 </head>
 
@@ -27,7 +31,7 @@
         </form>
 
         <h2>Update Artist</h2>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data" >
             <select name="update_artist_id" required>
                     <option value="">Select an Artist</option>
                     <?php
@@ -60,7 +64,7 @@
         <select name="delete_artist" required>
                 <option value="">Select an Artist</option>
                 <?php
-                include '../function/config.php';
+           
                 // Query your database to fetch artist IDs and names
                 $artistQuery = "SELECT artist_id, fName, lName FROM artist";
                 $artistResult = $conn->query($artistQuery);
@@ -85,7 +89,7 @@
 
 <?php
 
-include '../function/config.php';
+
 
 if (isset($_POST['add'])) {
     $fName = $_POST['fName'];
@@ -108,7 +112,7 @@ if (isset($_POST['add'])) {
     // Check if the file was successfully uploaded
     if (move_uploaded_file($temp_img, $target_file)) {
 
-        $sql = "INSERT INTO `artist` (artist_profile, fName, lname, dob, artwork_history)
+        $sql = "INSERT INTO artist (artist_profile, fName, lname, dob, artwork_history)
         VALUES ('$target_file', '$fName', '$lName', '$dob', '$artwork_history')";
         
         if ($conn->query($sql) === TRUE) {
@@ -131,20 +135,20 @@ if (isset($_POST['update'])) {
     // Get the name of the new uploaded image file
     $new_artist_img = $_FILES['new_artist_img']['name'];
 
-    // Get the temporary location of the new uploaded image file
+    // // Get the temporary location of the new uploaded image file
     $temp_new_img = $_FILES['new_artist_img']['tmp_name'];
 
-    // Define the destination directory where the new image will be stored
+    // // Define the destination directory where the new image will be stored
     $upload_dir = '../artist_image/';
 
     // Specify the path for the new uploaded image
     $new_target_file = $upload_dir . $new_artist_img;
-    
+
     // Check if a new file was uploaded and move it to the destination directory
-    if (!empty($new_artist_img) && move_uploaded_file($temp_new_img, $new_target_file)) {
+    isset($_FILES['new_artist_img']) && !empty($_FILES['new_artist_img']['name']);
         // Include the new image file in the SQL update statement
-        $sql = "UPDATE `artist` SET ";
-        
+        if(move_uploaded_file($temp_new_img, $new_target_file)){
+        $sql = "UPDATE artist SET ";
         if (!empty($new_artist_img)) {
             $sql .= "artist_profile = '$new_target_file', ";
         }
@@ -162,12 +166,11 @@ if (isset($_POST['update'])) {
         }
         
         $sql = rtrim($sql, ', '); // Remove the trailing comma
-        $sql .= " WHERE artist_id = $update_id";
+        $sql .= " WHERE artist_id = '$update_id'";
     } 
     else {
         // If no new image is uploaded, update other fields without changing the image
-        $sql = "UPDATE `artist` SET ";
-        
+        $sql = "UPDATE artist SET ";
         if (!empty($new_fName)) {
             $sql .= "fName = '$new_fName', ";
         }
@@ -197,10 +200,10 @@ if (isset($_POST['update'])) {
 if (isset($_POST['delete'])) {
     $id = $_POST['delete_artist'];
 
-    $delete_artwork_sql = "DELETE FROM `artwork` WHERE artist_id = $id";
+    $delete_artwork_sql = "DELETE FROM artwork WHERE artist_id = $id";
     
     if ($conn->query($delete_artwork_sql) === TRUE) {
-        $delete_artist_sql = "DELETE FROM `artist` WHERE artist_id = $id";
+        $delete_artist_sql = "DELETE FROM artist WHERE artist_id = $id";
         if ($conn->query($delete_artist_sql) === TRUE) {
             echo "<script> alert('Artist and associated artwork records deleted successfully!');</script>";
         } else {

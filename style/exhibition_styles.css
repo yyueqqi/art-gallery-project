@@ -83,6 +83,15 @@ main h3 {
     font-style: oblique;
 }
 
+main h4{
+    font-size: 14px;
+    font-weight: 100;
+    color: #000;
+    margin: 0;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: normal;
+}
+
 .exhibitions{
     display: grid;
     flex: none;
