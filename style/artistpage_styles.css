@@ -53,6 +53,10 @@ nav a:hover {
     color: #555;
 }
 
+.iframe{
+    display:block;
+    justify-content: center;
+}
 
 main {
     padding: 160px;
