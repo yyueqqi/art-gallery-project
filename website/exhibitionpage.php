@@ -51,6 +51,7 @@
     
     <main>
         <h2>Exhibition</h2>
+        <p> Find out exhibitions happening at art galleries. These exhibitions cover a wide range of art, including contemporary art, historical exhibits, design, photography, architecture, sculpture, handicrafts...</p>
         <section class="exhibitions">
             <?php foreach ($exhibitions as $exhibition) : ?>
                 <div class="exhibition2">
@@ -59,7 +60,7 @@
                               <img src="<?php echo $exhibition['exhibition_img']; ?>" alt="<?php echo $exhibition['exhibition_id']; ?>" class="image">
                             <div class="overlay">
                                 <div class="text">
-                                    <h3>Exhibition Title: <?php echo $exhibition['exhibition_title']; ?></h3>
+                                    <h3>Title: <?php echo $exhibition['exhibition_title']; ?></h3>
                                     <p>Date: <?php echo $exhibition['exhibition_date']; ?></p>
                                     <p>Location: <?php echo $exhibition['location']; ?></p>
                                     <button class="buy-ticket">Buy Ticket</button>

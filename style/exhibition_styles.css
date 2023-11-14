@@ -4,6 +4,10 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
+    overflow-x: hidden;
+    overflow-y: auto; 
+    background: linear-gradient(45deg, #FAF8F4 25%, transparent 25%, transparent 75%, #FAF8F4 75%, #FAF8F4);
+    
 }
 
 header {
@@ -53,10 +57,17 @@ nav a:hover {
 
 main {
     padding: 20px;
+    
+}
+
+main p {
+    margin-top: 30px;
+    font-style:oblique;
+    font-size: 30px;
 }
 
 main h2 {
-    padding: 40x;
+    padding: 30x;
     font-size: 80px;
     font-weight: 100;
     color: #D7CA96;
@@ -65,19 +76,37 @@ main h2 {
 }
 
 main h3 {
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 100;
     color: #FAF8F4;
     margin: 0;
+    font-style: oblique;
 }
 
+.exhibitions{
+    display: grid;
+    flex: none;
+    gap: 20px;
+    grid-auto-rows: min-content;
+    grid-template-columns: repeat(2,minmax(200px,1fr));
+    grid-template-rows: repeat(2,min-content);
+    height: min-content;
+    justify-content: center;
+    overflow: hidden;
+    padding: 50px;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
 .exhibition2 {
     display: flex;
     align-items: center;
     border-radius: 10px;
-    padding: 5px;
+    padding: 20px;
     position: relative;
-    justify-content: space-between;
+    
+    
+   
 }
 
 .container {
@@ -85,7 +114,9 @@ main h3 {
     width: auto;
     height: auto;
     overflow: hidden;
-    display: flex;
+    display:flex ;
+    
+    
 }
 
 .overlay {
@@ -94,15 +125,18 @@ main h3 {
     left: 0;
     right: 0;
     background-color: rgba(67, 62, 54, 1);
-    /* Adjust the background color and opacity as needed */
     overflow: hidden;
     width: auto;
     height: 0;
     transition: .5s ease;
     border-radius: 10px;
     opacity: 0;
-    margin-left: 100px;
+   
 }
+
+
+
+
 
 .container:hover .overlay {
     height: 100%;
@@ -111,13 +145,15 @@ main h3 {
 
 .text {
     color: #FAF8F4;
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: 100;
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
     padding: 20px;
+    
 }
 
 .buy-ticket {
@@ -132,16 +168,17 @@ main h3 {
 
 .image-ex {
     flex: 1;
-    height: 100%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-left: 100px;
+    
 }
 
 .image-ex img {
-    height: auto;
-    width: 500px;
+    height: 400px;
+    width: 100%;
+    object-fit: cover; 
     border: 0.5px solid #433E36;
     border-radius: 10px;
 }
