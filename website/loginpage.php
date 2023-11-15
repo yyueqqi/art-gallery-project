@@ -11,30 +11,7 @@ include '../function/config.php';
     <link rel="stylesheet" href="../style/login_styles.css">
 </head>
 
-<header>
-    <div class="left-header">
-        <p>The Art Gallery</p>
-    </div>
-    <div class="right-header">
-        <nav>
-            <ul>
-                <li><a href="../index.php">Home</a></li>
-                <li><a href="artistpage.php">Artist</a></li>
-                <li><a href="artworkpage.php">Artwork</a></li>
-                <li><a href="exhibitionpage.php">Exhibition</a></li>
-                <li>
-                <?php
-                if (isset($_SESSION['logged_in'])) {
-                    echo '<a href="account.php">Account</a>';
-                } else {
-                    echo '<a href="loginpage.php">Log in</a>';
-                }
-                ?>
-                </li>
-                <li><a href="#"><img src="../image/search.png" alt="search.png"></a>
-            </ul>
-        </nav>
-    </header>
+<?php include('header.php'); ?>
 
 <body>
     <div class="login-container">
