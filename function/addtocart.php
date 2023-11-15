@@ -17,16 +17,8 @@ include 'config.php';
             else {
             $insert = "INSERT INTO `cart`(username, item_id, quantity) VALUES ('$account_username', '$artwork_id', '$quantity')";
             $result_query = mysqli_query($conn,$insert);
-            if($result_query) {
-                echo '<script>alert("Added to cart")</script>';
-                echo '<script>window.open("artworkpage.php","_self")</script>';
-            }
-            else {
-                echo '<script>alert("Can not add to cart")</script>';
-                error_reporting(E_ALL);
-                ini_set('display_errors', 1);
-            }
-            
+            echo '<script>alert("Added to cart")</script>';
+            echo '<script>window.open("artworkpage.php","_self")</script>';
             }
         }
 
