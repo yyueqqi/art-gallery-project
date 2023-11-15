@@ -1,12 +1,11 @@
 <?php
-session_start();
 
 include 'config.php';
 
     if (isset($_GET['add_to_cart_artwork'])){
         global $conn;
         $account_username = $_SESSION['login_username'];
-        $artwork_id = $_GET['add_to_cart'];
+        $artwork_id = $_GET['add_to_cart_artwork'];
         $quantity = 1;
         $select = "SELECT * FROM `cart` where username = '$account_username' and item_id = '$artwork_id'";
         $result = mysqli_query($conn,$select);
@@ -24,6 +23,8 @@ include 'config.php';
             }
             else {
                 echo '<script>alert("Can not add to cart")</script>';
+                error_reporting(E_ALL);
+                ini_set('display_errors', 1);
             }
             
             }
@@ -31,7 +32,7 @@ include 'config.php';
 
     if (isset($_GET['add_to_cart_ticket'])){
     $account_username = $_SESSION['login_username'];
-    $ticket_id = $_GET['add_to_cart'];
+    $ticket_id = $_GET['add_to_cart_ticket'];
     $quantity = 1;
     $select = "SELECT * FROM `cart` where username = '$account_username' and item_id = '$ticket_id'";
     $result = mysqli_query($conn,$select);
