@@ -28,18 +28,30 @@ if (isset($_GET['artist_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artist Profile Page</title>
-    <link rel="stylesheet" href="../style/artistprofile_styles.css">
+    <link rel="stylesheet" href="../style/artistprofile_styles.css?v=5">
 </head>
 
 <body>
 <?php include('header.php'); ?>
         <main>
             <?php if ($artist) : ?>
-                <div class="artist-profile">
-                    <h2><?php echo $artist['fName'] . ' ' . $artist['lName']; ?></h2>
-                    <p>Date of Birth: <?php echo $artist['dob']; ?></p>
-                    <p>Artwork History: <?php echo $artist['artwork_history']; ?></p>
+                <div class="artist-container">
+                    <div class="image">
+                        <img src="<?php echo $artist['artist_profile']; ?>" alt="<?php echo $artist['artist_id']; ?>">
+                    </div>
+
+                    <div class="text-frame">
+                        <h2><?php echo $artist['fName'] . ' ' . $artist['lName']; ?></h2>
+                        <p>Date of Birth: <?php echo $artist['dob']; ?></p>
+                        <p>Artwork History: <?php echo $artist['artwork_history']; ?></p>
+                    </div>
                 </div>
+
+                <div class="artwork-history">
+                    <h4>Artwork History</h4>
+                    <p> <?php echo $artist['artwork_history']; ?></p>
+                </div>
+
             <?php else : ?>
                 <p>Artist not found.</p>
             <?php endif; ?>

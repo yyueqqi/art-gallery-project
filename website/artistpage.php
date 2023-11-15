@@ -19,7 +19,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artist Page</title>
-    <link rel="stylesheet" href="../style/artistpage_styles.css">
+    <link rel="stylesheet" href="../style/artistpage_styles.css?v=5">
 </head>
 <body>
     <?php include('header.php'); ?>
@@ -32,12 +32,18 @@
     </main>
         <section class="artists">
         <?php foreach ($artists as $artist) : ?>
+        
         <div class="artist">
+
+            <div class="artist-profile">
                 <a href="artistprofile.php?artist_id=<?php echo $artist['artist_id']; ?>"><img src="<?php echo $artist['artist_profile']; ?>" alt="<?php echo $artist['artist_id']; ?>">
-                <p>Artist Name: <?php echo $artist['fName'] . ' ' . $artist['lName']; ?></p>
-                <p>Date of Birth: <?php echo $artist['dob']; ?></p>
-                <p>Artwork History: <?php echo $artist['artwork_history']; ?></p>
-            </a>
+                </a>
+            </div> 
+            
+            <div class="name">
+                <p><?php echo $artist['fName'] . ' ' . $artist['lName']; ?></p>
+            </div>
+
         </div>
         <?php endforeach; ?>
     </section>

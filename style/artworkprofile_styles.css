@@ -6,3 +6,59 @@ body {
     position: relative;
 }
 
+main{
+    margin:200px;
+    font-family: "Trebuchet MS",Arial,Sans-Serif;
+    font-size: 20px;
+    line-height: 1.4em;
+    letter-spacing: 0.1em;
+}
+
+.artwork-container{
+    margin:70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.image img{
+    width:100%;
+    height: auto;
+    padding: 0 150px 120px 0;
+}
+.text-frame{
+    color:#433E36;
+}
+.text-frame h4{
+    font-size: 25px;
+    font-style: oblique;
+    text-align: left;
+    padding-right: 100px;
+}
+
+.text-frame p{
+    padding-right: 100px;
+}
+
+.addtocart{
+    display: flex;
+    justify-content: flex-end;
+    color:#D7CA96;
+    margin:70px;
+}
+
+.addtocart button{
+    background-color: #433E36;;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    width: 250px;
+    height: 50px;
+}
+
+button a{
+    color:#D7CA96;
+    text-decoration: none;
+}

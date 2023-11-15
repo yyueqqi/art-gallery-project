@@ -37,12 +37,19 @@ if (isset($_GET['artwork_id'])) {
     <?php include('header.php'); ?>
         <main>
             <?php if ($artwork) : ?>
-                <div class="artwork-profile">
-                    <h2><?php echo $artwork['artwork_title']; ?></h2>
-                    <p>Artist: <?php echo $artwork['fName'] . ' ' . $artwork['lName']; ?></p>
-                    <p>Description: <?php echo $artwork['description']; ?></p>
-                    <p>Price: $<?php echo $artwork['price']; ?></p>
-                    <a class='addtocart' href="artworkpage.php?add_to_cart_artwork=<?php echo $artwork['artwork_id'] ?>">ADD TO CART</a>
+                <div class="artwork-container">
+                    <div class="text-frame">
+                        <h4><?php echo $artwork['artwork_title']; ?></h4>
+                        <p>Artist: <?php echo $artwork['fName'] . ' ' . $artwork['lName']; ?></p>
+                        <p>Description: <?php echo $artwork['description']; ?></p>
+                        <p>Price: $<?php echo $artwork['price']; ?></p>
+                    </div>
+                    <div class="image">
+                        <img src="<?php echo $artwork['artwork_img']; ?>" alt="<?php echo $artwork['artwork_id']; ?>">
+                    </div>
+                </div>
+                <div class='addtocart'>
+                    <button><a href="artworkpage.php?add_to_cart_artwork=<?php echo $artwork['artwork_id'] ?>">ADD TO CART</a></button>
                 </div>
             <?php else : ?>
             <p>Artwork not found.</p>
