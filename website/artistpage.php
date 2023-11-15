@@ -41,6 +41,6 @@
         </div>
         <?php endforeach; ?>
     </section>
-    <iframe src="footer.html"<iframe src="header.html" width="80%" height="300" frameborder="0" scrolling="no"></iframe>
+    <iframe src="footer.html" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
 </body>
 </html>

@@ -89,6 +89,7 @@
         </div>
     </div>
     <script src="script/script.js"></script>
-    <iframe src="website/footer.html" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
     </body>
+    <iframe src="website/footer.html" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
+    
 </html>

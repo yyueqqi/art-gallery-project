@@ -55,32 +55,6 @@
         </section>
     </main>
 
-    
-    <footer>
-        <div class="footer-info">
-            <div>
-                <h4>OPEN HOURS:</h4>
-                <p>Tuesday - Sunday 11AM - 6PM</p>
-                <p>Close on Monday and Public Holidays</p>
-                <h4>For more information:</h4>
-                <p><a href="mailto:info@theart.gallery">info@theart.gallery</a></p>
-            </div>
-
-           
-
-            <div>
-                <h4>TEL:</h4>
-                <p>090-276-7007 (Chanikarn)</p>
-                <p>095-894-4145 (Kanyarat)</p>
-            </div>
-
-            <div>
-                <h4>ADDRESS:</h4>
-                <p>345/25-26 The Headquarters,
-                Intaraporn Rd., Plubpla, Wang Thonglang, Bangkok, Thailand 10310</p>
-            </div>
-        </div>
-    </footer>
-    
+    <iframe src="footer.html" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
 </body>
 </html>
