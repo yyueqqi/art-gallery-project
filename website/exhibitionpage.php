@@ -51,6 +51,7 @@
     
     <main>
         <h2>Exhibition</h2>
+        <p>Finding out exhibitions happening at art galleries. These exhibitions cover a wide range of art, including contemporary art, historical exhibits, design, photography, architecture, sculpture, handicrafts...</p>
         <section class="exhibitions">
             <?php foreach ($exhibitions as $exhibition) : ?>
                 <div class="exhibition2">
@@ -73,9 +74,38 @@
 
     </main>
 
+
+
             </div>
         </section>
     </main>
+
+    
+    <footer>
+        <div class="footer-info">
+            <div>
+                <h4>OPEN HOURS:</h4>
+                <p>Tuesday - Sunday 11AM - 6PM</p>
+                <p>Close on Monday and Public Holidays</p>
+                <h4>For more information:</h4>
+                <p><a href="mailto:info@theart.gallery">info@theart.gallery</a></p>
+            </div>
+
+           
+
+            <div>
+                <h4>TEL:</h4>
+                <p>090-276-7007 (Chanikarn)</p>
+                <p>095-894-4145 (Kanyarat)</p>
+            </div>
+
+            <div>
+                <h4>ADDRESS:</h4>
+                <p>345/25-26 The Headquarters,
+                Intaraporn Rd., Plubpla, Wang Thonglang, Bangkok, Thailand 10310</p>
+            </div>
+        </div>
+    </footer>
     
 </body>
 </html>
