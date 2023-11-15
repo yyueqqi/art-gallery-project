@@ -22,35 +22,7 @@
     <link rel="stylesheet" href="../style/artistpage_styles.css">
 </head>
 <body>
-    <header>
-        <div class="left-header">
-            <p>The Art Gallery</p>
-        </div>
-        <div class="right-header">
-            <nav>
-                <ul>
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a href="artistpage.php">Artist</a></li>
-                    <li><a href="artworkpage.php">Artwork</a></li>
-                    <li><a href="exhibitionpage.php">Exhibition</a></li>
-                    <li>
-                    <?php
-                    session_start();
-    
-                        if (isset($_SESSION['logged_in'])) {
-                            echo '<a href="account.php">Account</a>';
-                        }
-                        else {
-                            echo '<a href="loginpage.php">Log in</a>';
-                        }
-                    ?>
-                    </li>
-                    <li><a href="#"><img src="../image/search.png" alt="search.png"></a></li>
-                </ul>
-            </nav>
-        </div>
-        
-    </header>
+    <?php include('header.php'); ?>
     
     <main>
             <div class="art-text">
@@ -61,7 +33,7 @@
         <section class="artists">
         <?php foreach ($artists as $artist) : ?>
         <div class="artist">
-                <img src="<?php echo $artist['artist_profile']; ?>" alt="<?php echo $artist['artist_id']; ?>">
+                <a href="artistprofile.php?artist_id=<?php echo $artist['artist_id']; ?>"><img src="<?php echo $artist['artist_profile']; ?>" alt="<?php echo $artist['artist_id']; ?>">
                 <p>Artist Name: <?php echo $artist['fName'] . ' ' . $artist['lName']; ?></p>
                 <p>Date of Birth: <?php echo $artist['dob']; ?></p>
                 <p>Artwork History: <?php echo $artist['artwork_history']; ?></p>
