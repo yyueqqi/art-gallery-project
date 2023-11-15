@@ -1,4 +1,5 @@
 <?php
+session_start();
     include '../function/config.php';
     include '../function/addtocart.php';
     $sql = "SELECT artwork.*, artist.fName, artist.lName FROM artwork LEFT JOIN artist ON artwork.artist_id = artist.artist_id";
@@ -57,8 +58,6 @@
                 <h4>For more information:</h4>
                 <p><a href="mailto:info@theart.gallery">info@theart.gallery</a></p>
             </div>
-
-           
 
             <div>
                 <h4>TEL:</h4>

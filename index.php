@@ -31,7 +31,6 @@
                 }
                 ?>
                 </li>
-                <li><a href="#"><img src="image/search.png" alt="search.png"></a>
             </ul>
         </nav>
     </header>
@@ -90,5 +89,6 @@
         </div>
     </div>
     <script src="script/script.js"></script>
+    <iframe src="website/footer.html" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
     </body>
 </html>

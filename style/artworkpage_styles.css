@@ -6,62 +6,6 @@ body {
     position: relative;
  }
  
- 
- header {
-    background-color: #433E36;
-    color: #D7CA96;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5px 10px;
- }
- 
- 
- .left-header {
-    font-size: 20px;
-    color: #D7CA96;
-    margin: 0;
- }
- 
- 
- .right-header {
-    display: flex;
-    font-size: 16px;
- 
- 
- }
- 
- 
- img {
-    width: 20px;
-    height: 20px;
- }
- 
- 
- nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
- }
- 
- 
- nav ul li {
-    margin-right: 30px;
- }
- 
- 
- nav a {
-    text-decoration: none;
-    color: #D7CA96;
- }
- 
- 
- nav a:hover {
-    color: #555;
- }
- 
- 
 footer {
     background-color: #433E36;;
     color: #D7CA96;

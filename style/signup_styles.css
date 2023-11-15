@@ -16,25 +16,25 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5px 10px;
+    padding: 0.5px 35px;
     position: fixed;
     top: 0;
-    width: 100%; /* Make the header span the full width of the viewport */
+    width: 100%; 
     z-index: 999;
 }
 
 .left-header {
-    font-size: 20px;
+    font-size: 25px;
     color: #D7CA96;
     margin: 0;
 }
 
 .right-header {
     display: flex;
-    font-size: 16px;
+    font-size: 17px;
 
 }
-
+ 
 img {
     width: 20px;
     height: 20px;

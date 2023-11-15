@@ -22,33 +22,8 @@
     <link rel="stylesheet" href="../style/exhibition_styles.css">
 </head>
 
-<header>
-    <div class="left-header">
-        <p>The Art Gallery</p>
-    </div>
-    <div class="right-header">
-        <nav>
-            <ul>
-                <li><a href="../index.php">Home</a></li>
-                <li><a href="artistpage.php">Artist</a></li>
-                <li><a href="artworkpage.php">Artwork</a></li>
-                <li><a href="exhibitionpage.php">Exhibition</a></li>
-                <li>
-                <?php
-                session_start();
-    
-                if (isset($_SESSION['logged_in'])) {
-                    echo '<a href="account.php">Account</a>';
-                } else {
-                    echo '<a href="loginpage.php">Log in</a>';
-                }
-                ?>
-                </li>
-                <li><a href="#"><img src="../image/search.png" alt="search.png"></a>
-            </ul>
-        </nav>
-    </header>
-    
+<body>
+<?php include('header.php'); ?>
     <main>
         <h2>Exhibition</h2>
         <p>Finding out exhibitions happening at art galleries. These exhibitions cover a wide range of art, including contemporary art, historical exhibits, design, photography, architecture, sculpture, handicrafts...</p>
