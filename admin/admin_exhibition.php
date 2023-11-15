@@ -11,6 +11,7 @@
             <li><a href="admin_artist.php">Artist</a></li>
             <li><a href="admin_artwork.php">Artwork</a></li>
             <li><a href="admin_exhibition.php">Exhibition</a></li>
+            <li><a href="admin_ticket.php">Exhibition Ticket</a></li>
         </ul>
     </div>
 
@@ -102,8 +103,8 @@ if (isset($_POST['add'])) {
     // Check if the file was successfully uploaded
     if (move_uploaded_file($temp_img, $target_file)) {
 
-        $sql = "INSERT INTO `exhibition` (exhibition_img, exhibition_title, exhibition_date, location)
-        VALUES ('$target_file', '$exhibition_title', '$exhibition_date', '$location')";
+        $sql = "INSERT INTO `exhibition` (exhibition_img, exhibition_title, exhibition_date, location, ticket_number)
+        VALUES ('$target_file', '$exhibition_title', '$exhibition_date', '$location', '0')";
         
         if ($conn->query($sql) === TRUE) {
             echo "<script> alert('Exhibition added successfully!');</script>";

@@ -11,6 +11,7 @@
             <li><a href="admin_artist.php">Artist</a></li>
             <li><a href="admin_artwork.php">Artwork</a></li>
             <li><a href="admin_exhibition.php">Exhibition</a></li>
+            <li><a href="admin_ticket.php">Exhibition Ticket</a></li>
         </ul>
     </div>
 
