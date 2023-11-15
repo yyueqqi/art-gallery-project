@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Gallery</title>
-    <link rel="stylesheet" href="style/index_styles.css?v=5">
+    <link rel="stylesheet" href="style/index_styles.css?v=6">
 </head>
 <html>
     <body>

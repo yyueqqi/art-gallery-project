@@ -1,12 +1,13 @@
 /* styles.css */
-
+php,html, body {
+    scroll-behavior: smooth;
+}
 body {
     background: linear-gradient(
         to right, 
         rgba(67,62,54,1), rgba(255, 255, 255, 0)),
         url('../image/mainpagebackground.jpeg') center/cover no-repeat;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
