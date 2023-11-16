@@ -209,24 +209,37 @@ if (isset($_POST['update'])) {
     }
 
 
-if (isset($_POST['delete'])) {
-    $ticketID = $_POST['delete_ticketID'];
-
-    $ticketQuery = "SELECT ticket_number, exhibition_id, ticket_availability FROM ticket WHERE ticket_id = $ticketID";
-    $ticketResult = $conn->query($ticketQuery);
-
-    $updateExhibitionQuery = "UPDATE exhibition SET ticket_number = ticket_number - $currentTicketNumber WHERE exhibition_id = $exhibitionID";
-    $conn->query($updateExhibitionQuery);
-
-    $sql = "DELETE FROM `ticket` WHERE ticket_id = $ticketID";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "<script> alert('Ticket deleted successfully!');</script>";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+    if (isset($_POST['delete'])) {
+        $ticketID = $_POST['delete_ticketID'];
+    
+        $ticketQuery = "SELECT ticket_number, exhibition_id, ticket_availability FROM ticket WHERE ticket_id = $ticketID";
+        $ticketResult = $conn->query($ticketQuery);
+    
+        if ($ticketResult->num_rows > 0) {
+            $ticketData = $ticketResult->fetch_assoc();
+            $exhibitionID = $ticketData['exhibition_id'];
+            $currentTicketNumber = $ticketData['ticket_number'];
+    
+            $updateExhibitionQuery = "UPDATE exhibition SET ticket_number = ticket_number - $currentTicketNumber WHERE exhibition_id = $exhibitionID";
+            $conn->query($updateExhibitionQuery);
+    
+            $deleteCartTicketQuery = "DELETE FROM cart WHERE item_id = $ticketID AND item_type = 'Ticket'";
+            if ($conn->query($deleteCartTicketQuery) === TRUE) {
+                $sql = "DELETE FROM `ticket` WHERE ticket_id = $ticketID";
+    
+                if ($conn->query($sql) === TRUE) {
+                    echo "<script> alert('Ticket and associated cart item deleted successfully!');</script>";
+                } else {
+                    echo "Error deleting ticket record: " . $conn->error;
+                }
+            } else {
+                echo "Error deleting cart item: " . $conn->error;
+            }
+        } else {
+            echo "Ticket not found.";
+        }
     }
-}
-
+    
 
 $conn->close();
 
