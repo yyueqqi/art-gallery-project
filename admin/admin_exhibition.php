@@ -146,16 +146,38 @@ if (isset($_POST['update'])) {
     }
 }
 
-
 if (isset($_POST['delete'])) {
     $id = $_POST['delete_exhibition_id'];
 
-    $sql = "DELETE FROM `exhibition` WHERE exhibition_id = $id";
+    $imagePathQuery = "SELECT exhibition_img FROM exhibition WHERE exhibition_id = $id";
+    $ticketIdsQuery = "SELECT ticket_id FROM ticket WHERE exhibition_id = $id";
 
-    if ($conn->query($sql) === TRUE) {
-        echo "<script> alert('Exhibition deleted successfully!');</script>";
+    $imagePathResult = $conn->query($imagePathQuery);
+    $ticketIdsResult = $conn->query($ticketIdsQuery);
+
+    if ($imagePathResult->num_rows > 0) {
+        $row = $imagePathResult->fetch_assoc();
+        $imagePath = $row['exhibition_img'];
+
+        if (unlink($imagePath)) {
+            $deleteTicketsQuery = "DELETE FROM `ticket` WHERE exhibition_id = $id";
+            
+            if ($conn->query($deleteTicketsQuery) === TRUE) {
+                $sql = "DELETE FROM `exhibition` WHERE exhibition_id = $id";
+
+                if ($conn->query($sql) === TRUE) {
+                    echo "<script> alert('Exhibition and associated tickets deleted successfully!');</script>";
+                } else {
+                    echo "Error deleting exhibition record: " . $conn->error;
+                }
+            } else {
+                echo "Error deleting tickets: " . $conn->error;
+            }
+        } else {
+            echo "<script> alert('Error deleting image file!');</script>";
+        }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "<script> alert('Image file not found in the database!');</script>";
     }
 }
 

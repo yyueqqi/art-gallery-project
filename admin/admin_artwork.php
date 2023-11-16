@@ -214,15 +214,38 @@ if (isset($_POST['update'])) {
 
 if (isset($_POST['delete'])) {
     $id = $_POST['delete_id'];
+    $itemType = 'Artwork'; 
 
-    $sql = "DELETE FROM `artwork` WHERE artwork_id = $id";
+    $imagePathQuery = "SELECT artwork_img FROM artwork WHERE artwork_id = $id";
+    $imagePathResult = $conn->query($imagePathQuery);
 
-    if ($conn->query($sql) === TRUE) {
-        echo  "<script> alert('Artwork deleted successfully!');</script>";
+    if ($imagePathResult->num_rows > 0) {
+        $row = $imagePathResult->fetch_assoc();
+        $imagePath = $row['artwork_img'];
+
+        if (unlink($imagePath)) {
+            $deleteFromCartQuery = "DELETE FROM `cart` WHERE item_id = $id AND item_type = '$itemType'";
+
+            if ($conn->query($deleteFromCartQuery) === TRUE) {
+                $sql = "DELETE FROM `artwork` WHERE artwork_id = $id";
+
+                if ($conn->query($sql) === TRUE) {
+                    echo "<script> alert('Artwork and associated image deleted successfully from the cart and database!');</script>";
+                } else {
+                    echo "Error deleting artwork record: " . $conn->error;
+                }
+            } else {
+                echo "Error deleting cart entry: " . $conn->error;
+            }
+        } else {
+            echo "<script> alert('Error deleting image file!');</script>";
+        }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "<script> alert('Image file not found in the database!');</script>";
     }
 }
+
+
 
 $conn->close();
 

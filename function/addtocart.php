@@ -60,6 +60,8 @@ include 'config.php';
             $ticket_data = mysqli_fetch_assoc($ticket_result);
 
             $item_exhibition = $ticket_data['exhibition_id'];
+            $ticket_type = $ticket_data['ticket_type'];
+            $item_type = $ticket_type . " Ticket";
     
             $exhibition_query = "SELECT exhibition_img, exhibition_title FROM exhibition WHERE exhibition_id = '$item_exhibition'";
             $exhibition_result = mysqli_query($conn, $exhibition_query);

@@ -201,19 +201,44 @@ if (isset($_POST['update'])) {
 if (isset($_POST['delete'])) {
     $id = $_POST['delete_artist'];
 
-    $delete_artwork_sql = "DELETE FROM artwork WHERE artist_id = $id";
-    
-    if ($conn->query($delete_artwork_sql) === TRUE) {
-        $delete_artist_sql = "DELETE FROM artist WHERE artist_id = $id";
-        if ($conn->query($delete_artist_sql) === TRUE) {
+    $artworkQuery = "SELECT artwork_id, artwork_img FROM artwork WHERE artist_id = $id";
+    $artworkResult = $conn->query($artworkQuery);
+
+    if ($artworkResult->num_rows > 0) {
+        while ($row = $artworkResult->fetch_assoc()) {
+            $artworkId = $row['artwork_id'];
+            $artworkImg = $row['artwork_img'];
+
+            if (file_exists($artworkImg) && unlink($artworkImg)) {
+                $deleteArtworkSql = "DELETE FROM artwork WHERE artwork_id = $artworkId";
+
+                if ($conn->query($deleteArtworkSql) !== TRUE) {
+                    echo "Error deleting artwork record: " . $conn->error;
+                }
+            } else {
+                echo "Error deleting artwork picture: " . $artworkImg;
+            }
+        }
+
+        $deleteArtistSql = "DELETE FROM artist WHERE artist_id = $id";
+
+        if ($conn->query($deleteArtistSql) === TRUE) {
             echo "<script> alert('Artist and associated artwork records deleted successfully!');</script>";
         } else {
-            echo "Error: " . $delete_artist_sql . "<br>" . $conn->error;
+            echo "Error deleting artist record: " . $conn->error;
         }
     } else {
-        echo "Error: " . $delete_artwork_sql . "<br>" . $conn->error;
+        $deleteArtistSql = "DELETE FROM artist WHERE artist_id = $id";
+
+        if ($conn->query($deleteArtistSql) === TRUE) {
+            echo "<script> alert('Artist deleted successfully!');</script>";
+        } else {
+            echo "Error deleting artist record: " . $conn->error;
+        }
     }
 }
+
+
 
 $conn->close();
 
