@@ -87,7 +87,8 @@ $conn->close();
                 });
             </script>
             <div style="display:flex; flex-direction:row; padding-left: 800px;">
-                <a class="addtocart" href="ticketpage.php.?add_to_cart_ticket=<?php echo $exhibitionDetails['ticket_id'] ?>">ADD TO CART</a>
+                <a class="addtocart" href="ticketpage.php?add_to_cart_ticket=<?php echo $exhibitionDetails['ticket_id'] ?>">ADD TO CART</a>
+
             </div>
 
 
