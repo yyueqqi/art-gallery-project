@@ -26,6 +26,7 @@
             align-items: center;
             margin:0;
             padding: 0.5px 35px;
+            z-index: 999;
         }
         
         .left-header {

@@ -14,15 +14,17 @@ include '../function/config.php';
 <?php include('header.php'); ?>
 
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form method = 'POST'>
-            <input type="text" name="username" placeholder="Username" />
-            <input type="password" name="password" placeholder="Password" />
-            <button type="submit" name="login">Log in</button>
-            <a href="signuppage.html" class="signup">Sign up</a>
-        </form>   
-    </div>
+    <main>
+        <div class="login-container">
+            <h1>Login</h1>
+            <form method = 'POST'>
+                <input type="text" name="username" placeholder="Username" />
+                <input type="password" name="password" placeholder="Password" />
+                <button type="submit" name="login">Log in</button>
+                <a href="signuppage.html" class="signup">Sign up</a>
+            </form>   
+        </div>
+    </main>
 </body>
 </html>
 
