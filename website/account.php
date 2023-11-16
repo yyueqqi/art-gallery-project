@@ -30,24 +30,22 @@ include '../function/config.php';
    <link rel="stylesheet" href="../style/account_styles.css">
 </head>
 
-<body>
-   <header>
-      <div class="left-header">
-          <p>The Art Gallery</p>
-      </div>
-      <div class="right-header">
-          <nav>
-              <ul>
-                  <li><a href="../index.php">Home</a></li>
-                  <li><a href="artistpage.php">Artist</a></li>
-                  <li><a href="artworkpage.php">Artwork</a></li>
-                  <li><a href="exhibitionpage.php">Exhibition</a></li>
-                  <li><a href="account.php">Account</a></li>
-                  <li><a href="#"><img src="../image/search.png" alt="search.png"></a></li>
-              </ul>
-          </nav>
-      </div>
-  </header>
+<header>
+   <div class="left-header">
+       <p>The Art Gallery</p>
+   </div>
+   <div class= "right-header">
+       <nav>
+           <ul>
+               <li><a href="../index.php">Home</a></li>
+               <li><a href="artistpage.php">Artist</a></li>
+               <li><a href="artworkpage.php">Artwork</a></li>
+               <li><a href="exhibitionpage.php">Exhibition</a></li>
+               <li><a href="account.php">Account</a></li>
+               <li><a href="#"><img src="../image/search.png" alt="search.png"></a>
+           </ul>
+       </nav>
+   </header>
 <body>
 <main>
 <section class="profile">
@@ -74,6 +72,6 @@ include '../function/config.php';
     </div>
 </section>
 </main>
-
+<iframe src="footer.html" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
 </body>
 </html>

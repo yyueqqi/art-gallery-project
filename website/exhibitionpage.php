@@ -22,33 +22,8 @@
     <link rel="stylesheet" href="../style/exhibition_styles.css">
 </head>
 
-<header>
-    <div class="left-header">
-        <p>The Art Gallery</p>
-    </div>
-    <div class="right-header">
-        <nav>
-            <ul>
-                <li><a href="../index.php">Home</a></li>
-                <li><a href="artistpage.php">Artist</a></li>
-                <li><a href="artworkpage.php">Artwork</a></li>
-                <li><a href="exhibitionpage.php">Exhibition</a></li>
-                <li>
-                <?php
-                session_start();
-    
-                if (isset($_SESSION['logged_in'])) {
-                    echo '<a href="account.php">Account</a>';
-                } else {
-                    echo '<a href="loginpage.php">Log in</a>';
-                }
-                ?>
-                </li>
-                <li><a href="#"><img src="../image/search.png" alt="search.png"></a>
-            </ul>
-        </nav>
-    </header>
-    
+<body>
+<?php include('header.php'); ?>
     <main>
         <h2>Exhibition</h2>
         <p>Finding out exhibitions happening at art galleries. These exhibitions cover a wide range of art, including contemporary art, historical exhibits, design, photography, architecture, sculpture, handicrafts...</p>
@@ -63,7 +38,10 @@
                                     <h3>Title: <?php echo $exhibition['exhibition_title']; ?></h3>
                                     <p>Date: <?php echo $exhibition['exhibition_date']; ?></p>
                                     <p>Location: <?php echo $exhibition['location']; ?></p>
-                                    <button class="buy-ticket">Buy Ticket</button>
+                                    <button class="buy-ticket">
+                                        <a href="ticketpage.php?exhibition_id=<?php echo $exhibition['exhibition_id']; ?>">Buy Ticket</a>
+                                    </button>
+
                                 </div>
                             </div>
                         </div>
@@ -81,7 +59,31 @@
     </main>
 
     
+    <footer>
+        <div class="footer-info">
+            <div>
+                <h4>OPEN HOURS:</h4>
+                <p>Tuesday - Sunday 11AM - 6PM</p>
+                <p>Close on Monday and Public Holidays</p>
+                <h4>For more information:</h4>
+                <p><a href="mailto:info@theart.gallery">info@theart.gallery</a></p>
+            </div>
 
+           
+
+            <div>
+                <h4>TEL:</h4>
+                <p>090-276-7007 (Chanikarn)</p>
+                <p>095-894-4145 (Kanyarat)</p>
+            </div>
+
+            <div>
+                <h4>ADDRESS:</h4>
+                <p>345/25-26 The Headquarters,
+                Intaraporn Rd., Plubpla, Wang Thonglang, Bangkok, Thailand 10310</p>
+            </div>
+        </div>
+    </footer>
     
 </body>
 </html>

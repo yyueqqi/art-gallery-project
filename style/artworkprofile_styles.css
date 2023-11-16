@@ -1,0 +1,62 @@
+body {
+    background-color: #FAF8F4;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+main{
+    margin:200px;
+    font-family: "Trebuchet MS",Arial,Sans-Serif;
+    font-size: 20px;
+    line-height: 1.4em;
+    letter-spacing: 0.1em;
+}
+
+.artwork-container{
+    margin:70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.image img{
+    width:100%;
+    height: auto;
+    padding: 0 150px 120px 0;
+}
+.text-frame{
+    color:#433E36;
+}
+.text-frame h4{
+    font-size: 25px;
+    font-style: oblique;
+    text-align: left;
+    padding-right: 100px;
+}
+
+.text-frame p{
+    padding-right: 100px;
+}
+
+.addtocart{
+    color: #D7CA96;
+    background-color: #433E36;
+    padding: 16px 20px;
+    border: none;
+    text-decoration: 0;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+
+}
+
+
+
+button a{
+    color:#D7CA96;
+    text-decoration: none;
+}

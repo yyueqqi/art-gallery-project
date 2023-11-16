@@ -1,5 +1,3 @@
-/* styles.css */
-
 
 body {
     background-color: #FAF8F4;
@@ -9,37 +7,30 @@ body {
     position: relative;
  }
  
- 
  header {
     background-color: #433E36;
     color: #D7CA96;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5px 10px;
+    padding: 0.5px 35px;
  }
  
- 
  .left-header {
-    font-size: 20px;
+    font-size: 25px;
     color: #D7CA96;
     margin: 0;
  }
  
- 
  .right-header {
     display: flex;
-    font-size: 16px;
- 
- 
+    font-size: 17px;
  }
- 
  
  img {
     width: 20px;
     height: 20px;
  }
- 
  
  nav ul {
     list-style: none;
@@ -48,11 +39,9 @@ body {
     display: flex;
  }
  
- 
  nav ul li {
     margin-right: 30px;
  }
-
  
  
  nav a {
@@ -60,23 +49,12 @@ body {
     color: #D7CA96;
  }
  
- 
  nav a:hover {
     color: #555;
  }
  
- .nav-link {
-   text-decoration: none;
-   color:#FAF8F4;
-   margin:0px;
-}
-
-
-.nav-link.active {
-   color: #D7CA96;
-   display: block;
-   
-}
+ 
+ 
  
  main {
     padding: 80px;

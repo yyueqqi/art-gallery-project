@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Gallery</title>
-    <link rel="stylesheet" href="style/index_styles.css?v=5">
+    <link rel="stylesheet" href="style/index_styles.css?v=6">
 </head>
 <html>
     <body>
@@ -31,7 +31,6 @@
                 }
                 ?>
                 </li>
-                <li><a href="#"><img src="image/search.png" alt="search.png"></a>
             </ul>
         </nav>
     </header>
@@ -91,4 +90,6 @@
     </div>
     <script src="script/script.js"></script>
     </body>
+    <?php include('website/footer.php'); ?>
+    
 </html>

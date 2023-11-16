@@ -1,6 +1,7 @@
 <?php
+session_start();
     include '../function/config.php';
-
+    include '../function/addtocart.php';
     $sql = "SELECT artwork.*, artist.fName, artist.lName FROM artwork LEFT JOIN artist ON artwork.artist_id = artist.artist_id";
     $result = $conn->query($sql);
 
@@ -21,48 +22,23 @@
     <title>Artwork Page</title>
     <link rel="stylesheet" href="../style/artworkpage_styles.css">
 </head>
-
-<header>
-    <div class="left-header">
-        <p>The Art Gallery</p>
-    </div>
-    <div class="right-header">
-        <nav>
-            <ul>
-                <li><a href="../index.php">Home</a></li>
-                <li><a href="artistpage.php">Artists</a></li>
-                <li><a href="artworkpage.php">Artwork</a></li>
-                <li><a href="exhibitionpage.php">Exhibition</a></li>
-                <?php
-                session_start();
-    
-                if (isset($_SESSION['logged_in'])) {
-                    echo '<a href="account.php">Account</a>';
-                } else {
-                    echo '<a href="loginpage.php">Log in</a>';
-                }
-                ?>
-                </li>
-                <li><a href="#"><img src="../image/search.png" alt="search.png"></a>
-            </ul>
-        </nav>
-    </header>
+<body>
+    <?php include('header.php'); ?>
     
     <main>
         <h2>Artwork in our gallery</h2>
         <section class="artwork">
             <?php foreach ($artworks as $artwork) : ?>
                 <div class="art-piece">
-                    
+                    <a href="artworkprofile.php?artwork_id=<?php echo $artwork['artwork_id']; ?>">
                         <div class="image">
                                 <img src="<?php echo $artwork['artwork_img']; ?>" alt="<?php echo $artwork['artwork_id']; ?>">
                             <div class="text-fade">
                                 <div class="text">
                                     <h3><?php echo $artwork['artwork_title']; ?></h3>
-                                    <p>Artist: <?php echo $artwork['fName'] . ' ' . $artwork['lName']; ?></p>
-                                    <p>Description: $<?php echo $artwork['description']; ?></p>
+                                    <p>By <?php echo $artwork['fName'] . ' ' . $artwork['lName']; ?></p>
                                     <p>Price: $<?php echo $artwork['price']; ?></p>
-                                    <button class="buy-button">Buy Now</button>
+                                    <a class='addtocart' href="artworkpage.php?add_to_cart_artwork=<?php echo $artwork['artwork_id'] ?>">ADD TO CART</a>
                                 </div>
                             </div>
                         </div>        
@@ -71,32 +47,6 @@
                 <?php endforeach; ?>
         </section>
     </main>
-
-
-    <footer>
-        <div class="footer-info">
-            <div>
-                <h4>OPEN HOURS:</h4>
-                <p>Tuesday - Sunday 11AM - 6PM</p>
-                <p>Close on Monday and Public Holidays</p>
-                <h4>For more information:</h4>
-                <p><a href="mailto:info@theart.gallery">info@theart.gallery</a></p>
-            </div>
-
-           
-
-            <div>
-                <h4>TEL:</h4>
-                <p>090-276-7007 (Chanikarn)</p>
-                <p>095-894-4145 (Kanyarat)</p>
-            </div>
-
-            <div>
-                <h4>ADDRESS:</h4>
-                <p>345/25-26 The Headquarters,
-                Intaraporn Rd., Plubpla, Wang Thonglang, Bangkok, Thailand 10310</p>
-            </div>
-        </div>
-    </footer>
+    <?php include('footer.php'); ?>
 </body>
 </html>

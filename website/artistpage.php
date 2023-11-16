@@ -19,38 +19,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artist Page</title>
-    <link rel="stylesheet" href="../style/artistpage_styles.css">
+    <link rel="stylesheet" href="../style/artistpage_styles.css?v=5">
 </head>
 <body>
-    <header>
-        <div class="left-header">
-            <p>The Art Gallery</p>
-        </div>
-        <div class="right-header">
-            <nav>
-                <ul>
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a href="artistpage.php">Artist</a></li>
-                    <li><a href="artworkpage.php">Artwork</a></li>
-                    <li><a href="exhibitionpage.php">Exhibition</a></li>
-                    <li>
-                    <?php
-                    session_start();
-    
-                        if (isset($_SESSION['logged_in'])) {
-                            echo '<a href="account.php">Account</a>';
-                        }
-                        else {
-                            echo '<a href="loginpage.php">Log in</a>';
-                        }
-                    ?>
-                    </li>
-                    <li><a href="#"><img src="../image/search.png" alt="search.png"></a></li>
-                </ul>
-            </nav>
-        </div>
-        
-    </header>
+    <?php include('header.php'); ?>
     
     <main>
             <div class="art-text">
@@ -60,15 +32,21 @@
     </main>
         <section class="artists">
         <?php foreach ($artists as $artist) : ?>
+        
         <div class="artist">
-                <img src="<?php echo $artist['artist_profile']; ?>" alt="<?php echo $artist['artist_id']; ?>">
-                <p>Artist Name: <?php echo $artist['fName'] . ' ' . $artist['lName']; ?></p>
-                <p>Date of Birth: <?php echo $artist['dob']; ?></p>
-                <p>Artwork History: <?php echo $artist['artwork_history']; ?></p>
-            </a>
+
+            <div class="artist-profile">
+                <a href="artistprofile.php?artist_id=<?php echo $artist['artist_id']; ?>"><img src="<?php echo $artist['artist_profile']; ?>" alt="<?php echo $artist['artist_id']; ?>">
+                </a>
+            </div> 
+            
+            <div class="name">
+                <p><?php echo $artist['fName'] . ' ' . $artist['lName']; ?></p>
+            </div>
+
         </div>
         <?php endforeach; ?>
     </section>
-    <iframe src="footer.html"<iframe src="header.html" width="80%" height="300" frameborder="0" scrolling="no"></iframe>
+    <?php include('footer.php'); ?>
 </body>
 </html>

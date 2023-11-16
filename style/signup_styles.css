@@ -4,6 +4,11 @@ body {
     padding: 0;
     position: relative;
     background: url('../image/loginbackground.jpg') center/cover no-repeat;
+    
+}
+
+main{
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,25 +21,23 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5px 10px;
-    position: fixed;
-    top: 0;
-    width: 100%; /* Make the header span the full width of the viewport */
+    margin:0;
+    padding: 0.5px 35px;
     z-index: 999;
 }
 
 .left-header {
-    font-size: 20px;
+    font-size: 25px;
     color: #D7CA96;
     margin: 0;
 }
 
 .right-header {
     display: flex;
-    font-size: 16px;
+    font-size: 17px;
 
 }
-
+ 
 img {
     width: 20px;
     height: 20px;

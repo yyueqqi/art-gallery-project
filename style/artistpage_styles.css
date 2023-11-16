@@ -7,57 +7,6 @@ body {
     
 }
 
-header {
-    background-color: #433E36;
-    color: #D7CA96;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5px 10px;
-}
-
-.left-header {
-    font-size: 20px;
-    color: #D7CA96;
-    margin: 0;
-}
-
-.right-header {
-    display: flex;
-    font-size: 16px;
-
-}
-
-img {
-    width: 20px;
-    height: 20px;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-nav ul li {
-    margin-right: 30px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #D7CA96;
-}
-
-nav a:hover {
-    color: #555;
-}
-
-.iframe{
-    display:block;
-    justify-content: center;
-}
-
 main {
     padding: 160px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url("../image/artistimg.jpg");
@@ -66,6 +15,7 @@ main {
     background-size: cover;
     position: relative;
 }
+
 .art-text {
     font-family: 'Times New Roman', Times, serif;
     font-size: 35px;
@@ -84,32 +34,32 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start; /* Align the artists to the left and right */
-    padding: 50px 50px 50px 50px; /* Add space around the artists section */
-    
+    padding: 50px 50px 50px 50px;
+    transition: opacity 0.4s ease-in-out,transform .8s cubic-bezier(.45,0,.27,1);
 
 }
 
 .artist {
 
     padding: 0px;
-    margin: 60px; /* Remove the previous margin */
+    margin: 60px; 
     text-align: center;
-    background-color: #ffffff;
-    box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.5);
-    border: 0px solid #887e6d; /* Add a border around each artist profile */
+    background-color: #FAF8F4;
     box-sizing: border-box;
 }
 
-.artist img {
-
+.artist-profile img {
     width: 200px;
     height: 200px;
+    box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.5);
+    border: 0px solid #887e6d;
 }
 
-.artist p {
+.name p {
     margin: 20px 0;
     font-weight: bold;
     color: #433E36;
     text-align: left;
     font-family: 'Monaco';
+    font-size: 20px;
 }

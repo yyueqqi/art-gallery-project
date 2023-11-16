@@ -1,0 +1,42 @@
+body {
+    background-color: #FAF8F4;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+main{
+    margin:200px;
+    font-family: "Trebuchet MS",Arial,Sans-Serif;
+    font-size: 20px;
+    line-height: 1.4em;
+    letter-spacing: 0.1em;
+}
+
+.artist-container{
+    margin:50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.image img{
+    width: 400px;
+    height: 400px;
+    padding: 0 150px 120px 0;
+}
+.text-frame{
+    color:#433E36;
+}
+.artwork-history h4{
+    font-size: 25px;
+    font-style: oblique;
+    text-align: left;
+    padding-left: 350px;
+}
+
+.artwork-history p{
+    padding-left: 350px;
+}

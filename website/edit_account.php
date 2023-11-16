@@ -92,6 +92,7 @@ include '../function/config.php';
         </div>
     </section>
 </main>
+<iframe src="footer.html" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
 </section>
 </body>
 </html>
