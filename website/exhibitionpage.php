@@ -38,7 +38,10 @@
                                     <h3>Title: <?php echo $exhibition['exhibition_title']; ?></h3>
                                     <p>Date: <?php echo $exhibition['exhibition_date']; ?></p>
                                     <p>Location: <?php echo $exhibition['location']; ?></p>
-                                    <button class="buy-ticket">Buy Ticket</button>
+                                    <button class="buy-ticket">
+                                        <a href="ticketpage.php?exhibition_id=<?php echo $exhibition['exhibition_id']; ?>">Buy Ticket</a>
+                                    </button>
+
                                 </div>
                             </div>
                         </div>

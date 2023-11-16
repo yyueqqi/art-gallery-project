@@ -1,0 +1,25 @@
+select {
+    width: 200px;
+    height: 35px;
+    padding: 5px 35px 5px 5px;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #433E36; 
+    color: beige;
+  }
+
+  .addtocart{
+    color: #D7CA96;
+    background-color: #433E36;
+    padding: 16px 20px;
+    border: none;
+    text-decoration: 0;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+
+}
