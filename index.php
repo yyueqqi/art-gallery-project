@@ -90,6 +90,6 @@
     </div>
     <script src="script/script.js"></script>
     </body>
-    <iframe src="website/footer.html" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
+    <?php include('website/footer.php'); ?>
     
 </html>
