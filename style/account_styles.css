@@ -53,8 +53,17 @@ body {
     color: #555;
  }
  
- 
- 
+ .nav-link {
+   text-decoration: none;
+   color: #433E36;
+   margin: 0px;
+}
+
+.nav-link.active {
+   color: #D7CA96;
+   display: block;
+}
+
  
  main {
     padding: 80px;
