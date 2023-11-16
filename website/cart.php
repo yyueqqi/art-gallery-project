@@ -22,7 +22,7 @@
         if ($item_type == "Artwork") {
             $total += $cart_item['price'] * $cart_item['quantity'];
         } 
-        elseif ($item_type == "Ticket") {
+        elseif ($item_type == "vip Ticket" || $item_type == "general Ticket" || $item_type == "student Ticket") {
             $total += $cart_item['price'] * $cart_item['quantity'];
         }
     }
@@ -55,6 +55,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
     <link rel="stylesheet" href="../style/cart_styles.css">
+    <script src="../script/script.js"></script>
 </head>
 <body>
 
@@ -85,7 +86,11 @@
                 <td><?php echo $cart_item['item_title']; ?></td>
                 <td><?php echo $cart_item['item_type']; ?></td>
                 <td><?php echo "{$cart_item['price']} ฿"; ?></td>
-                <td><?php echo $cart_item['quantity']; ?></td>
+                <td class="counter">
+                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                    <input type="text" value="<?php echo $cart_item['quantity']; ?>">
+                    <span class="up" onClick='increaseCount(event, this)'>+</span>
+                </td>
                 <td><?php echo $cart_item['price'] * $cart_item['quantity'] . " ฿"; ?></td>
                 <td>
                     <form method="post">
