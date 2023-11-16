@@ -30,43 +30,46 @@ include '../function/config.php';
    <link rel="stylesheet" href="../style/account_styles.css">
 </head>
 
-<header>
-   <div class="left-header">
-       <p>The Art Gallery</p>
-   </div>
-   <div class "right-header">
-       <nav>
-           <ul>
-               <li><a href="../index.php">Home</a></li>
-               <li><a href="artistpage.php">Artist</a></li>
-               <li><a href="artworkpage.php">Artwork</a></li>
-               <li><a href="exhibitionpage.php">Exhibition</a></li>
-               <li><a href="account.php">Account</a></li>
-               <li><a href="#"><img src="../image/search.png" alt="search.png"></a>
-           </ul>
-       </nav>
-   </header>
+<body>
+   <header>
+      <div class="left-header">
+          <p>The Art Gallery</p>
+      </div>
+      <div class="right-header">
+          <nav>
+              <ul>
+                  <li><a href="../index.php">Home</a></li>
+                  <li><a href="artistpage.php">Artist</a></li>
+                  <li><a href="artworkpage.php">Artwork</a></li>
+                  <li><a href="exhibitionpage.php">Exhibition</a></li>
+                  <li><a href="account.php">Account</a></li>
+                  <li><a href="#"><img src="../image/search.png" alt="search.png"></a></li>
+              </ul>
+          </nav>
+      </div>
+  </header>
 <body>
 <main>
 <section class="profile">
     <div class="profile-links">
         <img src="../image/dummy.png" alt="">
-        <h2> Welcome <?php echo $user_account['username']; ?></p></h2>
-        <li><a href="../index.php">Home</a></li>
-        <li><a href="account.php">Personal Information</a></li>
-        <li><a href="#">Payment Method</a></li>
-        <li><a href="edit_account.php">Edit Profile</a></li>
-        <li><a href="../function/logout.php">Log out</a></li>
+        <ul>
+          <li><a href="../index.php" class="nav-link"><b>Home</b></a></li>
+          <li><a href="account.php" class="nav-link active"><b>Personal Information</b></a></li>
+          <li><a href="#" class="nav-link"><b>Payment Method</b></a></li>
+          <li><a href="edit_account.php" class="nav-link"><b>Edit Profile</b></a></li>
+          <li><a href="../function/logout.php" class="nav-link logout">Log out</a></li>
+        </ul>
     </div>
 
 
     <div class="user_account">
 
-            <h2> Personal Information</h2>
-            <p>Name: <?php echo $user_account['fName'] . ' ' . $user_account['lName']; ?></p>
-            <p>Email: <?php echo $user_account['email']; ?></p>
-            <p>Date of Birth: <?php echo $user_account['dob']; ?></p>
-            <p>Phone number: <?php echo $user_account['phone_number']; ?></p>
+            <h3> Personal Information</h3>
+            <p><b>Name</b> <div class="text-bar"><?php echo $user_account['fName'] . ' ' . $user_account['lName']; ?></div></p>
+            <p><b>Email</b> <div class="text-bar"><?php echo $user_account['email']; ?></div></p>
+            <p><b>Date of Birth</b> <div class="text-bar"><?php echo $user_account['dob']; ?></div></p>
+            <p><b>Phone number</b><div class="text-bar"> <?php echo $user_account['phone_number']; ?></div></p>
 
     </div>
 </section>

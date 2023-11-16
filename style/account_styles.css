@@ -52,6 +52,7 @@ body {
  nav ul li {
     margin-right: 30px;
  }
+
  
  
  nav a {
@@ -64,8 +65,18 @@ body {
     color: #555;
  }
  
- 
- 
+ .nav-link {
+   text-decoration: none;
+   color:#FAF8F4;
+   margin:0px;
+}
+
+
+.nav-link.active {
+   color: #D7CA96;
+   display: block;
+   
+}
  
  main {
     padding: 80px;
@@ -73,67 +84,94 @@ body {
  
  
  main h2{
-    font-size: 35px;
+    font-size: 50px;
     font-weight: 100;
     color: #433E36;
-    margin: 20;
+    margin: 20px;
+    border-bottom: 2px solid #D7CA96;
+    display: inline-block;
+    
  }
- /* account_styles.css */
- * {
- box-sizing: border-box;
-}
+
+ main h3{
+   font-size: 50px;
+   font-weight: 100;
+   color: #433E36;
+   margin:1;
+   border-bottom: 2px solid #D7CA96;
+   display: inline-block;
+   
+} 
+
+
+
  .profile {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Align the artists to the left and right */
-    padding: 50px; /* Add space around the artists section */
+    justify-content: space-between; 
+    margin-top: -50px;
  }
  
  .profile-links {
     width:30%;
-    background-color: #46341b;
-    color: #D7CA96;
-    padding: 30px 20px;
-    text-align: center;
-    margin: 50px 70px 50px 70px;
-    border-radius: 10px;
+    height:30%;
+    background-color: #FAF8F4;
+    color:#433E36;
+    text-align: flex-start;
+    margin: 30px 10px;
+    
 }
-.profile-links h2 {
-    color: #D7CA96;
 
-}
 
 .profile-links img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-bottom: 25px;
+   width: 150px;
+   height: 150px;
+   border-radius: 50%;
+   margin-top: 20px;
+   margin-left:20px;
+   margin-bottom:20px;
 }
-
-.profile-links li {
-    display: block;
-    margin: 10px 0;
-}
-.profile-links li a:hover {
-    color: #D7CA96;
- }
 
 .profile-links li a {
-    color: #fff;
+    color: #433E36;
     text-decoration: none;
-    margin: 10px 0;
+    padding:10px;
     display: inline-block;
+    font-size: 20px;
 }
 
-.user_account{
-    padding:80px;
-    margin: 40px;
-    width: 40%;
+.profile-links ul {
+   list-style-type:none; 
+   padding: 0; 
+   margin: 0; 
 }
-.mt-custum {
-    margin: 40px;
-    width: 70%;
+
+
+
+.user_account{
+   padding: 20px;
+   margin: 0; 
+   width: 60%;
+   font-size: 20px;
+   margin-right:70px;
+
+
+}
+
+.user_edit{
+   margin-left: 400px;
+   padding: 20px;
+   width: 60%;
+   font-size: 20px;
+   margin-top: -540px;
+}
+
+
+.mt-custom {
+   width: 100%;
+   font-size: 20px;
+   text-align: flex-start;
+   
 }
 
 
@@ -143,16 +181,29 @@ body {
 
 .form-group {
    display: flex;
-   flex-direction: row;
+   flex-direction: column;
    justify-content: space-between;
-   margin-bottom: 15px;
-   margin: 20px;
+   margin-bottom: 20px;
+   flex-basis: 70%;
+   font-size: 25px;
+   width: 100%;
+   
+}
+
+.form-group input.custom-input {
+   flex-basis: 70%;
+   width: 100%;
+   font-size: 18px;
+   padding: 10px; 
+   border: 2px solid #D7CA96; 
+   margin-left:10px;
 }
 
 .form-group label {
+   padding: 10px;
    flex-basis: 30%; 
-   text-align: right;
-   margin-right: 10px; 
+   text-align: flex-start;
+   font-size: 25px;
 }
 
 .form-group input {
@@ -160,6 +211,44 @@ body {
 }
 
  
+.text-bar {
+   background-color: #FAF8F4;
+   color: #433E36;
+   padding: 10px;
+   display: inline-block;
+   margin-bottom: 10px; 
+   width:150%;
+   margin-left:-10px;
+ }
+ 
+ .logout {
+    color: #FAF8F4 !important;
+    background-color: #D7CA96;
+    display: block;
+    padding: 10px;
+    text-align:center ;
+    margin-top: 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
- 
- 
+.button {
+   text-align:center !important;
+   display: inline-block;
+   padding: 15px;
+   background-color: #D7CA96;
+   color: #FAF8F4;
+   border: none;
+   border-radius: 4px;
+   font-size: 16px;
+   cursor: pointer;
+   text-decoration: none;
+   transition: background-color 0.3s ease;
+   width: 104%;
+   margin-left:10px;
+}
+
+.button:hover {
+   background-color: #433E36;
+}

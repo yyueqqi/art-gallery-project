@@ -5,7 +5,7 @@ include '../function/config.php';
 
     if (isset($_SESSION['logged_in']) && isset($_SESSION['login_username'])) {
         $account_username = $_SESSION['login_username'];
-       
+
         $sql = "SELECT * FROM `account` WHERE username = '$account_username'";
         $result = $conn->query($sql);
 
@@ -26,67 +26,68 @@ include '../function/config.php';
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Edit Profile</title>
+   <title>Login Page</title>
    <link rel="stylesheet" href="../style/account_styles.css">
 </head>
 
-<header>
-   <div class="left-header">
-       <p>The Art Gallery</p>
-   </div>
-   <div class="right-header">
-       <nav>
-           <ul>
-               <li><a href="../index.php">Home</a></li>
-               <li><a href="artistpage.php">Artist</a></li>
-               <li><a href="artworkpage.php">Artwork</a></li>
-               <li><a href="exhibitionpage.php">Exhibition</a></li>
-               <li><a href="account.php">Account</a></li>
-               <li><a href="#"><img src="../image/search.png" alt="search.png"></a>
-           </ul>
-       </nav>
-   </div>
-</header>
-
 <body>
-    
+   <header>
+      <div class="left-header">
+          <p>The Art Gallery</p>
+      </div>
+      <div class="right-header">
+          <nav>
+              <ul>
+                  <li><a href="../index.php">Home</a></li>
+                  <li><a href="artistpage.php">Artist</a></li>
+                  <li><a href="artworkpage.php">Artwork</a></li>
+                  <li><a href="exhibitionpage.php">Exhibition</a></li>
+                  <li><a href="account.php">Account</a></li>
+                  <li><a href="#"><img src="../image/search.png" alt="search.png"></a></li>
+              </ul>
+          </nav>
+      </div>
+  </header>
+<body>
+<main>
 <section class="profile">
     <div class="profile-links">
         <img src="../image/dummy.png" alt="">
-        <h2> Welcome <?php echo $user_account['username']; ?></p></h2>
-        <li><a href="../index.php">Home</a></li>
-        <li><a href="account.php">Personal Information</a></li>
-        <li><a href="#">Payment Method</a></li>
-        <li><a href="#">Edit Profile</a></li>
-        <li><a href="../function/logout.php">Log out</a></li>
+        <ul>
+          <li><a href="../index.php" class="nav-link"><b>Home</b></a></li>
+          <li><a href="account.php" class="nav-link"><b>Personal Information</b></a></li>
+          <li><a href="#" class="nav-link"><b>Payment Method</b></a></li>
+          <li><a href="edit_account.php" class="nav-link active"><b>Edit Profile</b></a></li>
+          <li><a href="../function/logout.php" class="nav-link logout">Log out</a></li>
+        </ul>
     </div>
 
     <main>
-    <section class="user_account">
+    <section class="user_edit">
         <div class="mt-custom">
             <h2> Edit Personal Information</h2>
             <form method="post">
                 <div class="form-group">
                     <label for="fname">First Name:</label>
-                    <input type="text" name="fname" value="<?php echo $user_account['fName']; ?>">
+                    <input type="text" name="fname" value="<?php echo $user_account['fName']; ?>" class="custom-input">
                 </div>
                 <div class="form-group">
                     <label for="lname">Last Name:</label>
-                    <input type="text" name="lname" value="<?php echo $user_account['lName']; ?>">
+                    <input type="text" name="lname" value="<?php echo $user_account['lName']; ?>" class="custom-input">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="text" name="email" value="<?php echo $user_account['email']; ?>">
+                    <input type="text" name="email" value="<?php echo $user_account['email']; ?>" class="custom-input">
                 </div>
                 <div class="form-group">
                     <label for="dob">Date of Birth:</label>
-                    <input type="date" name="dob" value="<?php echo $user_account['dob']; ?>">
+                    <input type="date" name="dob" value="<?php echo $user_account['dob']; ?>" class="custom-input">
                 </div>
                 <div class="form-group">
                     <label for="phone_number">Phone Number:</label>
-                    <input type="text" name="phone_number" value="<?php echo $user_account['phone_number']; ?>">
+                    <input type="text" name="phone_number" value="<?php echo $user_account['phone_number']; ?>" class="custom-input">
                 </div>
-                <button type="submit" name="update">Update</button>
+                <button type="submit" name="update"class="button">Update</button>
             </form>
         </div>
     </section>
