@@ -1,6 +1,5 @@
 <?php
 include '../function/config.php';
-include '../function/addtocart.php';
 
 if (isset($_GET['artwork_id'])) {
 
@@ -30,7 +29,7 @@ if (isset($_GET['artwork_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artwork Profile Page</title>
-    <link rel="stylesheet" href="../style/artworkprofile_styles.css">
+    <link rel="stylesheet" href="../style/artworkprofile_styles.css?v=3">
 </head>
 
 <body>
@@ -48,9 +47,11 @@ if (isset($_GET['artwork_id'])) {
                         <img src="<?php echo $artwork['artwork_img']; ?>" alt="<?php echo $artwork['artwork_id']; ?>">
                     </div>
                 </div>
-                <div class='addtocart'>
-                    <button><a href="artworkpage.php?add_to_cart_artwork=<?php echo $artwork['artwork_id'] ?>">ADD TO CART</a></button>
-                </div>
+                    <div style="display:flex; flex-direction:row; padding-left: 800px;">
+
+                        <a class="addtocart" href="artworkpage.php?add_to_cart_artwork=<?php echo $artwork['artwork_id'] ?>">ADD TO CART</a>
+                    </div>
+
             <?php else : ?>
             <p>Artwork not found.</p>
             <?php endif; ?>

@@ -42,21 +42,19 @@ main{
 }
 
 .addtocart{
-    display: flex;
-    justify-content: flex-end;
-    color:#D7CA96;
-    margin:70px;
-}
-
-.addtocart button{
-    background-color: #433E36;;
+    color: #D7CA96;
+    background-color: #433E36;
     padding: 16px 20px;
     border: none;
+    text-decoration: 0;
+    text-align: center;
     cursor: pointer;
-    opacity: 0.8;
-    width: 250px;
-    height: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+
 }
+
+
 
 button a{
     color:#D7CA96;
