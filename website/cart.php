@@ -99,10 +99,11 @@ $conn->close();
 
 </head>
 <body>
+<?php include('header.php'); ?>
 
-<header>
+<main>
     <h1>Shopping Cart</h1>
-</header>
+
 
 <section>
     <table>
@@ -128,9 +129,11 @@ $conn->close();
                 <td class="item-type"><?php echo $cart_item['item_type']; ?></td>
                 <td class="price"><?php echo "{$cart_item['price']} ฿"; ?></td>
                 <td class="counter">
-                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                    <input type="text" value="<?php echo $cart_item['quantity']; ?>" onchange="updateTotal()">
-                    <span class="up" onClick='increaseCount(event, this)'>+</span>
+                    <div class="counter-wrapper">
+                        <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                        <input type="text" value="<?php echo $cart_item['quantity']; ?>" onchange="updateTotal()">
+                        <span class="up" onClick='increaseCount(event, this)'>+</span>
+                    </div>
                 </td>
                 <td class="total-price"><?php echo $cart_item['price'] * $cart_item['quantity'] . " ฿"; ?></td>
                 <td>
@@ -151,7 +154,8 @@ $conn->close();
         <button class="checkout-btn">Checkout</button>
     </div>
 </section>
-
+</main>
+<?php include('footer.php'); ?>
 </body>
 </html>
 
