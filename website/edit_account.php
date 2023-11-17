@@ -52,7 +52,7 @@ include '../function/config.php';
 <main>
 <section class="profile">
     <div class="profile-links">
-        <img src="../image/dummy.png" alt="">
+        <img src="<?php echo $user_account['user_profile']; ?>" alt="Profile Image">
         <ul>
           <li><a href="../index.php" class="nav-link"><b>Home</b></a></li>
           <li><a href="account.php" class="nav-link"><b>Personal Information</b></a></li>
@@ -66,7 +66,11 @@ include '../function/config.php';
     <section class="user_edit">
         <div class="mt-custom">
             <h2> Edit Personal Information</h2>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="user_profile">Choose Profile Picture:</label>
+                    <input type="file" name="new_user_profile" class="custom-input">
+                </div>
                 <div class="form-group">
                     <label for="fname">First Name:</label>
                     <input type="text" name="fname" value="<?php echo $user_account['fName']; ?>" class="custom-input">
@@ -98,6 +102,7 @@ include '../function/config.php';
 </html>
 
 
+
 <?php
 include '../function/config.php';
 
@@ -108,42 +113,67 @@ if (isset($_SESSION['logged_in']) && isset($_SESSION['login_username'])) {
     $account_password = $_SESSION['login_password'];
 
     if (isset($_POST['update'])) {
-        $updates = array();
-        
-        if (!empty($_POST['fname'])) {
-            $new_fName = $_POST['fname'];
-            $updates[] = "fName = '$new_fName'";
-        }
-        if (!empty($_POST['lname'])) {
-            $new_lName = $_POST['lname'];
-            $updates[] = "lName = '$new_lName'";
-        }
-        if (!empty($_POST['dob'])) {
-            $new_dob = $_POST['dob'];
-            $updates[] = "dob = '$new_dob'";
-        }
-        if (!empty($_POST['email'])) {
-            $new_email = $_POST['email'];
-            $updates[] = "email = '$new_email'";
-        }
-        if (!empty($_POST['phone_number'])) {
-            $new_phone_number = $_POST['phone_number'];
-            $updates[] = "phone_number = '$new_phone_number'";
-        }
+        // Check if a new file was uploaded
+        if (isset($_FILES['new_user_profile']) && !empty($_FILES['new_user_profile']['name'])) {
+            // Get the name of the new uploaded image file
+            $new_user_profile = $_FILES['new_user_profile']['name'];
 
-        if (!empty($updates)) {
-            $update_fields = implode(', ', $updates);
-            $sql = "UPDATE `account` SET $update_fields WHERE username = '$account_username'";
-    
-            if ($conn->query($sql) === TRUE) {
-                echo "<script> alert('Account updated successfully!');</script>";
+            // Get the temporary location of the new uploaded image file
+            $temp_new_img = $_FILES['new_user_profile']['tmp_name'];
+
+            // Define the destination directory where the new image will be stored
+            $upload_dir = '../account_image/';
+
+            // Specify the path for the new uploaded image
+            $new_target_file = $upload_dir . $new_user_profile;
+
+            // Check if the file was successfully moved to the destination directory
+            if (move_uploaded_file($temp_new_img, $new_target_file)) {
+                $updates = array();
+                $updates[] = "user_profile = '$new_target_file'";
+
+                if (!empty($_POST['fname'])) {
+                    $new_fName = $_POST['fname'];
+                    $updates[] = "fName = '$new_fName'";
+                }
+                if (!empty($_POST['lname'])) {
+                    $new_lName = $_POST['lname'];
+                    $updates[] = "lName = '$new_lName'";
+                }
+                if (!empty($_POST['dob'])) {
+                    $new_dob = $_POST['dob'];
+                    $updates[] = "dob = '$new_dob'";
+                }
+                if (!empty($_POST['email'])) {
+                    $new_email = $_POST['email'];
+                    $updates[] = "email = '$new_email'";
+                }
+                if (!empty($_POST['phone_number'])) {
+                    $new_phone_number = $_POST['phone_number'];
+                    $updates[] = "phone_number = '$new_phone_number'";
+                }
+
+                if (!empty($updates)) {
+                    $update_fields = implode(', ', $updates);
+                    $sql = "UPDATE `account` SET $update_fields WHERE username = '$account_username'";
+
+                    if ($conn->query($sql) === TRUE) {
+                        echo "<script> alert('Account updated successfully!');</script>";
+                    } else {
+                        echo "Error updating account: " . $conn->error;
+                    }
+                } else {
+                    echo "<script> alert('No fields to update.');</script>";
+                }
             } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+                echo "<script> alert('Error moving uploaded file to the destination directory.');</script>";
             }
         } else {
-            echo "<script> alert('No fields to update.');</script>";
+            echo "<script> alert('No new file uploaded.');</script>";
         }
     }
 }
-
 ?>
+
+
+

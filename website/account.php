@@ -50,7 +50,7 @@ include '../function/config.php';
 <main>
 <section class="profile">
     <div class="profile-links">
-        <img src="../image/dummy.png" alt="">
+        <img src="<?php echo $user_account['user_profile']; ?>" alt="Profile Image">
         <ul>
           <li><a href="../index.php" class="nav-link"><b>Home</b></a></li>
           <li><a href="account.php" class="nav-link active"><b>Personal Information</b></a></li>

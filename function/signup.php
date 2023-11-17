@@ -31,8 +31,8 @@ if (isset($_POST['signup'])) {
             $encpassword = password_hash($signup_password, PASSWORD_DEFAULT);
 
             if ($signup_password == $signup_confpass){
-              $insert = "INSERT INTO `account` (username, user_password, fName, lName, email, dob, phone_number) 
-              VALUES ('$signup_username', '$encpassword', '$signup_fname', '$signup_lname', '$signup_email', '$signup_dob', '$signup_phonenumber')";
+              $insert = "INSERT INTO `account` (username, user_password, user_profile, fName, lName, email, dob, phone_number) 
+              VALUES ('$signup_username', '$encpassword', '../image/dummy.png', '$signup_fname', '$signup_lname', '$signup_email', '$signup_dob', '$signup_phonenumber')";
               $result = mysqli_query($conn, $insert);
 
               if ($result) {

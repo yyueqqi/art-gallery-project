@@ -7,6 +7,18 @@ session_start();
     if (isset($_SESSION['logged_in']) && isset($_SESSION['login_username'])) {
         $account_username = $_SESSION['login_username'];
 
+        $profile_sql = "SELECT user_profile FROM `account` WHERE username = '$account_username'";
+        $profile_result = $conn->query($profile_sql);
+        $profile_result = $conn->query($profile_sql);
+
+        if ($profile_result->num_rows > 0) {
+            $profile_data = $profile_result->fetch_assoc();
+            $user_profile = $profile_data['user_profile'];
+        } 
+        else {
+            $user_profile = ""; 
+        }
+
         $sql = "SELECT * FROM `payment` WHERE username = '$account_username'";
         $result = $conn->query($sql);
 
@@ -65,7 +77,7 @@ session_start();
 <main>
 <section class="profile">
     <div class="profile-links">
-        <img src="../image/dummy.png" alt="">
+        <img src="<?php echo $user_profile; ?>" alt="Profile Image">
         <ul>
           <li><a href="../index.php" class="nav-link"><b>Home</b></a></li>
           <li><a href="account.php" class="nav-link"><b>Personal Information</b></a></li>
