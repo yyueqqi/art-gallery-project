@@ -1,14 +1,47 @@
+body {
+  background-color: #FAF8F4;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.top{
+  margin-top:40px;
+  margin-left: 40px;
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+.top h5{
+  font-size: 35px;
+  border-bottom:2px;
+  border-bottom-color:#D7CA96 ;
+  color: #D7CA96;
+  padding-right: 60px;
+}
+
 select {
-    width: 200px;
-    height: 35px;
-    padding: 5px 35px 5px 5px;
-    font-size: 18px;
-    border: 2px solid #ccc;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #433E36; 
-    color: beige;
+  width: 200px;
+  color: #433E36;
+  background-color: #D7CA96;
+  padding: 14px 20px;
+  border: none;
+  text-decoration: 0;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  border-radius:10px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  }
+
+option {
+    background-color: #D7CA96;
+     color: #433E36;
+     font-family: 'Times New Roman', Times, serif;
   }
 
   .addtocart{
@@ -21,5 +54,69 @@ select {
     cursor: pointer;
     font-family: 'Times New Roman', Times, serif;
     font-size: 1rem;
+    border-radius:30px;
 
+}
+.ticket-details h6{
+  font-style: bold;
+  font-size: 30px;
+  text-transform: uppercase; 
+  margin:20px;
+}
+.ticket-frame{
+  align-content: center;
+  margin: 0px 470px 100px 470px;
+  background-color: beige;
+  border-radius: 10%;
+  text-align: center;
+  padding-top: 10px;
+  overflow: visible;
+
+}
+.ticket-frame img{
+  width:100%;
+  height:fit-content;
+}
+.td{
+  display: flex;
+  flex-flow: column;
+  align-items: left;
+  margin: 20px;
+  
+}
+.td1, .td2,.td3, .td4{
+  display: flex;
+  flex-flow: row;
+  padding-bottom: 20px;
+  align-items: center;
+  
+}
+
+.td3{
+  border-bottom: black;
+  border-bottom-style: dashed;
+}
+
+.td4{
+  padding-top: 20px;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+
+.td1 img , .td2 img, .td3 img{
+  width: 20px;
+  height: 20px;
+  padding-right: 30px;
+}
+
+.td4 img{
+  width: 150px;
+  height: 150px;
+  padding-right: 30px;
+}
+.td p{
+  margin: 0;
+  font-size: 20px;
+  font-family: "Trebuchet MS",Arial,Sans-Serif;
 }

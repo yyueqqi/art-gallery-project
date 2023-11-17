@@ -8,51 +8,6 @@ body {
     overflow-y: auto; 
 }
 
-header {
-    background-color: #433E36;
-    color: #D7CA96;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5px 10px;
-}
-
-.left-header {
-    font-size: 20px;
-    color: #D7CA96;
-    margin: 0;
-}
-
-.right-header {
-    display: flex;
-    font-size: 16px;
-}
-
-img {
-    width: 20px;
-    height: 20px;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-nav ul li {
-    margin-right: 30px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #D7CA96;
-}
-
-nav a:hover {
-    color: #555;
-}
-
 main {
     padding: 20px;
     
@@ -138,6 +93,7 @@ main h4{
     transition: .5s ease;
     border-radius: 10px;
     opacity: 0;
+    
    
 }
 
@@ -164,6 +120,7 @@ main h4{
     font-size: 25px;
     font-weight: 100;
     position: absolute;
+    width: 100%;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -172,16 +129,27 @@ main h4{
     opacity: 0;
     animation: fadeIn 3s ease-in-out forwards;
     
+    
 }
 
 .buy-ticket {
     background-color: #D7CA96;
     color: #433E36;
-    padding: 10px 20px;
-    border: 2px solid #433E36;
-    border-radius: 5px;
+    padding: 16px 20px;
+    border: none;
+    text-decoration: none;
+    text-align: center;
     cursor: pointer;
-    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    border-radius:10px;
+    width:30%;
+    margin:0 32.5%;
+}
+
+.buy-ticket a{
+    text-decoration: none;
+    color: #433E36;
 }
 
 .image-ex {
@@ -201,35 +169,3 @@ main h4{
     border-radius: 10px;
 }
 
-footer {
-    background-color: #433E36;;
-    color: #D7CA96;
-    text-align: center;
-    padding:20px;
-    position:relative;
-    bottom: 0;
-    width: 100%;
-    overflow-x: hidden;
-    box-sizing: border-box;
-}
-
-
-footer a {
-    color: #D7CA96;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.footer-info {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: left;
-    margin-top: 20px;
-
-}
-
-.footer-info div {
-    flex: 1;
-    margin: 10px;
-}
