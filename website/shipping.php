@@ -109,9 +109,9 @@ session_start();
                     <input type="date" name="exp_date" class="custom-input" value="<?php echo $exp_date; ?>" required>
                 </div>
                 <?php if ($user_payment) : ?>
-                    <button type="submit" name="update" class="button">Update</button>
+                    <button type="submit" name="update_payment" class="button">Update</button>
                 <?php else : ?>
-                    <button type="submit" name="add" class="button">Add</button>
+                    <button type="submit" name="add_payment" class="button">Add</button>
                 <?php endif; ?>
             </form>
         </div>
@@ -126,7 +126,7 @@ session_start();
 <?php
 include 'config.php';
 
-if (isset($_POST['add']) || isset($_POST['update'])) {
+if (isset($_POST['add_payment']) || isset($_POST['update_payment'])) {
     $cardType = $_POST['card_type'];
     $cardID = $_POST['card_id'];
     $card_fname = $_POST['fName_card'];
