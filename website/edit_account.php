@@ -56,7 +56,7 @@ include '../function/config.php';
         <ul>
           <li><a href="../index.php" class="nav-link"><b>Home</b></a></li>
           <li><a href="account.php" class="nav-link"><b>Personal Information</b></a></li>
-          <li><a href="#" class="nav-link"><b>Shipping Information</b></a></li>
+          <li><a href="shipping.php" class="nav-link"><b>Shipping Information</b></a></li>
           <li><a href="edit_account.php" class="nav-link active"><b>Edit Profile</b></a></li>
           <li><a href="../function/logout.php" class="nav-link logout">Log out</a></li>
         </ul>

@@ -118,11 +118,11 @@ $conn->close();
         </tr>
 
         <?php foreach ($cart_items as $cart_item) : ?>
-            <tr>
+                <tr>
                 <td class="image">
                     <?php
                     // Use $cart_item['item_img'] or a placeholder for the item image
-                    echo "<img src=\"{$cart_item['item_img']}\" alt=\"{$cart_item['item_id']}\" width=auto height=\"100\">";
+                    echo "<img src=\"{$cart_item['item_img']}\" alt=\"{$cart_item['item_id']}\" width=auto height=\"150\">";
                     ?>
                 </td>
                 <td><?php echo $cart_item['item_title']; ?></td>
