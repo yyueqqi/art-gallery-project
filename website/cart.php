@@ -2,7 +2,6 @@
 session_start();
 include '../function/config.php';
 
-// Fetch cart items from the database
 $sql = "SELECT * FROM cart";
 $result = $conn->query($sql);
 
@@ -25,18 +24,15 @@ foreach ($cart_items as $cart_item) {
 if (isset($_POST['delete_item'])) {
     $item_id_to_delete = $_POST['item_id'];
 
-    // Perform the deletion from the database based on your table structure
     $delete_sql = "DELETE FROM `cart` WHERE item_id = $item_id_to_delete";
     $delete_result = $conn->query($delete_sql);
 
-    // You can add additional checks and messages based on the deletion result
     if ($delete_result) {
         echo '<script>alert("Item deleted successfully")</script>';
     } else {
         echo '<script>alert("Error deleting item")</script>';
     }
 
-    // Redirect to refresh the page after deletion
     echo '<script>window.location.href = "cart.php";</script>';
 }
 
@@ -52,14 +48,22 @@ $conn->close();
     <link rel="stylesheet" href="../style/cart_styles.css">
     
     <script>
-        function increaseCount(a, b) {
-            var input = b.previousElementSibling;
-            var value = parseInt(input.value, 10);
-            value = isNaN(value) ? 0 : value;
-            value++;
-            input.value = value;
-            updateTotal(); // Call the updateTotal function when increasing quantity
+    function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+
+        // Check if the item type is "Artwork"
+        var itemType = b.closest('tr').querySelector('.item-type').textContent.trim();
+        if (itemType.toLowerCase() === 'artwork') {
+            alert('Sorry, you cannot increase the quantity for Artwork.');
+            return;
         }
+
+        value++;
+        input.value = value;
+        updateTotal(); 
+    }
 
         function decreaseCount(a, b) {
             var input = b.nextElementSibling;
@@ -68,7 +72,7 @@ $conn->close();
                 value = isNaN(value) ? 0 : value;
                 value--;
                 input.value = value;
-                updateTotal(); // Call the updateTotal function when decreasing quantity
+                updateTotal(); 
             }
         }
 
@@ -79,12 +83,12 @@ $conn->close();
             rows.forEach(function (row) {
                 var priceElement = row.querySelector('.price');
                 var quantityElement = row.querySelector('.counter input');
-                var totalElement = row.querySelector('.total-price'); // Updated this line
+                var totalElement = row.querySelector('.total-price'); 
                 var price = parseFloat(priceElement.textContent.replace('฿', '').trim());
                 var quantity = parseInt(quantityElement.value);
 
                 var total = price * quantity;
-                totalElement.textContent = total.toFixed(2) + ' ฿'; // Updated this line
+                totalElement.textContent = total.toFixed(2) + ' ฿'; 
 
                 totalPrice += total;
             });
@@ -121,7 +125,7 @@ $conn->close();
                     ?>
                 </td>
                 <td><?php echo $cart_item['item_title']; ?></td>
-                <td><?php echo $cart_item['item_type']; ?></td>
+                <td class="item-type"><?php echo $cart_item['item_type']; ?></td>
                 <td class="price"><?php echo "{$cart_item['price']} ฿"; ?></td>
                 <td class="counter">
                     <span class="down" onClick='decreaseCount(event, this)'>-</span>
