@@ -5,15 +5,15 @@ body {
     background-color: #f4f4f4;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
+main h1 {
+    color: #433E36;
     padding: 10px;
     text-align: center;
 }
 
 section {
-    margin: 20px;
+    margin-left:150px;
+    margin-right:150px;
 }
 
 table {
@@ -23,17 +23,17 @@ table {
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #433E36;
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
 
 th {
     background-color: #333;
-    color: #fff;
+    color: #D7CA96;
 }
 
-img {
+.image img {
     width: 50%;
     max-width: 100px;
     height: auto; 
@@ -46,8 +46,11 @@ img {
 }
 
 .counter {
-    width: 150px;
-    margin: auto;
+    width:fit-content;
+    justify-content: center;
+}
+
+.counter-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,8 +61,8 @@ img {
     line-height: 30px;
     font-size: 20px;
     text-align: center;
-    background: #0052cc;
-    color: #fff;
+    background: #433E36;
+    color: #D7CA96;
     appearance: none;
     outline: 0;
 }
@@ -68,7 +71,7 @@ img {
     font-size: 25px;
     padding: 0 10px;
     cursor: pointer;
-    color: #0052cc;
+    color: #D7CA96;
     user-select: none;
 }
 
@@ -77,8 +80,8 @@ img {
 }
 
 .checkout-btn {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #433E36;
+    color: #D7CA96;
     border: none;
     padding: 10px 20px;
     text-align: center;
@@ -89,8 +92,8 @@ img {
 }
 
 .remove-btn {
-    background-color: #f44336;
-    color: white;
+    background-color: #433E36;
+    color: #D7CA96;
     border: none;
     padding: 6px 12px;
     text-align: center;
@@ -101,5 +104,5 @@ img {
 }
 
 .remove-btn:hover {
-    background-color: #d32f2f;
+    background-color: #433E36;
 }
