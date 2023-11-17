@@ -56,8 +56,8 @@ include '../function/config.php';
         <ul>
           <li><a href="../index.php" class="nav-link"><b>Home</b></a></li>
           <li><a href="account.php" class="nav-link"><b>Personal Information</b></a></li>
-          <li><a href="#" class="nav-link"><b>Shipping Information</b></a></li>
-          <li><a href="edit_account.php" class="nav-link active"><b>Edit Profile</b></a></li>
+          <li><a href="#" class="nav-link active"><b>Shipping Information</b></a></li>
+          <li><a href="edit_account.php" class="nav-link"><b>Edit Profile</b></a></li>
           <li><a href="../function/logout.php" class="nav-link logout">Log out</a></li>
         </ul>
     </div>
@@ -65,26 +65,22 @@ include '../function/config.php';
     <main>
     <section class="user_edit">
         <div class="mt-custom">
-            <h2> Edit Personal Information</h2>
+            <h2> Payment method</h2>
             <form method="post">
                 <div class="form-group">
-                    <label for="fname">First Name:</label>
-                    <input type="text" name="fname" value="<?php echo $user_account['fName']; ?>" class="custom-input">
+                    <label for="card_type">Card type:</label>
+                    <select name="card_type" required>
+                    <option value="">Select Card Type</option>
+                    <option value="master">Mastercard</option>
+                    <option value="visa">Visa</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="lname">Last Name:</label>
-                    <input type="text" name="lname" value="<?php echo $user_account['lName']; ?>" class="custom-input">
+                    <label for="card_id">Card id:</label>
+                    <input type="text" name="card_id" value="<?php echo $user_account['card_id']; ?>" class="custom-input">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" name="email" value="<?php echo $user_account['email']; ?>" class="custom-input">
-                </div>
-                <div class="form-group">
-                    <label for="dob">Date of Birth:</label>
-                    <input type="date" name="dob" value="<?php echo $user_account['dob']; ?>" class="custom-input">
-                </div>
-                <div class="form-group">
-                    <label for="phone_number">Phone Number:</label>
+                    <label for="card_name">Card name:</label>
                     <input type="text" name="phone_number" value="<?php echo $user_account['phone_number']; ?>" class="custom-input">
                 </div>
                 <button type="submit" name="update"class="button">Update</button>

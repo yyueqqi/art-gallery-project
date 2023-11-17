@@ -7,6 +7,10 @@ body {
     position: relative;
  }
  
+ * {
+   box-sizing: border-box;
+  }
+  
  header {
     background-color: #433E36;
     color: #D7CA96;
