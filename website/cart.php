@@ -2,18 +2,23 @@
 session_start();
 include '../function/config.php';
 
-$sql = "SELECT * FROM cart";
-$result = $conn->query($sql);
+if (isset($_SESSION['logged_in']) && isset($_SESSION['login_username'])) {
+    $account_username = $_SESSION['login_username'];
 
-if ($result->num_rows > 0) {
-    $cart_items = $result->fetch_all(MYSQLI_ASSOC);
+    $sql = "SELECT * FROM cart WHERE username = '$account_username'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $cart_items = $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        $cart_items = array();
+    }
 } else {
-    $cart_items = array();
+    echo '<script>alert("Please log in!");</script>';
 }
 
 $total = 0;
 foreach ($cart_items as $cart_item) {
-    // Determine the item type based on your database structure
     $item_type = $cart_item['item_type'];
 
     if ($item_type == "Artwork" || $item_type == "vip Ticket" || $item_type == "general Ticket" || $item_type == "student Ticket") {
@@ -47,55 +52,7 @@ $conn->close();
     <title>Shopping Cart</title>
     <link rel="stylesheet" href="../style/cart_styles.css">
     
-    <script>
-    function increaseCount(a, b) {
-        var input = b.previousElementSibling;
-        var value = parseInt(input.value, 10);
-        value = isNaN(value) ? 0 : value;
 
-        // Check if the item type is "Artwork"
-        var itemType = b.closest('tr').querySelector('.item-type').textContent.trim();
-        if (itemType.toLowerCase() === 'artwork') {
-            alert('Sorry, you cannot increase the quantity for Artwork.');
-            return;
-        }
-
-        value++;
-        input.value = value;
-        updateTotal(); 
-    }
-
-        function decreaseCount(a, b) {
-            var input = b.nextElementSibling;
-            var value = parseInt(input.value, 10);
-            if (value > 1) {
-                value = isNaN(value) ? 0 : value;
-                value--;
-                input.value = value;
-                updateTotal(); 
-            }
-        }
-
-        function updateTotal() {
-            var totalPrice = 0;
-            var rows = document.querySelectorAll('table tr:not(:first-child)');
-
-            rows.forEach(function (row) {
-                var priceElement = row.querySelector('.price');
-                var quantityElement = row.querySelector('.counter input');
-                var totalElement = row.querySelector('.total-price'); 
-                var price = parseFloat(priceElement.textContent.replace('฿', '').trim());
-                var quantity = parseInt(quantityElement.value);
-
-                var total = price * quantity;
-                totalElement.textContent = total.toFixed(2) + ' ฿'; 
-
-                totalPrice += total;
-            });
-
-            document.getElementById('totalAmount').textContent = 'Total: ฿' + totalPrice.toFixed(2);
-        }
-    </script>
 
 </head>
 <body>
@@ -117,11 +74,13 @@ $conn->close();
             <th>Delete</th>
         </tr>
 
-        <?php foreach ($cart_items as $cart_item) : ?>
+        <?php foreach ($cart_items as $cart_item) : 
+                $cart_id = $cart_item['cart_id'];
+            ?>
+                
                 <tr>
                 <td class="image">
                     <?php
-                    // Use $cart_item['item_img'] or a placeholder for the item image
                     echo "<img src=\"{$cart_item['item_img']}\" alt=\"{$cart_item['item_id']}\" width=auto height=\"150\">";
                     ?>
                 </td>
@@ -130,9 +89,9 @@ $conn->close();
                 <td class="price"><?php echo "{$cart_item['price']} ฿"; ?></td>
                 <td class="counter">
                     <div class="counter-wrapper">
-                        <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                        <input type="text" value="<?php echo $cart_item['quantity']; ?>" onchange="updateTotal()">
-                        <span class="up" onClick='increaseCount(event, this)'>+</span>
+                       <a href="cart.php?decrease=<?php echo $cart_id ?>"><span class="down">-</span></a> 
+                        <input type="text" value="<?php echo $cart_item['quantity']; ?>">
+                       <a href="cart.php?increase=<?php echo $cart_id ?>"><span class="up">+</span></a> 
                     </div>
                 </td>
                 <td class="total-price"><?php echo $cart_item['price'] * $cart_item['quantity'] . " ฿"; ?></td>
@@ -151,11 +110,47 @@ $conn->close();
     </div>
 
     <div class="checkout-section">
+        <form method="post" action="order_summary.php">
         <button class="checkout-btn">Checkout</button>
+        </form>
     </div>
 </section>
 </main>
+
 <?php include('footer.php'); ?>
 </body>
 </html>
 
+<?php
+   if(isset($_GET['increase'])) {
+    $cart_id = $_GET['increase'];
+    $select_cart = "SELECT * FROM `cart` where cart_id = '$cart_id'";
+    $result = mysqli_query($conn,$select_cart);
+    $row_cart = mysqli_fetch_assoc($result);
+    $quantity = $row_cart['quantity'] += 1;
+    $sql = "UPDATE `cart` SET `quantity` = '$quantity' WHERE cart_id = '$cart_id'";
+    $result = mysqli_query($conn,$sql);
+    echo '<script>window.open("cart.php","_self")</script>';
+}
+
+
+if(isset($_GET['decrease'])) {
+    $cart_id = $_GET['decrease'];
+    $select_cart = "SELECT * FROM `cart` where cart_id = '$cart_id'";
+    $result = mysqli_query($conn,$select_cart);
+    $row_cart = mysqli_fetch_assoc($result);
+    $quantity = $row_cart['quantity'];
+   
+    if($quantity > 1) {
+        $quantity--;
+        $sql = "UPDATE `cart` SET `quantity` = '$quantity' WHERE cart_id = '$cart_id'";
+        $result = mysqli_query($conn,$sql);
+        echo '<script>window.open("cart.php","_self")</script>';    
+    }
+    else {
+        echo '<script>window.open("cart.php","_self")</script>';   
+    }
+   
+
+}
+?>

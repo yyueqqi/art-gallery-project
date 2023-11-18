@@ -93,6 +93,12 @@ include '../function/config.php';
                 </div>
                 <button type="submit" name="update"class="button">Update</button>
             </form>
+
+            <div class="form-group">
+                <form method="post" action="cart.php">
+                <button class="submit">cart</button>
+                </form>
+            </div>
         </div>
     </section>
 </main>
