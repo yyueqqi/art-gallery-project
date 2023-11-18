@@ -26,7 +26,7 @@
 <?php include('header.php'); ?>
     <main>
         <h2>Exhibition</h2>
-        <p>Finding out exhibitions happening at art galleries. These exhibitions cover a wide range of art, including contemporary art, historical exhibits, design, photography, architecture, sculpture, handicrafts...</p>
+        <p>Finding out exhibitions happening at art galleries. These exhibitions cover a wide range of art,<br> including contemporary art, historical exhibits, design, photography, architecture, sculpture, handicrafts...</p>
         <section class="exhibitions">
             <?php foreach ($exhibitions as $exhibition) : ?>
                 <div class="exhibition2">

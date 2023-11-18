@@ -94,6 +94,17 @@ body {
    
 } 
 
+main h4{
+   font-size: 50px;
+   font-weight: 100;
+   color: #433E36;
+   margin:1;
+   border-bottom: 2px solid #D7CA96;
+   display: inline-block;
+   margin-left: 20px;
+   margin-bottom: 20px;
+   
+}
 
 
  .profile {
@@ -155,6 +166,14 @@ body {
    width: 60%;
    font-size: 20px;
    margin-top: -540px;
+   
+}
+
+.shipping{
+   padding: 28px;
+   margin-left: 400px;
+   margin-top: -550px;
+   width: 50%;
 }
 
 
@@ -178,6 +197,7 @@ body {
    flex-basis: 70%;
    font-size: 25px;
    width: 100%;
+   margin-left: 10px;
    
 }
 
@@ -194,14 +214,69 @@ body {
    padding: 10px;
    flex-basis: 30%; 
    text-align: flex-start;
-   font-size: 25px;
+   font-size: 20px;
 }
 
 .form-group input {
    flex-basis: 70%; /* Adjust the width as needed */
 }
 
- 
+.form-group select {
+   flex-basis: 70%;
+   width: 60%;
+   font-size: 18px;
+   padding: 10px; 
+   border: 2px solid #D7CA96; 
+   margin-left:10px;
+}
+
+
+.form-group input[name="card_id"] {
+   width: 100% !important; 
+   font-size: 18px;
+   padding: 10px; 
+   border: 2px solid #D7CA96; 
+   margin-left: 10px;
+   margin-right: 200px;
+}
+
+.form-group input[name="card_cvv"] {
+   width: 55% !important; 
+   font-size: 18px;
+   border: 2px solid #D7CA96; 
+   margin-left: 10px;
+  
+}
+
+.form-group input[name="exp_date"] {
+   width: 100% !important; 
+   font-size: 18px;
+   padding: 10px; 
+   border: 2px solid #D7CA96; 
+   margin-left: 10px;
+}
+
+.form-group input[name="zip_code"] {
+   width: 30% !important; 
+   font-size: 18px;
+   border: 2px solid #D7CA96; 
+   margin-left: 10px;
+  
+}
+
+.combine {
+   display: flex;
+   justify-content: space-between;
+   
+   
+}
+
+.combine .form-group {
+   flex-basis: 70%; 
+   height: 30%;
+}
+
+
 .text-bar {
    background-color: #FAF8F4;
    color: #433E36;
@@ -241,5 +316,25 @@ body {
 }
 
 .button:hover {
+   background-color: #433E36;
+}
+
+.ship_button {
+   text-align:center !important;
+   display: inline-block;
+   padding: 15px;
+   background-color: #D7CA96;
+   color: #FAF8F4;border-radius: 4px;
+   border: none;
+   border-radius: 4px;
+   font-size: 16px;
+   cursor: pointer;
+   text-decoration: none;
+   transition: background-color 0.3s ease;
+   width: 20%;
+   margin-left:510px;
+}
+
+.ship_button:hover {
    background-color: #433E36;
 }

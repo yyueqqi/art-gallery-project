@@ -88,22 +88,19 @@ session_start();
     </div>
 
     <main>
-    <section class="user_edit">
+    <section class="shipping">
         <div class="mt-custom">
             <h2> Payment method</h2>
             <form method="post">
                 <div class="form-group">
                     <label for="card_type">Card type:</label>
-                    <select name="card_type" required>
+                    <select name="card_type" class="<?php echo $condition ? 'custom-input' : ''; ?>">
                         <option value="" <?php if ($cardType == "") echo "selected"; ?>>Select Card Type</option>
                         <option value="master" <?php if ($cardType == "master") echo "selected"; ?>>Mastercard</option>
                         <option value="visa" <?php if ($cardType == "visa") echo "selected"; ?>>Visa</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="card_id">Card id:</label>
-                    <input type="text" name="card_id" class="custom-input" value="<?php echo $cardID; ?>" required>
-                </div>
+             <div class="combine">
                 <div class="form-group">
                     <label for="card_fName">Full name:</label>
                     <input type="text" name="fName_card" class="custom-input" value="<?php echo $card_fname; ?>" required>
@@ -111,6 +108,12 @@ session_start();
                 <div class="form-group">
                     <label for="card_lName">Last name:</label>
                     <input type="text" name="lName_card" class="custom-input" value="<?php echo $card_lname; ?>" required>
+                </div>
+             </div>
+             <div class="combine">
+                <div class="form-group">
+                    <label for="card_id">Card id:</label>
+                    <input type="text" name="card_id" class="custom-input" value="<?php echo $cardID; ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="cvv">CVV:</label>
@@ -120,10 +123,51 @@ session_start();
                     <label for="exp_date">Expiration Date:</label>
                     <input type="date" name="exp_date" class="custom-input" value="<?php echo $exp_date; ?>" required>
                 </div>
+             </div>   
                 <?php if ($user_payment) : ?>
-                    <button type="submit" name="update_payment" class="button">Update</button>
+                    <button type="submit" name="update_payment" class="ship_button">Update</button>
                 <?php else : ?>
-                    <button type="submit" name="add_payment" class="button">Add</button>
+                    <button type="submit" name="add_payment" class="ship_button">Add</button>
+                <?php endif; ?>
+            <h4> Address </h4> 
+             <div class="combine">
+                <div class="form-group">
+                    <label for="address_fName">First name:</label>
+                    <input type="text" name="fName_address" class="custom-input" value="<?php echo $card_fname; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="address_lName">Last name:</label>
+                    <input type="text" name="lName_address" class="custom-input" value="<?php echo $card_lname; ?>" required>
+                </div>
+             </div>
+             <div class="combine">
+              <div class="form-group">
+                    <label for="address_detail">Address:</label>
+                    <input type="text" name="address_detail" class="custom-input" value="<?php echo $card_fname; ?>" required>
+              </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" name="city" class="custom-input" value="<?php echo $card_lname; ?>" required>
+                </div>
+             </div>
+             <div class="form-group">
+                    <label for="zip_code">Zip or postal code:</label>
+                    <input type="text" name="zip_code" class="custom-input" value="<?php echo $card_lname; ?>" required>
+                </div>
+             <div class="combine">
+              <div class="form-group">
+                    <label for="country">Country:</label>
+                    <input type="text" name="country" class="custom-input" value="<?php echo $card_fname; ?>" required>
+              </div>
+                <div class="form-group">
+                    <label for="phone_num">Phone number:</label>
+                    <input type="text" name="phone_num" class="custom-input" value="<?php echo $card_lname; ?>" required>
+                </div>
+             </div>
+             <?php if ($user_payment) : ?>
+                    <button type="submit" name="update_payment" class="ship_button">Update</button>
+                <?php else : ?>
+                    <button type="submit" name="add_payment" class="ship_button">Add</button>
                 <?php endif; ?>
             </form>
         </div>
