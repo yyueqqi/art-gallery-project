@@ -27,7 +27,6 @@
             <input type="text" name="fName" placeholder="Artist Firstname" required>
             <input type="text" name="lName" placeholder="Artist Lastname" required>
             <input type="date" name="dob" required>
-            <textarea name="artwork_history" placeholder="Artwork History"></textarea>
             <textarea name="artist_biography" placeholder="Artist Biography"></textarea>
             <button type="submit" name="add">Add Artist</button>
         </form>
@@ -57,7 +56,6 @@
             <input type="text" name="new_fName" placeholder="New Artist Firstname">
             <input type="text" name="new_lName" placeholder="New Artist Lastname">
             <input type="date" name="new_dob">
-            <textarea name="new_artwork_history" placeholder="New Artwork History"></textarea>
             <textarea name="new_artist_biography" placeholder="New Artist Biography"></textarea>
             <button type="submit" name="update">Update Artist</button>
         </form>
@@ -98,7 +96,6 @@ if (isset($_POST['add'])) {
     $fName = $_POST['fName'];
     $lName = $_POST['lName'];
     $dob = $_POST['dob'];
-    $artwork_history = $_POST['artwork_history'];
     $artist_biography = $_POST['artist_biography'];
     // Get the name of the uploaded image file
     $artist_img = $_FILES['artist_img']['name'];
@@ -115,8 +112,8 @@ if (isset($_POST['add'])) {
     // Check if the file was successfully uploaded
     if (move_uploaded_file($temp_img, $target_file)) {
 
-        $sql = "INSERT INTO artist (artist_profile, fName, lname, dob, artwork_history, artist_biography)
-        VALUES ('$target_file', '$fName', '$lName', '$dob', '$artwork_history', '$artist_biography')";
+        $sql = "INSERT INTO artist (artist_profile, fName, lname, dob, artist_biography)
+        VALUES ('$target_file', '$fName', '$lName', '$dob', '$artist_biography')";
         
         if ($conn->query($sql) === TRUE) {
             echo "<script> alert('Artist added successfully!');</script>";
@@ -133,7 +130,6 @@ if (isset($_POST['update'])) {
     $new_fName = !empty($_POST['new_fName']) ? $_POST['new_fName'] : ''; 
     $new_lName = !empty($_POST['new_lName']) ? $_POST['new_lName'] : ''; 
     $new_dob = !empty($_POST['new_dob']) ? $_POST['new_dob'] : ''; 
-    $new_artwork_history = !empty($_POST['new_artwork_history']) ? $_POST['new_artwork_history'] : '';
     $new_artist_biography = !empty($_POST['new_artist_biography']) ? $_POST['new_artist_biography'] : '';
 
     // Get the name of the new uploaded image file
@@ -165,9 +161,6 @@ if (isset($_POST['update'])) {
         if (!empty($new_dob)) {
             $sql .= "dob = '$new_dob', ";
         }
-        if (!empty($new_artwork_history)) {
-            $sql .= "artwork_history = '$new_artwork_history', ";
-        }
         if (!empty($new_artist_biography)) {
             $sql .= "artist_biography = '$new_artist_biography', ";
         }
@@ -186,9 +179,6 @@ if (isset($_POST['update'])) {
         }
         if (!empty($new_dob)) {
             $sql .= "dob = '$new_dob', ";
-        }
-        if (!empty($new_artwork_history)) {
-            $sql .= "artwork_history = '$new_artwork_history', ";
         }
         if (!empty($new_artist_biography)) {
             $sql .= "artist_biography = '$new_artist_biography', ";

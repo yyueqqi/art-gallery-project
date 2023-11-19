@@ -50,8 +50,34 @@ if (isset($_GET['artist_id'])) {
                         </div>
                         <div class="history">
                             <strong>Artwork History</strong>
-                            <p><?php echo $artist['artwork_history']; ?></p>
+                            
+                            <?php
+                            $artist_id = $artist['artist_id'];
+
+                            $artwork_query = "SELECT artwork_id, artwork_img, artwork_title FROM artwork WHERE artist_id = $artist_id";
+                            $artwork_result = mysqli_query($conn, $artwork_query);
+
+                            if ($artwork_result) {
+                                foreach ($artwork_result as $artwork_row) {
+                                    $artwork_id = $artwork_row['artwork_id'];
+                                    $artwork_img = $artwork_row['artwork_img'];
+                                    $artwork_title = $artwork_row['artwork_title'];
+                        
+                                    echo '<div>';
+                                    echo '<a href="artworkprofile.php?artwork_id=' . $artwork_id . '">';
+                                    echo '<img src="' . $artwork_img . '" alt="' . $artwork_title . '">';
+                                    echo '<p>' . $artwork_title . '</p>';
+                                    echo '</a>';
+                                    echo '</div>';
+                                }
+                            } 
+                            else {
+                                echo 'Error fetching artwork information: ' . mysqli_error($conn);
+                            }
+                            ?>
+
                         </div>
+
                     </div>
                 </div>
 
