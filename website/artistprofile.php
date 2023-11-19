@@ -48,9 +48,14 @@ if (isset($_GET['artist_id'])) {
                             <strong>Biography</strong>
                             <p><?php echo $artist['artist_biography']; ?></p>
                         </div>
-                        <div class="history">
-                            <strong>Artwork History</strong>
-                            
+                    </div>
+                </div>
+
+                <div class="history">
+                        <div class="sub-heading">
+                            <span><strong>Artwork History</strong></span>
+                        </div>    
+                            <div class="slideshow-container">
                             <?php
                             $artist_id = $artist['artist_id'];
 
@@ -63,7 +68,7 @@ if (isset($_GET['artist_id'])) {
                                     $artwork_img = $artwork_row['artwork_img'];
                                     $artwork_title = $artwork_row['artwork_title'];
                         
-                                    echo '<div>';
+                                    echo '<div class="slide">';
                                     echo '<a href="artworkprofile.php?artwork_id=' . $artwork_id . '">';
                                     echo '<img src="' . $artwork_img . '" alt="' . $artwork_title . '">';
                                     echo '<p>' . $artwork_title . '</p>';
@@ -75,16 +80,15 @@ if (isset($_GET['artist_id'])) {
                                 echo 'Error fetching artwork information: ' . mysqli_error($conn);
                             }
                             ?>
-
+                            </div>
                         </div>
-
-                    </div>
-                </div>
 
             <?php else : ?>
                 <p>Artist not found.</p>
             <?php endif; ?>
         </main>
         <?php include('footer.php'); ?>
+
+        
 </body>
 </html>

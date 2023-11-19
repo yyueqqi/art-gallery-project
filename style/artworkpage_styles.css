@@ -33,17 +33,8 @@ main{
     letter-spacing: 0.1em;
 }
 
-main h2{
-    font-size: 40px;
-    font-weight: 100;
-    font-style: oblique;
-    color: #D7CA96;
-    margin: 0;
-    border-bottom: 2px solid #D7CA96;
-}
-
 main h3{
-    font-size: 35px;
+    font-size: 1.5rem;
     font-weight: bolder;
     color: rgb(39, 32, 11);
     margin: 0;

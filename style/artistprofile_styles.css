@@ -40,4 +40,66 @@ main{
     word-wrap: break-word;
     hyphens: auto;
 }
+.history{
+    margin:70px;
+}
+.sub-heading {
+    font-weight: 200;
+    color: #433E36;
+    font-size: 1.25rem;
+    margin: 0 0 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-wrap: nowrap;
+    
+}
+.sub-heading span{
+    padding: 0 20px 0 0;
+    opacity: 0.8;
+}
 
+.sub-heading:after{
+    content:" ";
+    height: 2px;
+    width: 100%;
+    background: #433E36;
+    display: block;
+    position: relative;
+    opacity: 0.8;
+  }
+
+.slideshow-container {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+    
+}
+
+.slide {
+    width: 200px;
+    height: 200px;/* Adjust the width as needed */
+    margin-right: 15px; /* Adjust the margin to reduce space between slides */
+}
+
+.slide img{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+.slide a{
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    color:#433E36;
+
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+ }
