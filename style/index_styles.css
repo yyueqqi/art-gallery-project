@@ -6,9 +6,7 @@ body {
     background: linear-gradient(
         to right, 
         rgba(67,62,54,1), rgba(255, 255, 255, 0)),
-        url('../image/mainpagebackground.jpeg') center/cover no-repeat;
-    background-repeat: no-repeat;
-    background-position: center;
+        url('../image/mainpagebackground.jpeg') bottom no-repeat;
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
@@ -21,20 +19,22 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin:0;
     padding: 0.5px 35px;
- }
- 
- .left-header {
+    z-index: 999;
+}
+
+.left-header {
     font-size: 25px;
     color: #D7CA96;
     margin: 0;
- }
- 
- .right-header {
+}
+
+.right-header {
     display: flex;
     font-size: 17px;
- }
- 
+}
+
 img {
     width: 20px;
     height: 20px;
@@ -45,6 +45,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -54,7 +55,6 @@ nav ul li {
 nav a {
     text-decoration: none;
     color: #D7CA96;
-    cursor: pointer;
 }
 
 nav a:hover {
@@ -74,9 +74,10 @@ main h2{
 
 main p{
     padding: 100px 50px;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 100;
     color: #fff;
+    font-style: italic;
 }
 
 #about-us {
@@ -120,7 +121,7 @@ main p{
 }
 
 .about-us-content p {
-    font-size: 18px;
+    font-size: 22px;
     color: #555;
     margin-bottom: 1rem;
 }
@@ -148,7 +149,7 @@ main p{
 }
 
 .discover p{
-    font-size: 18px;
+    font-size: 22px;
     color: #555;
     margin-bottom: 1rem;
 }
@@ -173,7 +174,6 @@ main p{
     font-size: 20px;
     color: #555;
     text-align: center;
-    font-family: "Courier New", Courier, monospace;
 }
 .image1, .image2, .image3{
     width: 300px;
@@ -194,3 +194,32 @@ main p{
     transform: scale(1.5);
 }
 
+@media screen and (max-width: 768px) {
+    main {
+        padding: 50px;
+    }
+
+    main h2 {
+        font-size: 50px;
+    }
+
+    main p {
+        padding: 20px;
+        font-size: 18px;
+    }
+
+    #about-us {
+        top: 500px;
+        right: 50px;
+    }
+    .frame-discover {
+        grid-template-columns: 1fr; 
+        gap: 20px; 
+    }
+
+    .fd1,
+    .fd2,
+    .fd3 {
+        text-align: center;
+    }
+}

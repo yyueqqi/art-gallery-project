@@ -66,6 +66,9 @@ th {
     appearance: none;
     outline: 0;
 }
+.counter a{
+    text-decoration: none;
+}
 .counter span {
     display: block;
     font-size: 25px;

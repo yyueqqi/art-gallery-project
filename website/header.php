@@ -93,6 +93,7 @@
                     }
                     ?>
                     </li>
+                    <li><a href="cart.php"><img src="../image/cart.png"></a></li>
                 </ul>
             </nav>
         </header>

@@ -29,7 +29,7 @@ if (isset($_GET['artwork_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artwork Profile Page</title>
-    <link rel="stylesheet" href="../style/artworkprofile_styles.css?v=3">
+    <link rel="stylesheet" href="../style/artworkprofile_styles.css">
 </head>
 
 <body>
@@ -39,16 +39,17 @@ if (isset($_GET['artwork_id'])) {
                 <div class="artwork-container">
                     <div class="text-frame">
                         <h4><?php echo $artwork['artwork_title']; ?></h4>
-                        <p>Artist: <?php echo $artwork['fName'] . ' ' . $artwork['lName']; ?></p>
-                        <p>Description: <?php echo $artwork['description']; ?></p>
-                        <p>Price: $<?php echo $artwork['price']; ?></p>
+                        <p>Created by <?php echo $artwork['fName'] . ' ' . $artwork['lName']; ?></p>
+                        <p><?php echo $artwork['description']; ?></p>
+                        <p>Genre: <?php echo $artwork['genre']; ?></p>
+                        <p>Scale: <?php echo $artwork['scale']; ?> CM</p>
                     </div>
                     <div class="image">
                         <img src="<?php echo $artwork['artwork_img']; ?>" alt="<?php echo $artwork['artwork_id']; ?>">
                     </div>
                 </div>
-                    <div style="display:flex; flex-direction:row; padding-left: 800px;">
-
+                    <div class="price">
+                        <p>฿<?php echo $artwork['price']; ?></p>
                         <a class="addtocart" href="artworkpage.php?add_to_cart_artwork=<?php echo $artwork['artwork_id'] ?>">ADD TO CART</a>
                     </div>
 

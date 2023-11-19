@@ -82,7 +82,7 @@ $conn->close();
                         </div>
                         <div class="td3">
                             <img src="../image/invoice.png" alt="">
-                            <p id="ticketPriceDisplay">Ticket Price: $<span id="selectedTicketPrice">0.00</span></p>
+                            <p id="ticketPriceDisplay">Ticket Price: ฿<span id="selectedTicketPrice">0.00</span></p>
                         </div>
                         <div class="td4">
                             <img src="../image/barcode.png" alt="">

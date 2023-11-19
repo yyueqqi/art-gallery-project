@@ -4,36 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Gallery</title>
-    <link rel="stylesheet" href="style/index_styles.css?v=6">
+    <link rel="stylesheet" href="style/index_styles.css">
 </head>
 <html>
     <body>
-
     <header>
-    <div class="left-header">
-        <p>The Art Gallery</p>
-    </div>
-    <div class="right-header">
-        <nav>
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="website/artistpage.php">Artist</a></li>
-                <li><a href="website/artworkpage.php">Artwork</a></li>
-                <li><a href="website/exhibitionpage.php">Exhibition</a></li>
-                <li>
-                <?php
-                session_start();
-    
-                if (isset($_SESSION['logged_in'])) {
-                    echo '<a href="website/account.php">Account</a>';
-                } else {
-                    echo '<a href="website/loginpage.php">Log in</a>';
-                }
-                ?>
-                </li>
-            </ul>
-        </nav>
-    </header>
+        <div class="left-header">
+            <p>The Art Gallery</p>
+        </div>
+        <div class="right-header">
+            <nav>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="website/artistpage.php">Artist</a></li>
+                    <li><a href="website/artworkpage.php">Artwork</a></li>
+                    <li><a href="website/exhibitionpage.php">Exhibition</a></li>
+                    <li>
+                    <?php
+                    session_start();
+        
+                    if (isset($_SESSION['logged_in'])) {
+                        echo '<a href="website/account.php">Account</a>';
+                    } else {
+                        echo '<a href="website/loginpage.php">Log in</a>';
+                    }
+                    ?>
+                    </li>
+                    <li><a href="website/cart.php"><img src="image/cart.png"></a></li>
+                </ul>
+            </nav>
+        </header>
 
     <main>
         <h2>The Art</h2>
@@ -69,19 +69,19 @@
         <div class="frame-discover">
             <div class="fd1">
                 <div class="image1">
-                    <a href="website/exhibitionpage.php"><img src="image/exhibit.jpg" alt="exhibit.jpg"></a>
+                    <a href="website/exhibitionpage.php"><img src="image/MonetFriends.jpg" alt="exhibit.jpg"></a>
                 </div>
                 <h2>Exhibiton</h2> 
             </div>
             <div class="fd2">
                 <div class="image2">
-                    <a href="artistpage.php"><img src="image/exhibit.jpg" alt="exhibit.jpg"></a>
+                    <a href="website/artistpage.php"><img src="image/artistindex.jpg" alt="artist.jpg"></a>
                 </div>
                 <h2>Artist</h2>
             </div>
             <div class="fd3">
                 <div class="image3">
-                    <a href="artworkpage.php"><img src="image/exhibit.jpg" alt="exhibit.jpg"></a>
+                    <a href="website/artworkpage.php"><img src="image/artworkindex.jpeg" alt="artwork.jpg"></a>
                 </div>
                 <h2>Artwork</h2>
             </div>

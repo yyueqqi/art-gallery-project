@@ -7,7 +7,7 @@ body {
 }
 
 main{
-    margin:200px;
+    margin:120px;
     font-family: "Trebuchet MS",Arial,Sans-Serif;
     font-size: 20px;
     line-height: 1.4em;
@@ -15,28 +15,29 @@ main{
 }
 
 .artist-container{
-    margin:50px;
+    margin:70px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     
 }
-
-.image img{
+.image{
     width: 400px;
     height: 400px;
     padding: 0 150px 120px 0;
 }
+.image img{
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+}
 .text-frame{
     color:#433E36;
 }
-.artwork-history h4{
-    font-size: 25px;
-    font-style: oblique;
-    text-align: left;
-    padding-left: 150px;
+
+.text-frame p{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
-.artwork-history p{
-    padding-left: 150px;
-}

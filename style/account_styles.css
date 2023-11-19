@@ -161,18 +161,18 @@ main h4{
 }
 
 .user_edit{
-   margin-left: 400px;
+   margin-left: 420px;
    padding: 20px;
-   width: 60%;
+   width: 50%;
    font-size: 20px;
-   margin-top: -540px;
+   margin-top: -465px;
    
 }
 
 .shipping{
    padding: 28px;
-   margin-left: 400px;
-   margin-top: -550px;
+   margin-left: 420px;
+   margin-top: -465px;
    width: 50%;
 }
 
@@ -311,8 +311,8 @@ main h4{
    cursor: pointer;
    text-decoration: none;
    transition: background-color 0.3s ease;
-   width: 104%;
-   margin-left:10px;
+   width: 100%;
+   margin-left:20px;
 }
 
 .button:hover {
@@ -332,7 +332,7 @@ main h4{
    text-decoration: none;
    transition: background-color 0.3s ease;
    width: 20%;
-   margin-left:510px;
+   margin-left:490px;
 }
 
 .ship_button:hover {

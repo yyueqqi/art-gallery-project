@@ -80,24 +80,8 @@ session_start();
 </head>
 
 <body>
-   <header>
-      <div class="left-header">
-          <p>The Art Gallery</p>
-      </div>
-      <div class="right-header">
-          <nav>
-              <ul>
-                  <li><a href="../index.php">Home</a></li>
-                  <li><a href="artistpage.php">Artist</a></li>
-                  <li><a href="artworkpage.php">Artwork</a></li>
-                  <li><a href="exhibitionpage.php">Exhibition</a></li>
-                  <li><a href="account.php">Account</a></li>
-                  <li><a href="#"><img src="../image/search.png" alt="search.png"></a></li>
-              </ul>
-          </nav>
-      </div>
-  </header>
 
+<?php include('header.php'); ?>
 <main>
 <section class="profile">
     <div class="profile-links">
@@ -110,8 +94,6 @@ session_start();
           <li><a href="../function/logout.php" class="nav-link logout">Log out</a></li>
         </ul>
     </div>
-
-    <main>
     <section class="shipping">
         <div class="mt-custom">
             <h2> Payment method</h2>
@@ -201,7 +183,7 @@ session_start();
     </section>
 </main>
 
-<iframe src="footer.html" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
+<?php include('footer.php'); ?>
 </section>
 </body>
 </html>

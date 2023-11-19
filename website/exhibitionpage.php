@@ -24,8 +24,16 @@
 
 <body>
 <?php include('header.php'); ?>
+    <section class="sub-header">
+            <div class="art-text">
+                <h1>EXHIBITION</h1>
+                <p>***</p>
+            </div>  
+    </section>
     <main>
-        <h2>Exhibition</h2>
+         <div class="sub-heading">
+            <span>Explore the Latest Exhibitions</span>
+        </div>
         <p>Finding out exhibitions happening at art galleries. These exhibitions cover a wide range of art,<br> including contemporary art, historical exhibits, design, photography, architecture, sculpture, handicrafts...</p>
         <section class="exhibitions">
             <?php foreach ($exhibitions as $exhibition) : ?>
@@ -35,12 +43,19 @@
                               <img src="<?php echo $exhibition['exhibition_img']; ?>" alt="<?php echo $exhibition['exhibition_id']; ?>" class="image">
                             <div class="overlay">
                                 <div class="text">
-                                    <h3>Title: <?php echo $exhibition['exhibition_title']; ?></h3>
+                                    <h3><?php echo $exhibition['exhibition_title']; ?></h3>
                                     <p>Date: <?php echo $exhibition['exhibition_date']; ?></p>
                                     <p>Location: <?php echo $exhibition['location']; ?></p>
                             
                                     <div class="buy-ticket">
-                                        <a href="ticketpage.php?exhibition_id=<?php echo $exhibition['exhibition_id']; ?>">BUY TICKET</a>
+                                        <a class='addtocart' href="
+                                        <?php
+                                            if (!isset($_SESSION['logged_in']) || !isset($_SESSION['login_username'])) {
+                                                echo 'javascript:void(0);" onclick="alert(\'Please log in before buying items.\'); window.location.href=\'loginpage.php\';';
+                                            } else {
+                                                echo 'ticketpage.php?exhibition_id=' . $exhibition['exhibition_id'];
+                                            }
+                                        ?>" >BUY TICKET</a>
                                     </div>
 
                                 </div>
@@ -55,9 +70,7 @@
 
 
 
-            </div>
-        </section>
-    </main>
+
 
     <?php include('footer.php'); ?>
     

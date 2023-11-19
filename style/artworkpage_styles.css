@@ -6,50 +6,40 @@ body {
     position: relative;
  }
  
-footer {
-    background-color: #433E36;;
-    color: #D7CA96;
+
+ .sub-header {
+    padding: 180px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url("../image/headerartwork3.webp");
+    background-position:top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.art-text {
+    font-size: 35px;
     text-align: center;
-    padding:20px;
-    position:relative;
-    bottom: 0;
-    width: 100%;
-    overflow-x: hidden;
-    box-sizing: border-box;
-}
-
-/* You can add additional styling for links or other elements within the footer */
-footer a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: #D7CA96;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.footer-info {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: left;
-    margin-top: 20px;
-
-}
-
-.footer-info div {
-    flex: 1;
-    margin: 10px;
-}
-
-main {
-    padding: 60px;
+    letter-spacing: 0.15em;
+  }
+main{
+    font-family: "Trebuchet MS",Arial,Sans-Serif;
+    margin: 120px;
+    line-height: 1.4em;
+    letter-spacing: 0.1em;
 }
 
 main h2{
     font-size: 40px;
     font-weight: 100;
+    font-style: oblique;
     color: #D7CA96;
     margin: 0;
     border-bottom: 2px solid #D7CA96;
-
 }
 
 main h3{
@@ -61,7 +51,6 @@ main h3{
 }
 
 main p{
-    font-family: Work Sans,sans-serif;
     font-weight: 100;
     font-size: 1.2rem;
     color: rgb(39, 32, 11);
@@ -82,17 +71,42 @@ main button{
     font-size: 18px;
 }
 
+.sub-heading {
+    font-weight: 200;
+    color: #433E36;
+    font-size: 1.25rem;
+    margin: 0 0 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-wrap: nowrap;
+    
+}
+.sub-heading span{
+    padding: 0 20px 0 0;
+    opacity: 0.8;
+}
+
+.sub-heading:after{
+    content:" ";
+    height: 2px;
+    width: 100%;
+    background: #433E36;
+    display: block;
+    position: relative;
+    opacity: 0.8;
+  }
 .artwork {
     display: grid;
     flex: none;
     gap: 64px;
     grid-auto-rows: min-content;
     grid-template-columns: repeat(3,minmax(200px,1fr));
-    grid-template-rows: repeat(5,min-content);
+    grid-template-rows: repeat(auto,min-content);
     height: min-content;
     justify-content: center;
     overflow: visible;
-    padding: 80px 50px;
+    padding: 50px;
     position: relative;
     width: 100%;
     margin: 0 auto;
@@ -104,13 +118,21 @@ main button{
 .art-piece {
     position: relative;
     text-align: center;
-    
+}
+.art-piece a{
+    text-decoration: none;
 }
 
 .image {
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 8px rgba(67, 62, 54, 0.1);
+    
 }
+.image:hover .text-fade {
+    opacity: 1;
+  }
+  
 
 .image img {
     width: auto; 
@@ -121,26 +143,46 @@ main button{
 
 .text-fade {
     position: absolute;
+    top: 0;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    height: 100%;
     width: 100%;
-    height: 0;
-    text-align: center;    
-    background-color: #D7CA96;
-    transition: height 0.3s ease-out;    
-    overflow: hidden;
-    opacity: 80%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: beige;
 }
 
 .text{
-    font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+    font-family: "Trebuchet MS",Arial,Sans-Serif;
     font-weight: bold;
+    color: #433E36;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     text-align: center;
-    padding-top:80px;
+    text-decoration: none;
 }
 
 
 .image:hover .text-fade {
     height: 100%;    
+}
+
+.addtocart{
+    color: #D7CA96;
+    background-color: #433E36;
+    padding: 16px 20px;
+    border: none;
+    text-decoration: 0;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    border-radius:10px;
 }

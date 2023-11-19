@@ -31,24 +31,7 @@ include '../function/config.php';
 </head>
 
 <body>
-   <header>
-      <div class="left-header">
-          <p>The Art Gallery</p>
-      </div>
-      <div class="right-header">
-          <nav>
-              <ul>
-                  <li><a href="../index.php">Home</a></li>
-                  <li><a href="artistpage.php">Artist</a></li>
-                  <li><a href="artworkpage.php">Artwork</a></li>
-                  <li><a href="exhibitionpage.php">Exhibition</a></li>
-                  <li><a href="account.php">Account</a></li>
-                  <li><a href="#"><img src="../image/search.png" alt="search.png"></a></li>
-              </ul>
-          </nav>
-      </div>
-  </header>
-<body>
+<?php include('header.php'); ?>
 <main>
 <section class="profile">
     <div class="profile-links">
@@ -61,8 +44,6 @@ include '../function/config.php';
           <li><a href="../function/logout.php" class="nav-link logout">Log out</a></li>
         </ul>
     </div>
-
-    <main>
     <section class="user_edit">
         <div class="mt-custom">
             <h2> Edit Personal Information</h2>
@@ -102,8 +83,8 @@ include '../function/config.php';
         </div>
     </section>
 </main>
-<iframe src="footer.html" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
 </section>
+<?php include('footer.php'); ?>
 </body>
 </html>
 
