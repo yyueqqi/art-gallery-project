@@ -14,7 +14,7 @@ if (isset($_SESSION['logged_in']) && isset($_SESSION['login_username'])) {
         $cart_items = array();
     }
 } else {
-    echo '<script>alert("Please log in!");</script>';
+    echo '<script>alert("Please log in to see your cart!");</script>';
 }
 
 $total = 0;
