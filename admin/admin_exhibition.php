@@ -12,6 +12,7 @@
             <li><a href="admin_artwork.php">Artwork</a></li>
             <li><a href="admin_exhibition.php">Exhibition</a></li>
             <li><a href="admin_ticket.php">Exhibition Ticket</a></li>
+            <li><a href="../index.php">Home Page</a></li>
         </ul>
     </div>
 

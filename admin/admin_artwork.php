@@ -12,6 +12,7 @@
             <li><a href="admin_artwork.php">Artwork</a></li>
             <li><a href="admin_exhibition.php">Exhibition</a></li>
             <li><a href="admin_ticket.php">Exhibition Ticket</a></li>
+            <li><a href="../index.php">Home Page</a></li>
         </ul>
     </div>
 
@@ -109,7 +110,7 @@
 
         <h2>Delete Artwork</h2>
         <form method="post">
-            <select name="delete_id" required>
+        <select name="delete_id" required>
                 <option value="">Select an Artwork</option>
                     <?php
                     include '../function/config.php';
@@ -125,6 +126,8 @@
                     }
                     ?>
             </select>
+            <input type="hidden" name="item_id" value="<?php echo $artworkID; ?>">
+            <input type="hidden" name="item_type" value="Artwork">
             <button type="submit" name="delete">Delete Artwork</button>
         </form>
 
@@ -214,7 +217,7 @@ if (isset($_POST['update'])) {
 
 if (isset($_POST['delete'])) {
     $id = $_POST['delete_id'];
-    $itemType = 'Artwork'; 
+    $itemType = 'Artwork';
 
     $imagePathQuery = "SELECT artwork_img FROM artwork WHERE artwork_id = $id";
     $imagePathResult = $conn->query($imagePathQuery);
@@ -224,10 +227,10 @@ if (isset($_POST['delete'])) {
         $imagePath = $row['artwork_img'];
 
         if (unlink($imagePath)) {
-            $deleteFromCartQuery = "DELETE FROM `cart` WHERE item_id = $id AND item_type = '$itemType'";
+            $deleteFromCartQuery = "DELETE FROM cart_artwork WHERE item_id = $id AND item_type = '$itemType'";
 
             if ($conn->query($deleteFromCartQuery) === TRUE) {
-                $sql = "DELETE FROM `artwork` WHERE artwork_id = $id";
+                $sql = "DELETE FROM artwork WHERE artwork_id = $id";
 
                 if ($conn->query($sql) === TRUE) {
                     echo "<script> alert('Artwork and associated image deleted successfully from the cart and database!');</script>";
@@ -244,8 +247,6 @@ if (isset($_POST['delete'])) {
         echo "<script> alert('Image file not found in the database!');</script>";
     }
 }
-
-
 
 $conn->close();
 
