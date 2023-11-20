@@ -227,10 +227,10 @@ if (isset($_POST['delete'])) {
         $imagePath = $row['artwork_img'];
 
         if (unlink($imagePath)) {
-            $deleteFromCartQuery = "DELETE FROM cart_artwork WHERE item_id = $id AND item_type = '$itemType'";
+            $deleteFromCartQuery = "DELETE FROM `cart_artwork` WHERE item_id = $id AND item_type = '$itemType'";
 
             if ($conn->query($deleteFromCartQuery) === TRUE) {
-                $sql = "DELETE FROM artwork WHERE artwork_id = $id";
+                $sql = "DELETE FROM `artwork` WHERE artwork_id = $id";
 
                 if ($conn->query($sql) === TRUE) {
                     echo "<script> alert('Artwork and associated image deleted successfully from the cart and database!');</script>";
