@@ -17,43 +17,46 @@ include '../function/config.php';
     <main>
         <div class="login-container">
             <h1>Login</h1>
-            <form method = 'POST'>
+            <form method="POST">
                 <input type="text" name="username" placeholder="Username" />
                 <input type="password" name="password" placeholder="Password" />
                 <button type="submit" name="login">Log in</button>
                 <a href="signuppage.html" class="signup">Sign up</a>
-            </form>   
+            </form>
         </div>
     </main>
 </body>
 </html>
 
 <?php
-    session_start();
+session_start();
 
-    if (isset($_POST['login'])) {
-        $login_username = $_POST['username'];
-        $login_password = $_POST['password'];
-        $sql = "SELECT * FROM `account` WHERE username = '$login_username'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($result);
-            if(password_verify($login_password,$row['user_password'])) { 
-                $_SESSION['logged_in'] = true;
-                $_SESSION['login_username'] = $login_username; 
-                header('Location: ../index.php');
-                exit;
-            } 
-            else {
-                echo "<script> alert('Wrong password!');</script>";
-            }
-        }       
-        else {
-            echo "<script> alert('This username doesn\'t exist!');</script>";
-            }
-        $conn->close();
+if (isset($_POST['login'])) {
+    $login_username = $_POST['username'];
+    $login_password = $_POST['password'];
+
+    // Use prepared statement to prevent SQL injection
+    $sql = "SELECT * FROM `account` WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $login_username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        if (password_verify($login_password, $row['user_password'])) {
+            $_SESSION['logged_in'] = true;
+            $_SESSION['login_username'] = $login_username;
+            header('Location: ../index.php');
+            exit;
+        } else {
+            echo "<script> alert('Wrong password!');</script>";
+        }
+    } else {
+        echo "<script> alert('This username doesn\'t exist!');</script>";
     }
+
+    $stmt->close();
+    $conn->close();
+}
 ?>
-
-
-  
