@@ -22,18 +22,22 @@ if (isset($_SESSION['logged_in']) && isset($_SESSION['login_username'])) {
     $address_result = $conn->query($address_sql);
     $address_data = $address_result->fetch_assoc();
 
-    $total_sql = "SELECT SUM(price * quantity) AS total FROM `cart` WHERE username = '$account_username'";
+    $total_sql = "SELECT SUM(price * quantity) AS total FROM (
+        SELECT price, quantity FROM `cart_artwork` WHERE username = '$account_username'
+        UNION ALL
+        SELECT price, quantity FROM `cart_ticket` WHERE username = '$account_username'
+     ) AS combined_cart";
+
     $total_result = $conn->query($total_sql);
 
     if ($total_result) {
         $total_data = $total_result->fetch_assoc();
-
         $total_price = $total_data['total'];
-
         if ($total_price === null) {
             $total_price = 0;
         }
-    } else {
+    } 
+    else {
         echo "Error executing query: " . $conn->error . "<br>";
         echo "SQL Query: $total_sql";
         $total_price = 0; 

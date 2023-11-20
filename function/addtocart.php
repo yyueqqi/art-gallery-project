@@ -10,7 +10,7 @@ include 'config.php';
         $item_type = "Artwork";
         $artwork_price = 0; 
         $quantity = 1;
-        $select = "SELECT * FROM `cart` where username = '$account_username' and item_id = '$artwork_id'";
+        $select = "SELECT * FROM `cart_artwork` where username = '$account_username' and item_id = '$artwork_id'";
         $result = mysqli_query($conn, $select);
         $num_row = mysqli_num_rows($result);
         if ($num_row > 0) {
@@ -26,7 +26,7 @@ include 'config.php';
             $item_title = $artwork_data['artwork_title'];
             $artwork_price = $artwork_data['price'];
 
-            $insert = "INSERT INTO `cart` (username, item_img, item_id, item_title, item_type, price, quantity) VALUES ('$account_username', '$item_img', '$artwork_id', '$item_title', '$item_type', '$artwork_price', '$quantity')";
+            $insert = "INSERT INTO `cart_artwork` (username, item_img, item_id, item_title, item_type, price, quantity) VALUES ('$account_username', '$item_img', '$artwork_id', '$item_title', '$item_type', '$artwork_price', '$quantity')";
             $result_query = mysqli_query($conn, $insert);
             
             if ($result_query) {
@@ -47,7 +47,7 @@ include 'config.php';
         $item_type = "Ticket";
         $ticket_price = 0; 
         $quantity = 1;
-        $select = "SELECT * FROM `cart` where username = '$account_username' and item_id = '$ticket_id'";
+        $select = "SELECT * FROM `cart_ticket` where username = '$account_username' and item_id = '$ticket_id'";
         $result = mysqli_query($conn, $select);
         $num_row = mysqli_num_rows($result);
         if ($num_row > 0) {
@@ -71,7 +71,7 @@ include 'config.php';
             $item_title = $exhibition_data['exhibition_title'];
             $ticket_price = $ticket_data['price'];
 
-            $insert = "INSERT INTO `cart` (username, item_img, item_id, item_title, item_type, price, quantity) VALUES ('$account_username', '$item_img', '$ticket_id', '$item_title', '$item_type', '$ticket_price', '$quantity')";
+            $insert = "INSERT INTO `cart_ticket` (username, item_img, item_id, item_title, item_type, price, quantity) VALUES ('$account_username', '$item_img', '$ticket_id', '$item_title', '$item_type', '$ticket_price', '$quantity')";
             $result_query = mysqli_query($conn, $insert);
             
             if ($result_query) {
