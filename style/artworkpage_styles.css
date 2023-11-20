@@ -151,13 +151,19 @@ main button{
     color: #433E36;
     font-size: 20px;
     position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: max-content;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
     text-decoration: none;
+    display: flex;
+    flex-flow: column;
+    animation: fadeIn 3s;
+    line-height: 1.5;
+    align-items: center;
 }
 
 
@@ -168,12 +174,14 @@ main button{
 .addtocart{
     color: #D7CA96;
     background-color: #433E36;
-    padding: 16px 20px;
-    border: none;
     text-decoration: 0;
     text-align: center;
     cursor: pointer;
     font-family: 'Times New Roman', Times, serif;
     font-size: 1rem;
     border-radius:10px;
+    border:none;
+    padding: 16px 20px;
+    width:50%;
+    height: 50%;
 }
