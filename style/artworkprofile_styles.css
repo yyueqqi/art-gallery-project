@@ -30,8 +30,10 @@ main{
 }
 .text-frame{
     color:#433E36;
-    width: 50%;
-    text-wrap: nowrap;
+    width: 70%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 .text-frame h4{
@@ -39,6 +41,7 @@ main{
     text-align: left;
     padding-right: 100px;
     text-transform: uppercase;
+    line-height: 1.7em;
    
 }
 
