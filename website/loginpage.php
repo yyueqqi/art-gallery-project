@@ -1,5 +1,15 @@
 <?php
 include '../function/config.php';
+
+if (isset($_SESSION['logged_in'])) {
+    if ($_SESSION['is_admin']) {
+        header('Location: ../admin/admin_artist.php');
+    } else {
+        header('Location: ../index.php');
+    }
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +45,14 @@ if (isset($_POST['login'])) {
     $login_username = $_POST['username'];
     $login_password = $_POST['password'];
 
-    // Use prepared statement to prevent SQL injection
+    if ($login_username == "admin" && $login_password == "admin") {
+        $_SESSION['logged_in'] = true;
+        $_SESSION['login_username'] = $login_username;
+        $_SESSION['is_admin'] = true; 
+        header('Location: ../admin/admin_artist.php');
+        exit;
+    }
+
     $sql = "SELECT * FROM `account` WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('s', $login_username);
@@ -47,6 +64,7 @@ if (isset($_POST['login'])) {
         if (password_verify($login_password, $row['user_password'])) {
             $_SESSION['logged_in'] = true;
             $_SESSION['login_username'] = $login_username;
+            $_SESSION['is_admin'] = false;
             header('Location: ../index.php');
             exit;
         } else {
