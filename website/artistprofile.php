@@ -1,22 +1,22 @@
 <?php
 include '../function/config.php';
 
-if (isset($_GET['artist_id'])) {
-    $artist_id = $_GET['artist_id'];
-
+if (isset($_GET['artist_id'])) {//expects to receive an artist ID as a parameter in the URL
+    $artist_id = $_GET['artist_id'];//it retrieves the artist ID from the URL.
+    
     $query = "SELECT * FROM `artist` WHERE artist_id = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('i', $artist_id);
+    $stmt->bind_param('i', $artist_id); 
     $stmt->execute();
     $result = $stmt->get_result();
-
+    //uses a prepared statement to prevent SQL injection by binding the artist ID as a parameter.
     if ($result->num_rows > 0) {
         $artist = $result->fetch_assoc();
     } else {
         $artist = null;
     }
 
-    $stmt->close();
+    $stmt->close();//close prepare parameter
 } else {
     $artist = null;
 }

@@ -1,18 +1,18 @@
 <?php
 include '../function/config.php';
 
-if (isset($_GET['artwork_id'])) {
-
-    $artwork_id = $_GET['artwork_id'];
+if (isset($_GET['artwork_id'])) {//check URL
+    $artwork_id = $_GET['artwork_id']; //retrive artwork_id fronm URL
 
     $query = "SELECT artwork.*, artist.fName, artist.lName FROM artwork LEFT JOIN artist ON artwork.artist_id = artist.artist_id WHERE artwork_id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param('i', $artwork_id);
+    //SQL query to fetch information about the artist with the specified ID from the database.
+    $stmt = $conn->prepare($query);//prevent SQL injection
+    $stmt->bind_param('i', $artwork_id); //binding artist id as a parameter
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        $artwork = $result->fetch_assoc();
+        $artwork = $result->fetch_assoc(); //fetch associative array of the artwork details
     } else {
         $artwork = null;
     }
