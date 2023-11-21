@@ -224,7 +224,7 @@ if (isset($_POST['update'])) {
             $updateExhibitionQuery = "UPDATE exhibition SET ticket_number = ticket_number - $currentTicketNumber WHERE exhibition_id = $exhibitionID";
             $conn->query($updateExhibitionQuery);
     
-            $deleteCartTicketQuery = "DELETE FROM cart WHERE item_id = $ticketID AND item_type = 'Ticket'";
+            $deleteCartTicketQuery = "DELETE FROM cart_ticket WHERE item_id = $ticketID AND item_type = 'Ticket'";
             if ($conn->query($deleteCartTicketQuery) === TRUE) {
                 $sql = "DELETE FROM `ticket` WHERE ticket_id = $ticketID";
     
